@@ -1,0 +1,31 @@
+.hero {
+  padding: 100px 0;
+  background-color: $hero-background;
+}
+
+.hero h2 {
+  color: $white;
+}
+
+.hero h4 {
+  color: rgba($white, 0.7);
+}
+
+.hero form {
+  margin-top: 50px;
+}
+
+.hero-form-explanation {
+  font-size: 0.8rem;
+  position: relative;
+  top: -10px;
+  color: $black;
+}
+
+.why-regard {
+  background-color: $light-grey;
+}
+
+.side-by-side-headers {
+  background-color: $lighter-grey;
+}

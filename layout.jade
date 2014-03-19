@@ -7,20 +7,7 @@ html(lang="en")
     title Regard: Product insights, collected respectfully
     link(href="assets/css/main.css", rel="stylesheet")
   body
-    .contain-to-grid
-      nav.top-bar(data-topbar)
-        ul.title-area
-          li.name
-            h1
-              a(href="#") Regard
-          li.toggle-topbar.menu-icon
-            a(href="#")
-        section.top-bar-section
-          ul.right
-            li
-              a(href="#") Blog
-            li
-              a(href="#") Contact us
+    include includes/navigation
       
     block content
     

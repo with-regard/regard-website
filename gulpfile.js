@@ -32,7 +32,7 @@ gulp.task('jade', function () {
       pretty: true
     }))
     .pipe(gulp.dest(outputDir))
-    .pipe(livereload());
+    //.pipe(livereload());
 });
 
 // Compile Sass
@@ -49,7 +49,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(outputDir + '/assets/css'))
     .pipe(minifycss())
     .pipe(gulp.dest(outputDir + '/assets/css'))
-    .pipe(livereload());
+    //.pipe(livereload());
 });
 
 // Uglify JS
@@ -60,7 +60,7 @@ gulp.task('uglify', function () {
       outSourceMap: false
     }))
     .pipe(gulp.dest(outputDir + '/assets/js'))
-    .pipe(livereload());
+    //.pipe(livereload());
 });
 
 // Compress images.

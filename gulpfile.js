@@ -14,15 +14,35 @@ var livereload = require('gulp-livereload');
 var express = require('express');
 var path = require('path');
 var tinylr = require('tiny-lr');
+var WritableStream = require('stream').Writable;
 
 var outputDir = 'dist';
 var serverPort = '3000';
+var watching = false;
 
 // Paths
 var paths = {
   scripts: ['assets/js/*.js'],
   images: ['assets/img/**']
 };
+
+var devnull = function () {
+  var stream = new WritableStream({
+    objectMode: true
+  });
+  stream._write = function (chunk, encoding, callback) {
+    callback();
+  };
+  return stream;
+}
+
+var liveReloadifWatching = function () {
+  if (watching) {
+    return livereload();
+  } else {
+    return devnull();
+  }
+}
 
 // Compile Jade to HTML
 gulp.task('jade', function () {
@@ -32,7 +52,7 @@ gulp.task('jade', function () {
       pretty: true
     }))
     .pipe(gulp.dest(outputDir))
-    //.pipe(livereload());
+    .pipe(liveReloadifWatching());
 });
 
 // Compile Sass
@@ -40,8 +60,7 @@ gulp.task('sass', function () {
   gulp.src(['assets/scss/*.scss', '!assets/scss/_variables.scss'])
     .pipe(plumber())
     .pipe(sass({
-      includePaths: ['assets/scss'],
-      outputStyle: 'expanded'
+      sourceComments: 'map'
     }))
     .pipe(prefix(
       "last 1 version", "> 1%", "ie 8", "ie 7"
@@ -49,7 +68,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(outputDir + '/assets/css'))
     .pipe(minifycss())
     .pipe(gulp.dest(outputDir + '/assets/css'))
-    //.pipe(livereload());
+    .pipe(liveReloadifWatching());
 });
 
 // Uglify JS
@@ -60,7 +79,7 @@ gulp.task('uglify', function () {
       outSourceMap: false
     }))
     .pipe(gulp.dest(outputDir + '/assets/js'))
-    //.pipe(livereload());
+    .pipe(liveReloadifWatching());
 });
 
 // Compress images.
@@ -77,6 +96,8 @@ gulp.task('watch', function (event) {
   gulp.watch('assets/scss/*.scss', ['sass']);
   gulp.watch(paths.images, ['imagemin']);
   gulp.watch(paths.scripts, ['uglify']);
+
+  watching = true;
 });
 
 gulp.task('server', function () {

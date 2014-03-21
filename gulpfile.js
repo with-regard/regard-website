@@ -9,7 +9,6 @@ var plumber = require('gulp-plumber');
 var prefix = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
 var livereload = require('gulp-livereload');
 var express = require('express');
 var path = require('path');
@@ -82,11 +81,9 @@ gulp.task('uglify', function () {
     .pipe(liveReloadifWatching());
 });
 
-// Compress images.
-gulp.task('imagemin', function () {
+// Copy images.
+gulp.task('copyimages', function () {
   gulp.src(paths.images)
-    .pipe(plumber())
-    .pipe(imagemin())
     .pipe(gulp.dest(outputDir + '/assets/img'));
 });
 
@@ -108,5 +105,5 @@ gulp.task('server', function () {
   });
 });
 
-gulp.task('build', ['jade', 'sass', 'uglify', 'imagemin']);
+gulp.task('build', ['jade', 'sass', 'uglify', 'copyimages']);
 gulp.task('default', ['build', 'watch', 'server']);

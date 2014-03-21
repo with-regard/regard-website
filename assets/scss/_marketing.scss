@@ -1,6 +1,8 @@
 .hero {
   padding: 100px 0;
   background-color: $hero-background;
+  border-top: 1px solid rgba($black, 0.2);
+  border-bottom: 1px solid rgba($black, 0.2);
 }
 
 .hero h4 {

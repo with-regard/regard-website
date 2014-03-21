@@ -3,12 +3,9 @@
   background-color: $hero-background;
 }
 
-.hero h2 {
-  color: $white;
-}
-
 .hero h4 {
-  color: rgba($white, 0.7);
+  color: $white;
+  text-shadow: 1px 1px 1px rgba($body-font-color, 0.7);
 }
 
 .hero form {
@@ -22,12 +19,10 @@
   color: $black;
 }
 
-.why-regard {
-  background-color: $light-grey;
+.why-regard, .values {
   padding: 20px 0;
 }
 
-.side-by-side-headers {
-  background-color: $lighter-grey;
-  padding: 10px 0;
+.benefits {
+  padding: 20px 0;
 }

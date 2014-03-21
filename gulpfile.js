@@ -108,5 +108,5 @@ gulp.task('server', function () {
   });
 });
 
-gulp.task('build', ['jade', 'sass', 'uglify']);
+gulp.task('build', ['jade', 'sass', 'uglify', 'imagemin']);
 gulp.task('default', ['build', 'watch', 'server']);

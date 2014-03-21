@@ -5,24 +5,49 @@ block content
     .row
       .large-12.columns.text-center
         h2 Product insights, collected respectfully
-        h4.subheader Validate your product improvement ideas with data your users are happy to give up
+        h4.subheader Validate your product improvement ideas with data your users are happy to give
     .row
       .large-6.columns.large-centered
-        form(method='post', action='#')
-          .row.collapse
-            .small-8.medium-8.columns
-              input(type='text', name='email', placeholder='Enter your email')
-              span.hero-form-explanation Get notified when the beta is available
-            .small-4.medium-4.columns
-              input.postfix.small.button.expand(type='submit', href='#', value='I\'m interested')
+        include includes/sign-up-form
+        
+  section.values     
+    .row
+      .large-12.columns
+        h2 We believe:
+  .row
+    .large-12.columns
+      ul
+        li
+          h4 Analytics should be transparent
+        li
+          h4 Users and developers should work together to improve the product
+        li 
+          h4 Only data which can improve the product should be collected
+        li
+          h4 Developers should know the purpose of the data before collecting it
 
   section.why-regard
     .row
-      .large-12.columns.text-center
+      .large-12.columns
         h2 Why Regard works:
-  section.side-by-side-headers
-    .row
-      .large-6.columns.text-center
-        h3 Dev team
-      .large-6.columns.text-center
-        h3 End users
+  
+  section.benefits      
+   .row
+      .large-6.columns
+        h4 Make decisions that matter
+        p Don't just collect data - #[a(href="#") run experiments] to get real answers.
+        
+        h4 Be transparent about the data you collect
+        p Build trust between you and your users by showing them what you want to collect.
+      
+        h4 Start with questions, not data
+        p We believe you should have a hypothesis before you collect any data. Our service makes you specify your assumptions up front, so you don’t end up with a pile of data to decipher. 
+        
+        h4 Collaborate with your users to improve your product
+        p We believe that developers and users should work together to improve the product. We help to start a conversation with your users, rather than spying on them.
+        
+        h4 Do the right thing for your users.
+        p Respect your users privacy.
+        
+        h4 Sign up now
+        include includes/sign-up-form

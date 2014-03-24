@@ -10,7 +10,7 @@ var prefix = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
-var express = require('express');
+var nodemon = require('gulp-nodemon');
 var path = require('path');
 var tinylr = require('tiny-lr');
 var WritableStream = require('stream').Writable;
@@ -33,7 +33,7 @@ var devnull = function () {
     callback();
   };
   return stream;
-}
+};
 
 var liveReloadifWatching = function () {
   if (watching) {
@@ -41,7 +41,7 @@ var liveReloadifWatching = function () {
   } else {
     return devnull();
   }
-}
+};
 
 // Compile Jade to HTML
 gulp.task('jade', function () {
@@ -98,11 +98,10 @@ gulp.task('watch', function (event) {
 });
 
 gulp.task('server', function () {
-  var app = express();
-  app.use(express.static(outputDir));
-  app.listen(serverPort, function () {
-    gutil.log('Listening on', serverPort);
-  });
+  nodemon({ script: 'index.js' })
+    .on('restart', function () {
+      console.log('restarted node');
+    });
 });
 
 gulp.task('build', ['jade', 'sass', 'uglify', 'copyimages']);

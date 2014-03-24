@@ -45,7 +45,7 @@ var liveReloadifWatching = function () {
 
 // Compile Jade to HTML
 gulp.task('jade', function () {
-  gulp.src(['**/*.jade', '!./{node_modules/**, node_modules}'])
+  gulp.src(['views/**/*.jade', '!./{node_modules/**, node_modules}'])
     .pipe(plumber())
     .pipe(jade({
       pretty: true
@@ -89,7 +89,7 @@ gulp.task('copyimages', function () {
 
 // Watch files
 gulp.task('watch', function (event) {
-  gulp.watch('**/*.jade', ['jade']);
+  gulp.watch('views/**/*.jade', ['jade']);
   gulp.watch('assets/scss/*.scss', ['sass']);
   gulp.watch(paths.images, ['imagemin']);
   gulp.watch(paths.scripts, ['uglify']);

@@ -3,5 +3,5 @@ exports.index = function(req, res){
 };
 
 exports.contact = function(req, res){
-  res.render('contact');
+  res.render('contact', {menu: 'contact'});
 }

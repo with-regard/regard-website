@@ -98,7 +98,7 @@ gulp.task('watch', function (event) {
 });
 
 gulp.task('server', function () {
-  nodemon({ script: 'index.js' })
+  nodemon({ script: 'server.js' })
     .on('restart', function () {
       console.log('restarted node');
     });

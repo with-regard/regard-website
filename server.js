@@ -2,8 +2,7 @@ var express = require('express'),
   pages = require('./routes/pages.js'),
   signup = require('./routes/signup.js'),
   multipart = require('connect-multiparty'),
-  flash = require('connect-flash'),
-  formParser = multipart();
+  flash = require('connect-flash');
 
 var app = express();
 
@@ -15,6 +14,9 @@ app.configure(function () {
 
   app.use(express.compress());
   app.use(express.methodOverride());
+  app.use(express.json());
+  app.use(express.urlencoded());
+  app.use(multipart());
   app.use(express.cookieParser(process.env.COOKIE_SECRET || 'secret'));
   app.use(express.session({
     key: 'sid',
@@ -42,7 +44,7 @@ app.configure('production', function () {
 
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
-app.post('/signup', formParser, signup.sendToMailchimp);
+app.post('/signup', signup.sendToMailchimp);
 
 // Go
 

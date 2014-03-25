@@ -1,4 +1,5 @@
 extends layout
+include mixins/alerts
 
 block content
   section.hero
@@ -8,8 +9,8 @@ block content
         h5.subheader Validate your product improvement ideas with data your users are happy to give
     .row
       .large-6.columns.large-centered
-        if signedUp
-          p Thanks for signing up!
+        if message && message.length
+          +alert-success(message)
         else
           include includes/sign-up-form  
     .sparkline
@@ -21,19 +22,22 @@ block content
           h4 Build a better product whilst respecting your users' privacy
 
     section.big-padding
-     .row
+      .row
         .large-5.columns
           h4 Be transparent, gain trust
           p Build trust between you and your users by showing them what you want to collect.
-          h4 Collaborate with your users to improve your product
-          p We believe that developers and users should work together to improve the product. We help to start a conversation with your users, rather than spying on them.
         .large-2.columns
-          img(src="/assets/img/regard-white-logo.png")
+          img.white-logo.show-for-large-up(src="/assets/img/regard-white-logo.png")
         .large-5.columns
           h4 Start with questions, not data
           p We believe you should have a hypothesis before you collect any data. Our service makes you specify your assumptions up front, so you don't end up with a pile of data to decipher. 
-          h4 Make decisions that matter
-          p Don't just collect data - run experiments to get real answers.
+      .row
+        .large-5.columns
+            h4 Collaborate with your users to improve your product
+            p We believe that developers and users should work together to improve the product. We help to start a conversation with your users, rather than spying on them.
+          .large-5.columns
+            h4 Make decisions that matter
+            p Don't just collect data - run experiments to get real answers.
   section.big-padding
     .row
       .large-6.columns.large-centered

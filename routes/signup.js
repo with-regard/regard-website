@@ -4,6 +4,7 @@ exports.sendToMailchimp = function (req, res) {
   if(req.body.forbots){
     console.log('Probably a bot ' +  req.body.email);
     res.redirect('/');
+<<<<<<< HEAD
   } 
 
   var signupData = {
@@ -22,4 +23,13 @@ exports.sendToMailchimp = function (req, res) {
   });
  
   res.render('index', {signedUp: true}); // use flash here instead
+=======
+  }
+  
+  var email = req.body.email;
+  // Send to mailchimp api
+  
+  req.flash('message', 'Thanks for signing up!');
+  res.redirect('/');
+>>>>>>> be7a8435820609c952d537655ba4dc31f4462f95
 }

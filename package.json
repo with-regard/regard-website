@@ -23,6 +23,10 @@
     "gulp-nodemon": "~1.0.2",
     "jade": "~1.3.0",
     "connect-multiparty": "~1.0.3",
+<<<<<<< HEAD
     "request": "~2.34.0"
+=======
+    "connect-flash": "~0.1.1"
+>>>>>>> be7a8435820609c952d537655ba4dc31f4462f95
   }
 }

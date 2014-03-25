@@ -22,7 +22,9 @@
 }
 
 .big-green {
-  background-color: $primary-color
+  background-color: $darker-green;
+  border-top: 1px solid rgba($black, 0.2);
+  border-bottom: 1px solid darken($darker-green, 10);
 }
 
 .big-green h1, .big-green h4, .big-green p {

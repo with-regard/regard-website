@@ -7,5 +7,6 @@ exports.sendToMailchimp = function (req, res) {
   var email = req.body.email;
   // Send to mailchimp api
   
-  res.render('index', {signedUp: true}); // use flash here instead
+  req.flash('message', 'Thanks for signing up!');
+  res.redirect('/');
 }

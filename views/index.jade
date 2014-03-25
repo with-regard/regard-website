@@ -9,8 +9,8 @@ block content
         h5.subheader Validate your product improvement ideas with data your users are happy to give
     .row
       .large-6.columns.large-centered
-        if signedUp
-          +alert-success('Thanks for signing up')
+        if message && message.length
+          +alert-success(message)
         else
           include includes/sign-up-form  
     .sparkline

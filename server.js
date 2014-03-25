@@ -2,6 +2,7 @@ var express = require('express'),
   pages = require('./routes/pages.js'),
   signup = require('./routes/signup.js'),
   multipart = require('connect-multiparty'),
+  flash = require('connect-flash'),
   formParser = multipart();
 
 var app = express();
@@ -14,6 +15,14 @@ app.configure(function () {
 
   app.use(express.compress());
   app.use(express.methodOverride());
+  app.use(express.cookieParser(process.env.COOKIE_SECRET || 'secret'));
+  app.use(express.session({
+    key: 'sid',
+    cookie: {
+      maxAge: 60000
+    }
+  }));
+  app.use(flash());
   app.use(app.router);
   app.use(express.static(__dirname + '/dist'));
 });

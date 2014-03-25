@@ -91,7 +91,7 @@ gulp.task('copyimages', function () {
 gulp.task('watch', function (event) {
   gulp.watch('views/**/*.jade', ['jade']);
   gulp.watch('assets/scss/*.scss', ['sass']);
-  gulp.watch(paths.images, ['imagemin']);
+  gulp.watch(paths.images, ['copyimages']);
   gulp.watch(paths.scripts, ['uglify']);
 
   watching = true;

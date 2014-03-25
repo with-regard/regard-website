@@ -1,15 +1,15 @@
-form#mc-embedded-subscribe-form.validate(action='http://withregard.us2.list-manage.com/subscribe/post?u=98dad46b2ea61f941f5b7660d&id=8711b4ff83', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='novalidate')
+form(action='/signup', method='post')
   .row.collapse
     .small-8.medium-8.columns
-      input#mce-EMAIL.required.email(type='email', value='', name='EMAIL', placeholder='Enter your email')
+      input.required.email(type='email', value='', name='email', placeholder='Enter your email')
       span.hero-form-explanation Get notified when the beta is available
       #mce-responses.clear
         #mce-error-response.response(style='display: none;')
         #mce-success-response.response(style='display: none;')
       // real people should not fill this in and expect good things - do not remove this or risk form bot signups
       div(style='position: absolute; left: -5000px;')
-        input(type='text', name='b_98dad46b2ea61f941f5b7660d_8711b4ff83', value='')
+        input(type='text', name='forbots', value='')
       .clear
     
     .small-4.medium-4.columns
-      input#mc-embedded-subscribe.postfix.small.button.expand(type='submit', value='I\'m interested', name='subscribe')
+      input.postfix.small.button.expand(type='submit', value='I\'m interested', name='subscribe')

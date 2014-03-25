@@ -1,5 +1,8 @@
 var express = require('express'),
-  routes = require('./routes');
+  pages = require('./routes/pages.js'),
+  signup = require('./routes/signup.js'),
+  multipart = require('connect-multiparty'),
+  formParser = multipart();
 
 var app = express();
 
@@ -28,8 +31,9 @@ app.configure('production', function () {
 
 // Routes
 
-app.get('/', routes.index);
-app.get('/contact', routes.contact);
+app.get('/', pages.index);
+app.get('/contact', pages.contact);
+app.post('/signup', formParser, signup.sendToMailchimp);
 
 // Go
 

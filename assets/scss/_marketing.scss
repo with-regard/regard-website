@@ -1,13 +1,12 @@
 .hero {
   padding: 100px 0;
-  background-color: $hero-background;
+  background: url('../img/tiny_grid.png') repeat;
   border-top: 1px solid rgba($black, 0.2);
   border-bottom: 1px solid rgba($black, 0.2);
 }
 
 .hero h4 {
-  color: $white;
-  text-shadow: 1px 1px 1px rgba($body-font-color, 0.7);
+  color: rgba($black, 0.8);
 }
 
 .hero form {
@@ -22,15 +21,18 @@
   color: $black;
 }
 
+.big-green {
+  background-color: $primary-color
+}
+
+.big-green h1, .big-green h4, .big-green p {
+  color: $white;
+}
+
 .why-regard, .values {
   padding: 20px 0;
 }
 
-.value-proposition {
-  padding: 50px 0;
-  border-bottom: 1px solid rgba($black, 0.2);
-}
-
-.benefits {
+.big-padding {
   padding: 50px 0;
 }

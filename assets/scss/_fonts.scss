@@ -1,7 +1,7 @@
 //
 // BODY
 //
-$body-font-family: ubuntu, sans-serif;
+$body-font-family: muli, sans-serif;
 $body-font-weight: normal;
 $body-font-style: normal;
 $font-smoothing: antialiased;
@@ -9,6 +9,6 @@ $font-smoothing: antialiased;
 //
 // HEADERS
 //
-$header-font-family: montserrat, sans-serif;
+$header-font-family: $body-font-family;
 $header-font-weight: 400;
 $header-font-style: regular;

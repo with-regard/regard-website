@@ -13,8 +13,7 @@ exports.sendToMailchimp = function (req, res) {
     apikey : process.env.MAILING_LIST_KEY,
     id : process.env.MAILING_LIST_ID,
     double_optin : false,
-    send_welcome : true,
-    email_type : 'html'
+    send_welcome : true
   };
 
   request.post(process.env.LIST_SUBSCRIBE_URL, {form: signupData }, function (error, response, body) {      

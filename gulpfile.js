@@ -101,7 +101,6 @@ gulp.task('sprites', function () {
       }
     }))
     .pipe(gulp.dest(outputDir + '/assets'))
-    .pipe(png())
 });
 
 // Watch files

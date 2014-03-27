@@ -25,7 +25,8 @@ var watching = false;
 // Paths
 var paths = {
   scripts: ['assets/js/*.js'],
-  images: ['assets/img/**']
+  images: ['assets/img/**'],
+  icons: ['assets/icons/*.svg']
 };
 
 var devnull = function () {
@@ -91,10 +92,10 @@ gulp.task('copyimages', function () {
 });
 
 gulp.task('sprites', function () {
-  gulp.src('assets/icons/*.svg')
+  gulp.src(paths.icons)
     .pipe(svg({
       className: ".%f-icon",
-      cssFile: "sprites/_sprites.scss",
+      cssFile: "../../assets/sprites/_sprites.scss",
       preview: {
         svgSprite: "sprites/preview-svg-sprite.html"
       }
@@ -108,6 +109,7 @@ gulp.task('watch', function (event) {
   gulp.watch('views/**/*.jade', ['jade']);
   gulp.watch('assets/scss/*.scss', ['sass']);
   gulp.watch(paths.images, ['copyimages']);
+  gulp.watch(paths.icons, ['sprites']);
   gulp.watch(paths.scripts, ['uglify']);
 
   watching = true;

@@ -25,6 +25,6 @@
     "connect-multiparty": "~1.0.3",
     "request": "~2.34.0",
     "connect-flash": "~0.1.1",
-    "gulp-svg-sprites": "0.0.5"
+    "gulp-svg-sprites": "https://github.com/davidblurton/gulp-svg-sprites/archive/fix-element-names-on-windows.tar.gz"
   }
 }

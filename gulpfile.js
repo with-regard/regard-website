@@ -99,7 +99,7 @@ gulp.task('sprites', function () {
         svgSprite: "sprites/preview-svg-sprite.html"
       }
     }))
-    .pipe(gulp.dest("assets"))
+    .pipe(gulp.dest(outputDir + '/assets'))
     .pipe(png())
 });
 

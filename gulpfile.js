@@ -14,6 +14,9 @@ var nodemon = require('gulp-nodemon');
 var path = require('path');
 var tinylr = require('tiny-lr');
 var WritableStream = require('stream').Writable;
+var svgSprites = require('gulp-svg-sprites');
+var svg = svgSprites.svg;
+var png = svgSprites.png;
 
 var outputDir = 'dist';
 var serverPort = '3000';
@@ -87,6 +90,19 @@ gulp.task('copyimages', function () {
     .pipe(gulp.dest(outputDir + '/assets/img'));
 });
 
+gulp.task('sprites', function () {
+  gulp.src('assets/icons/*.svg')
+    .pipe(svg({
+      className: ".%f-icon",
+      cssFile: "sprites/_sprites.scss",
+      preview: {
+        svgSprite: "sprites/preview-svg-sprite.html"
+      }
+    }))
+    .pipe(gulp.dest("assets"))
+    .pipe(png())
+});
+
 // Watch files
 gulp.task('watch', function (event) {
   gulp.watch('views/**/*.jade', ['jade']);
@@ -98,11 +114,13 @@ gulp.task('watch', function (event) {
 });
 
 gulp.task('server', function () {
-  nodemon({ script: 'server.js' })
+  nodemon({
+    script: 'server.js'
+  })
     .on('restart', function () {
       console.log('restarted node');
     });
 });
 
-gulp.task('build', ['jade', 'sass', 'uglify', 'copyimages']);
+gulp.task('build', ['jade', 'sprites', 'sass', 'uglify', 'copyimages']);
 gulp.task('default', ['build', 'watch', 'server']);

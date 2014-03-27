@@ -94,7 +94,7 @@ gulp.task('copyimages', function () {
 gulp.task('sprites', function () {
   gulp.src(paths.icons)
     .pipe(svg({
-      className: ".%f-icon",
+      className: "%f-icon",
       cssFile: "../../assets/sprites/_sprites.scss",
       preview: {
         svgSprite: "sprites/preview-svg-sprite.html"

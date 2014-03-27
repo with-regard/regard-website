@@ -43,11 +43,25 @@ $sparklineHeight: 84px;
 }
 
 .big-padding {
-  padding: 50px 0;
+  padding: 80px 0 50px 0;
 }
 
 .white-logo {
   position: absolute;
   top: 80px;
   left: 0;
+}
+
+.grey-column {
+  background-color: $grey
+}
+
+.spacer {
+  height: 1.5rem;
+}
+
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -2,11 +2,12 @@ $white: #fff;
 $black: #645e54;
 $grey: #eee;
 $warm-grey: #E9E5D8;
+$regard-green: #87bc28;
 $darker-green: #73B02D;
 
 // We use these as default colors throughout
-$primary-color: #87bc28;
-$secondary-color: #e7e7e7;
+$primary-color: $regard-green;
+$secondary-color: $black;
 $alert-color: #f04124;
 $success-color: $darker-green;
 $warning-color: #f08a24;

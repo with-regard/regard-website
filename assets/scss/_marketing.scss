@@ -46,6 +46,12 @@ $sparklineHeight: 84px;
   padding: 80px 0 50px 0;
 }
 
+@media #{$small-only} { 
+  .big-padding {
+    padding: 50px 0 30px 0;
+  }
+}
+
 .white-logo {
   position: absolute;
   top: 80px;
@@ -54,6 +60,12 @@ $sparklineHeight: 84px;
 
 .grey-column {
   background-color: $grey
+}
+
+@media #{$medium-up} { 
+  .grey-stripe {
+    background: linear-gradient(to right, $white 50%, $grey 50%);
+  }
 }
 
 .spacer {

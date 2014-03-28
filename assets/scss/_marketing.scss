@@ -16,7 +16,7 @@ $sparklineHeight: 84px;
   margin-top: 50px;
 }
 
-.hero-form-explanation {
+.form-explanation {
   font-size: 0.8rem;
   position: relative;
   top: -10px;
@@ -36,6 +36,14 @@ $sparklineHeight: 84px;
 }
 
 .big-green h1, .big-green h2, .big-green h3, .big-green h4, .big-green h5, .big-green p {
+  color: $white;
+}
+
+.big-green .button {
+  background-color: $black;
+}
+
+.big-green .form-explanation {
   color: $white;
 }
 

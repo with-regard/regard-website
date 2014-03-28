@@ -3,40 +3,40 @@ include mixins/alerts
 
 block content
   if message && message.length
-    .large-6.columns.large-centered
+    .medium-6.columns.medium-centered
       +alert-success(message)
     
   section.hero
     .row
-      .large-12.columns.text-center    
+      .medium-12.columns.text-center    
         h1 Product insights, collected respectfully
         h4 Validate your product improvement ideas with data your users are happy to give
     .row
-      .large-6.medium-6.columns.large-centered.medium-centered
+      .medium-6.columns.medium-centered
         include includes/sign-up-form  
     .sparkline
   section.big-green        
     section.big-padding
       .row
-        .large-12.columns.text-center
+        .medium-12.columns.text-center
           h1 A new way to collect metrics
           h4 Build a better product whilst respecting your users' privacy
 
     section.big-padding
       .row
-        .large-5.columns
+        .medium-5.columns
           h4 Be transparent, gain trust
           p Build trust between you and your users by showing them what you want to collect.
-        .large-2.columns
-          img.white-logo.show-for-large-up(src="/assets/img/regard-white-logo.png")
-        .large-5.columns
+        .medium-2.columns
+          img.white-logo.show-for-medium-up(src="/assets/img/regard-white-logo.png")
+        .medium-5.columns
           h4 Start with questions, not data
           p We believe you should have a hypothesis before you collect any data. Our service makes you specify your assumptions up front, so you don't end up with a pile of data to decipher. 
       .row
-        .large-5.columns
+        .medium-5.columns
             h4 Collaborate with your users to improve your product
             p We believe that developers and users should work together to improve the product. We help to start a conversation with your users, rather than spying on them.
-          .large-5.columns
+          .medium-5.columns
             h4 Make decisions that matter
             p Don't just collect data - run experiments to get real answers.
   section.grey-stripe
@@ -111,5 +111,5 @@ block content
     
   section.big-green.big-padding
     .row
-      .large-6.columns.large-centered
+      .medium-6.columns.medium-centered
         include includes/sign-up-form

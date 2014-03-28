@@ -50,11 +50,14 @@ block content
     
     .row
       .medium-6.columns
-        .row(data-equalizer)
+        .row(data-equalizer).hide-for-small-only
           .medium-9.columns(data-equalizer-watch)
             h3.vertical-center Better for your end users
           .medium-3.columns(data-equalizer-watch)
-            img.hide-for-small-only.right(src="/assets/img/regard-left.svg")
+            img.right(src="/assets/img/regard-left.svg")
+        .row.show-for-small-only
+          .small-12.columns
+            h3.big-padding Better for your end users
         .row.big-padding
           .medium-3.columns
             i.book-icon.right.small-centered

@@ -33,6 +33,7 @@ $sparklineHeight: 84px;
 
 .big-green {
   background-color: $darker-green;
+  padding-bottom: 50px;
 }
 
 .big-green h1, .big-green h2, .big-green h3, .big-green h4, .big-green h5, .big-green p {
@@ -52,12 +53,12 @@ $sparklineHeight: 84px;
 }
 
 .big-padding {
-  padding: 80px 0 50px 0;
+  padding-top: 80px;
 }
 
 @media #{$small-only} { 
   .big-padding {
-    padding: 50px 0 30px 0;
+    padding: 50px 0 0 0;
   }
 }
 

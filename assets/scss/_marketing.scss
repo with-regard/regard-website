@@ -2,7 +2,7 @@ $sparklineOffset: 23px;
 $sparklineHeight: 84px;
 
 .hero {
-  padding: 100px 0 $sparklineOffset 0;
+  padding: 80px 0 $sparklineOffset 0;
   background: url('../img/tiny_grid.png') repeat bottom left;
   border-top: 1px solid rgba($black, 0.2);
   border-bottom: 1px solid rgba($black, 0.2);
@@ -28,6 +28,7 @@ $sparklineHeight: 84px;
   background: url('../img/sparkline.png') repeat-x;
   height: $sparklineHeight;
   max-width: 100%;
+  margin-top: 30px;
 }
 
 .big-green {

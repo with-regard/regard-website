@@ -33,7 +33,7 @@ $sparklineHeight: 84px;
 
 .big-green {
   background-color: $darker-green;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
 }
 
 .big-green h1, .big-green h2, .big-green h3, .big-green h4, .big-green h5, .big-green p {
@@ -64,7 +64,7 @@ $sparklineHeight: 84px;
   height: 144px;
 }
 
-@media #{$small-only} { 
+@media #{$small-only} {
   .big-padding {
     padding: 50px 0 0 0;
   }
@@ -80,7 +80,7 @@ $sparklineHeight: 84px;
   background-color: $grey
 }
 
-@media #{$medium-up} { 
+@media #{$medium-up} {
   .grey-stripe {
     background: linear-gradient(to right, $white 50%, $grey 50%);
   }

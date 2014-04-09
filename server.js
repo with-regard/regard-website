@@ -2,7 +2,35 @@ var express = require('express'),
   pages = require('./routes/pages.js'),
   signup = require('./routes/signup.js'),
   multipart = require('connect-multiparty'),
-  flash = require('connect-flash');
+  flash = require('connect-flash'),
+  everyauth = require('everyauth');
+
+var users = {};
+
+function addUser(user) {
+  var user = users[user.id] = {
+    id: user.id
+  };
+  users[user.id] = user;
+  return user;
+}
+
+everyauth.debug = true;
+everyauth.github
+  .appId(process.env.GITHUB_APP_ID)
+  .appSecret(process.env.GITHUB_APP_SECRET)
+  .entryPath('/auth/github')
+  .callbackPath('/auth/github/callback')
+  .scope('user:email')
+  .findOrCreateUser(function (session, accessToken, accessTokenExtra, user) {
+    return users[user.id] || (users[user.id] = addUser(user));
+  })
+  .redirectPath('http://withregard.io/');
+
+everyauth.everymodule
+  .findUserById(function (id, callback) {
+    callback(null, users[id]);
+  });
 
 var app = express();
 
@@ -19,11 +47,9 @@ app.configure(function () {
   app.use(multipart());
   app.use(express.cookieParser(process.env.COOKIE_SECRET || 'secret'));
   app.use(express.session({
-    key: 'sid',
-    cookie: {
-      maxAge: 60000
-    }
+    secret: process.env.COOKIE_SECRET
   }));
+  app.use(everyauth.middleware());
   app.use(flash());
   app.use(app.router);
   app.use(express.static(__dirname + '/dist'));
@@ -44,6 +70,8 @@ app.configure('production', function () {
 
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
+app.get('/login', pages.login);
+
 app.post('/signup', signup.sendToMailchimp);
 
 // Go

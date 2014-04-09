@@ -24,8 +24,7 @@ everyauth.github
   .scope('user:email')
   .findOrCreateUser(function (session, accessToken, accessTokenExtra, user) {
     return users[user.id] || (users[user.id] = addUser(user));
-  })
-  .redirectPath('http://withregard.io/');
+  });
 
 everyauth.everymodule
   .findUserById(function (id, callback) {

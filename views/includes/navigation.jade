@@ -7,11 +7,11 @@
             img(src="/assets/img/regard-logo-and-text.png" height="54px" width="172px")
     section.top-bar-section
       ul.right
-        if everyauth.loggedIn
+        if user
           li.has-dropdown
             a(href="#")
-              img(src=everyauth.github.user.avatar_url height="54px" width="54px")
-              = everyauth.github.user.name
+              img(src=user.avatar_url height="54px" width="54px")
+              = user.name
             ul.dropdown
               li
                 a(href="/logout") Logout

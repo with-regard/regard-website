@@ -3,39 +3,15 @@ var express = require('express'),
   signup = require('./routes/signup.js'),
   multipart = require('connect-multiparty'),
   flash = require('connect-flash'),
-  everyauth = require('everyauth');
-
-var users = {};
-
-function addUser(user) {
-  var user = users[user.id] = {
-    id: user.id
-  };
-  users[user.id] = user;
-  return user;
-}
-
-everyauth.debug = true;
-everyauth.github
-  .appId(process.env.GITHUB_APP_ID)
-  .appSecret(process.env.GITHUB_APP_SECRET)
-  .entryPath('/auth/github')
-  .callbackPath('/auth/github/callback')
-  .scope('user:email')
-  .findOrCreateUser(function (session, accessToken, accessTokenExtra, user) {
-    return users[user.id] || (users[user.id] = addUser(user));
-  });
-
-everyauth.everymodule
-  .findUserById(function (id, callback) {
-    callback(null, users[id]);
-  });
+  auth = require('./modules/auth.js');
 
 var app = express();
 
 // Configuration
 
 app.configure(function () {
+  var secret = process.env.COOKIE_SECRET || 'secret';
+
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
 
@@ -44,14 +20,18 @@ app.configure(function () {
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(multipart());
-  app.use(express.cookieParser(process.env.COOKIE_SECRET || 'secret'));
+  app.use(express.cookieParser(secret));
   app.use(express.session({
-    secret: process.env.COOKIE_SECRET
+    secret: secret
   }));
-  app.use(everyauth.middleware());
+  app.use(auth.middleware());
   app.use(flash());
   app.use(app.router);
   app.use(express.static(__dirname + '/dist'));
+  app.use(function (req, res, next) {
+    res.locals.user = auth.user;
+    next();
+  })
 });
 
 app.configure('development', function () {

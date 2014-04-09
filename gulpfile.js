@@ -3,7 +3,6 @@ var gulp = require('gulp');
 
 // Plugins
 var gutil = require('gulp-util');
-var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var prefix = require('gulp-autoprefixer');
@@ -46,17 +45,6 @@ var liveReloadifWatching = function () {
     return devnull();
   }
 };
-
-// Compile Jade to HTML
-gulp.task('jade', function () {
-  gulp.src(['views/**/*.jade', '!./{node_modules/**, node_modules}'])
-    .pipe(plumber())
-    .pipe(jade({
-      pretty: true
-    }))
-    .pipe(gulp.dest(outputDir))
-    .pipe(liveReloadifWatching());
-});
 
 // Compile Sass
 gulp.task('sass', function () {
@@ -105,7 +93,6 @@ gulp.task('sprites', function () {
 
 // Watch files
 gulp.task('watch', function (event) {
-  gulp.watch('views/**/*.jade', ['jade']);
   gulp.watch('assets/scss/*.scss', ['sass']);
   gulp.watch(paths.images, ['copyimages']);
   gulp.watch(paths.icons, ['sprites']);
@@ -123,5 +110,5 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('build', ['jade', 'sprites', 'sass', 'uglify', 'copyimages']);
+gulp.task('build', ['sprites', 'sass', 'uglify', 'copyimages']);
 gulp.task('default', ['build', 'watch', 'server']);

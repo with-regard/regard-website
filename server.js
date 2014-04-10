@@ -2,13 +2,16 @@ var express = require('express'),
   pages = require('./routes/pages.js'),
   signup = require('./routes/signup.js'),
   multipart = require('connect-multiparty'),
-  flash = require('connect-flash');
+  flash = require('connect-flash'),
+  auth = require('./modules/auth.js');
 
 var app = express();
 
 // Configuration
 
 app.configure(function () {
+  var secret = process.env.COOKIE_SECRET || 'secret';
+
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
 
@@ -17,16 +20,19 @@ app.configure(function () {
   app.use(express.json());
   app.use(express.urlencoded());
   app.use(multipart());
-  app.use(express.cookieParser(process.env.COOKIE_SECRET || 'secret'));
+  app.use(express.cookieParser(secret));
   app.use(express.session({
-    key: 'sid',
-    cookie: {
-      maxAge: 60000
-    }
+    secret: secret,
+    cookie: {httpOnly: true}
   }));
+  app.use(auth.middleware());
   app.use(flash());
   app.use(app.router);
   app.use(express.static(__dirname + '/dist'));
+  app.use(function (req, res, next) {
+    res.locals.user = auth.user;
+    next();
+  })
 });
 
 app.configure('development', function () {
@@ -44,6 +50,8 @@ app.configure('production', function () {
 
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
+app.get('/login', pages.login);
+
 app.post('/signup', signup.sendToMailchimp);
 
 // Go

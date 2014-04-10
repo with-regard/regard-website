@@ -9,7 +9,6 @@ everyauth.github
   .callbackPath('/auth/github/callback')
   .scope('user:email')
   .findOrCreateUser(function (session, accessToken, accessTokenExtra, user) {
-    console.log(user.id);
     return users[user.id] || (users[user.id] = user);
   })
   .redirectPath('/');

@@ -22,7 +22,8 @@ app.configure(function () {
   app.use(multipart());
   app.use(express.cookieParser(secret));
   app.use(express.session({
-    secret: secret
+    secret: secret,
+    cookie: {httpOnly: true}
   }));
   app.use(auth.middleware());
   app.use(flash());

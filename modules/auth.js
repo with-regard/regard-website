@@ -10,6 +10,6 @@ everyauth.github
   .findOrCreateUser(users.findOrCreateUser)
   .redirectPath('/');
 
-everyauth.everymodule.findUserById(users.findUserById);
+everyauth.everymodule.findUserById(users.fetchUserById);
 
 exports.middleware = everyauth.middleware;

@@ -2,7 +2,7 @@ var controller = require('./userController.js');
 
 exports.findOrCreateUser = function (session, accessToken, accessTokenExtra, githubUser) {
   var userPromise = this.Promise();
-
+  
   // Try to find a matching user first
   controller.fetchUserByGithubId({
     githubId: githubUser.id
@@ -11,7 +11,7 @@ exports.findOrCreateUser = function (session, accessToken, accessTokenExtra, git
     if (user) return userPromise.fulfill(user);
 
     // else create a new user
-    controller.createNewUserFromGithub(fbUserMetadata, function (err, user) {
+    controller.createNewUserFromGithub(githubUser, function (err, user) {
       if (err) return userPromise.fail(err);
       return userPromise.fulfill(user);
     });
@@ -19,7 +19,7 @@ exports.findOrCreateUser = function (session, accessToken, accessTokenExtra, git
   return userPromise;
 }
 
-exports.fetchUserByGithubId = function (id, callback) {
+exports.fetchUserById = function (id, callback) {
   controller.fetchUserById(id, function (err, user) {
     if (err) return callback(err);
     callback(null, user);

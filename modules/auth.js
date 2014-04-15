@@ -1,6 +1,5 @@
 var everyauth = require('everyauth');
-var users = {};
-var nextUserId = 0;
+var users = require('./users.js');
 
 everyauth.github
   .appId(process.env.GITHUB_APP_ID)
@@ -8,16 +7,9 @@ everyauth.github
   .entryPath('/auth/github')
   .callbackPath('/auth/github/callback')
   .scope('user:email')
-  .findOrCreateUser(function (session, accessToken, accessTokenExtra, user) {
-    return users[user.id] || (users[user.id] = user);
-  })
+  .findOrCreateUser(users.findOrCreateUser)
   .redirectPath('/');
 
-everyauth.everymodule
-  .findUserById(function (id, callback) {
-    callback(null, users[id]);
-  });
+everyauth.everymodule.findUserById(users.findUserById);
 
-exports.middleware = function () {
-  return everyauth.middleware();
-};
+exports.middleware = everyauth.middleware;

@@ -1,6 +1,5 @@
 exports.index = function (req, res) {
   if (req.isAuthenticated()) {
-    console.dir(req.user);
     res.render('dashboard');
   } else {
     res.render('index', { 

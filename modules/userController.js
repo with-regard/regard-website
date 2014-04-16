@@ -10,7 +10,7 @@ exports.createNewUserFromGithub = function (githubUser, callback) {
   user.save(function (err) {
     if (err) return console.error(err);
   });
-  
+
   callback(null, user);
 }
 
@@ -20,6 +20,6 @@ exports.fetchUserByGithubId = function (data, callback) {
   }, callback);
 }
 
-exports.fetchUserById = function(id, callback) {
+exports.fetchUserById = function (id, callback) {
   User.findById(id, callback);
 }

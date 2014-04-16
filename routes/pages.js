@@ -1,8 +1,9 @@
 exports.index = function (req, res) {
-  if (req.loggedIn) {
+  if (req.isAuthenticated()) {
+    console.dir(req.user);
     res.render('dashboard');
   } else {
-    res.render('index', {
+    res.render('index', { 
       message: req.flash('message')
     });
   }

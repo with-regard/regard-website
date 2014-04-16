@@ -10,11 +10,11 @@
         if user
           li.has-dropdown
             a(href="#")
-              img(src=user.avatar_url height="54px" width="54px")
-              = user.name
+              img(src=user._json.avatar_url height="54px" width="54px")
+              = user.displayName
             ul.dropdown
               li
                 a(href="/logout") Logout
         else
           li
-            a(href="login") Log in
+            a(href="/login") Log in

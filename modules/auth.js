@@ -3,7 +3,7 @@
 var express = require('express');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
-var users = require('./users.js');
+var users = require('./userController.js');
 
 var app = express();
 
@@ -23,7 +23,7 @@ passport.use(new GitHubStrategy({
     callbackURL: "/auth/github"
   },
   function (accessToken, refreshToken, profile, done) {
-    users.findOrCreateUser(accessToken, refreshToken, profile).then(function (user) {
+    users.findOrCreateUser(profile).then(function (user) {
       done(null, user);
     });
   }

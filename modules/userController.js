@@ -3,7 +3,7 @@
 var User = require('../schemas/userSchema.js').User;
 
 exports.createNewUserFromGithub = function (profile) {
-  // passport normailes the response.
+  // passport normalizes the response.
   var raw = profile._json;
   
   var user = new User({

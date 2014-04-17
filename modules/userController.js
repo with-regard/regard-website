@@ -1,25 +1,26 @@
+'use strict';
+
 var User = require('../schemas/userSchema.js').User;
 
-exports.createNewUserFromGithub = function (githubUser, callback) {
+exports.createNewUserFromGithub = function (profile) {
+  // passport normailes the response.
+  var raw = profile._json;
+  
   var user = new User({
-    githubId: githubUser.id,
-    name: githubUser.name,
-    avatar_url: githubUser.avatar_url
+    githubId: raw.id,
+    name: raw.name,
+    avatar_url: raw.avatar_url
   });
 
-  user.save(function (err) {
-    if (err) return console.error(err);
-  });
+  user.save();
+};
 
-  callback(null, user);
-}
-
-exports.fetchUserByGithubId = function (data, callback) {
-  User.findOne({
+exports.fetchUserByGithubId = function (data) {
+  return User.findOne({
     githubId: data.githubId
-  }, callback);
-}
+  }).exec();
+};
 
-exports.fetchUserById = function (id, callback) {
-  User.findById(id, callback);
-}
+exports.fetchUserById = function (id) {
+  return User.findById(id).exec();
+};

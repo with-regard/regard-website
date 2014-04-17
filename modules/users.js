@@ -1,27 +1,23 @@
+'use strict';
+
 var controller = require('./userController.js');
 
-exports.findOrCreateUser = function (session, accessToken, accessTokenExtra, githubUser) {
-  var userPromise = this.Promise();
-  
+exports.findOrCreateUser = function (accessToken, refreshToken, profile) {
   // Try to find a matching user first
-  controller.fetchUserByGithubId({
-    githubId: githubUser.id
-  }, function (err, user) {
-    if (err) return userPromise.fail(err);
-    if (user) return userPromise.fulfill(user);
-
-    // else create a new user
-    controller.createNewUserFromGithub(githubUser, function (err, user) {
-      if (err) return userPromise.fail(err);
-      return userPromise.fulfill(user);
-    });
+  return controller.fetchUserByGithubId({
+    githubId: profile.id
+  }).then(function (user) {
+    if (user) {
+      return user;
+    } else {
+      // else create a new profile for them
+      controller.createNewUserFromGithub(profile, function (err, user) {
+        return user;
+      });
+    }
   });
-  return userPromise;
-}
+};
 
-exports.fetchUserById = function (id, callback) {
-  controller.fetchUserById(id, function (err, user) {
-    if (err) return callback(err);
-    callback(null, user);
-  });
-}
+exports.fetchUserById = function (id) {
+  return controller.fetchUserById(id);
+};

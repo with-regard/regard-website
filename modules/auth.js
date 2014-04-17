@@ -1,20 +1,20 @@
 'use strict';
 
-var express = require('express'),
-    passport = require('passport'),
-    GitHubStrategy = require('passport-github').Strategy,
-    users = require('./users.js');
+var express = require('express');
+var passport = require('passport');
+var GitHubStrategy = require('passport-github').Strategy;
+var users = require('./users.js');
 
 var app = express();
 
 passport.serializeUser(function (user, done) {
-  // store id
-  done(null, user);
+  done(null, user.id);
 });
 
-passport.deserializeUser(function (obj, done) {
-  // look up by id
-  done(null, obj);
+passport.deserializeUser(function (id, done) {
+  users.fetchUserById(id).then(function (user) {
+    done(null, user);
+  });
 });
 
 passport.use(new GitHubStrategy({
@@ -23,7 +23,9 @@ passport.use(new GitHubStrategy({
     callbackURL: "/auth/github"
   },
   function (accessToken, refreshToken, profile, done) {
-    done(null, profile);
+    users.findOrCreateUser(accessToken, refreshToken, profile).then(function (user) {
+      done(null, user);
+    });
   }
 ));
 
@@ -43,7 +45,7 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });

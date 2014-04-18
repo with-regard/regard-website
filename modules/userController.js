@@ -25,10 +25,7 @@ exports.findOrCreateUser = function (profile) {
   return fetchUserByGithubId({
     githubId: profile.id
   }).then(function (user) {
-    if (user) {
-      return user;
-    } else {
-      return createNewUserFromGithub(profile);
+      return user || createNewUserFromGithub(profile);
     }
   });
 };

@@ -33,6 +33,7 @@ app.use(express.session({
 }));
 
 app.use(auth);
+app.use('/api/v1', api);
 app.use(flash());
 
 if (app.get('env') === 'development') {
@@ -52,6 +53,9 @@ app.get('/login', pages.login);
 
 app.post('/signup', signup.sendToMailchimp);
 
+app.get('/api', function (req, res) {
+  res.send('Regard api running');
+});
 
 app.use(express.static(__dirname + '/dist'));
 

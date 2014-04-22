@@ -1,8 +1,10 @@
+"use strict";
+
 exports.index = function (req, res) {
   if (req.isAuthenticated()) {
     res.render('dashboard');
   } else {
-    res.render('index', { 
+    res.render('index', {
       message: req.flash('message')
     });
   }

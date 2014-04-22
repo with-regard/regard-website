@@ -1,3 +1,5 @@
+"use strict";
+
 var request = require('request');
 
 exports.sendToMailchimp = function (req, res) {

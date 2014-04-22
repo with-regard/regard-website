@@ -1,8 +1,16 @@
+"use strict";
+
 var express = require('express'),
   pages = require('./routes/pages.js'),
   signup = require('./routes/signup.js'),
   flash = require('connect-flash'),
-  auth = require('./modules/auth.js');
+  auth = require('./modules/auth.js'),
+  api = require('./modules/api.js'),
+  mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 var app = express();
 

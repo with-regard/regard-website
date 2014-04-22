@@ -25,7 +25,6 @@ You will need to configure the following environment variables:
 ```
 GITHUB_APP_ID
 GITHUB_APP_SECRET
-MONGODB_CONNECTION_STRING
 ```
 
 ## Deployment

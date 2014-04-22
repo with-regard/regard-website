@@ -1,6 +1,6 @@
 'use strict';
 
-var User = require('../schemas/userSchema.js').User;
+var User = require('../schemas/userSchema.js');
 
 function createNewUserFromGithub(profile) {
   // passport normalizes the response.

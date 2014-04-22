@@ -1,21 +1,11 @@
 "use strict";
 
 exports.index = function (req, res) {
-  if (req.isAuthenticated()) {
-    res.render('dashboard');
-  } else {
-    res.render('index', {
-      message: req.flash('message')
-    });
-  }
+  res.render('index');
 };
 
 exports.contact = function (req, res) {
   res.render('contact', {
     menu: 'contact'
   });
-};
-
-exports.login = function (req, res) {
-  res.redirect('/auth/github');
 };

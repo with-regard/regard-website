@@ -20,10 +20,9 @@ exports.sendToMailchimp = function (req, res) {
 
   request.post(process.env.LIST_SUBSCRIBE_URL, {
     form: signupData
-  }, function (error, response, body) {
-    console.log(body);
   });
 
-  req.flash('message', 'Thanks for signing up!');
-  res.redirect('/');
+  res.render('index', {
+    'message': 'Thanks for signing up!'
+  });
 };

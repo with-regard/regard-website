@@ -1,10 +1,10 @@
 "use strict";
 
 var express = require('express');
+var bodyParser = require('body-parser');
+var compress = require('compression')();
 var pages = require('./routes/pages.js');
 var signup = require('./routes/signup.js');
-var flash = require('connect-flash');
-var auth = require('./modules/auth.js');
 
 var app = express();
 
@@ -14,40 +14,28 @@ var secret = process.env.COOKIE_SECRET || 'secret';
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.use(express.compress());
-app.use(express.methodOverride());
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.cookieParser(secret));
-app.use(express.session({
-  secret: secret,
-  cookie: {
-    httpOnly: true
-  }
-}));
-
-app.use(auth);
-app.use(flash());
+app.use(bodyParser());
+app.use(compress);
 
 if (app.get('env') === 'development') {
-  app.use(express.errorHandler({
+  app.use(require('errorhandler')({
     dumpExceptions: true,
     showStack: true
   }));
 } else {
-  app.use(express.errorHandler());
+  app.use(require('errorhandler')());
 }
 
 // Routes
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
-app.get('/login', pages.login);
-
 app.post('/signup', signup.sendToMailchimp);
+app.get('/signup', function(req, res){
+  res.redirect('/');  
+});
 
 app.use(express.static(__dirname + '/dist'));
 
 // Go
-
 app.listen(process.env.port || 3000);
 console.log("Express server started");

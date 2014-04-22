@@ -1,7 +1,7 @@
 "use strict";
 
 var express = require('express');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')();
 var compress = require('compression')();
 var pages = require('./routes/pages.js');
 var signup = require('./routes/signup.js');
@@ -14,7 +14,7 @@ var secret = process.env.COOKIE_SECRET || 'secret';
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.use(bodyParser());
+app.use(bodyParser);
 app.use(compress);
 
 if (app.get('env') === 'development') {

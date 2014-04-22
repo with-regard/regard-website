@@ -1,16 +1,10 @@
 "use strict";
 
-var express = require('express'),
-  pages = require('./routes/pages.js'),
-  signup = require('./routes/signup.js'),
-  flash = require('connect-flash'),
-  auth = require('./modules/auth.js'),
-  api = require('./modules/api.js'),
-  mongoose = require('mongoose');
-
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+var express = require('express');
+var pages = require('./routes/pages.js');
+var signup = require('./routes/signup.js');
+var flash = require('connect-flash');
+var auth = require('./modules/auth.js');
 
 var app = express();
 
@@ -33,7 +27,6 @@ app.use(express.session({
 }));
 
 app.use(auth);
-app.use('/api/v1', api);
 app.use(flash());
 
 if (app.get('env') === 'development') {
@@ -46,16 +39,11 @@ if (app.get('env') === 'development') {
 }
 
 // Routes
-
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
 app.get('/login', pages.login);
 
 app.post('/signup', signup.sendToMailchimp);
-
-app.get('/api', function (req, res) {
-  res.send('Regard api running');
-});
 
 app.use(express.static(__dirname + '/dist'));
 

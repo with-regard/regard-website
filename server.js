@@ -31,7 +31,7 @@ app.get('/', pages.index);
 app.get('/contact', pages.contact);
 app.post('/signup', signup.sendToMailchimp);
 app.get('/signup', function(req, res){
-  res.redirect('/');  
+  res.redirect('/');
 });
 
 app.use(express.static(__dirname + '/dist'));

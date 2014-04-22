@@ -88,7 +88,7 @@ gulp.task('sprites', function () {
         svgSprite: "sprites/preview-svg-sprite.html"
       }
     }))
-    .pipe(gulp.dest(outputDir + '/assets'))
+    .pipe(gulp.dest(outputDir + '/assets'));
 });
 
 // Watch files

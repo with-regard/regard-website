@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
-
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -9,4 +7,4 @@ var userSchema = new Schema({
   avatar_url: String
 });
 
-exports.User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

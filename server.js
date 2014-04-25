@@ -17,7 +17,7 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser);
 app.use(compress);
-app.use(api);
+app.use('/api', api);
 
 if (app.get('env') === 'development') {
   app.use(require('errorhandler')({

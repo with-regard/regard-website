@@ -1,0 +1,36 @@
+// OFF CANVAS VARIABLES
+// Off Canvas Tab Bar Variables
+$tabbar-bg: $grey !default;
+$tabbar-color: $black !default;
+
+// Off Canvas Divider Styles
+$tabbar-right-section-border: none;
+$tabbar-left-section-border: none;
+
+$off-canvas-bg: $darker-green !default;
+$off-canvas-label-color: $white !default;
+$off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-font-weight: bold !default;
+$off-canvas-label-bg: $darker-green !default;
+$off-canvas-label-border-top: 1px solid scale-color($darker-green, $lightness: 14%) !default;
+$off-canvas-label-border-bottom: $off-canvas-label-border-top;
+$off-canvas-label-margin:0 !default;
+
+$off-canvas-link-padding: rem-calc(10, 15) !default;
+$off-canvas-link-color: rgba($white, 0.7) !default;
+$off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: 25%);
+
+// Off Canvas Tab Bar Headers
+$tabbar-header-color: $black !default;
+
+// Off Canvas Menu Icon Variables
+$tabbar-menu-icon-color: $regard-green !default;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%);
+
+$off-canvas-overlay-box-shadow: none;
+
+$off-canvas-link-padding: rem-calc(10, 15) !default;
+$off-canvas-label-padding: 10px !default;
+
+// Transition Variabls
+$menu-slide: "transform 200ms ease" !default;

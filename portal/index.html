@@ -18,8 +18,10 @@
             <h1 class="title">{{outlet title}}</h1>
           </section>
           
-          <section class="right">
-            {{user.name}}
+          <section class="right-large">
+            <div class="right">
+              <a href="/logout">{{user.name}}</a>
+            </div>
           </section>
         </nav>
 
@@ -46,7 +48,7 @@
 
   <script type="text/x-handlebars" data-template-name="projects">
     <ul class="off-canvas-list">
-      <li><label>Projects<span class="right" {{action "createProject"}}>+</span></label></li>
+      <li><label>Projects <span {{action "createProject"}}>+</span></label></li>
       {{#each itemController="Project"}}
         <li>
           {{#link-to 'project' this}}            
@@ -61,8 +63,8 @@
   </script>
   
   <script type="text/x-handlebars" id="investigations">
-    <ul class="side-nav">
-      <li class="heading">Investigations</li>
+    <ul class="left-side-nav">
+      <li class="heading">Investigations <span>+</span></li>
     {{#each investigations}}
       <li>
         {{#link-to 'investigation' this}}            
@@ -70,7 +72,9 @@
         {{/link-to}}
       </li>  
     {{else}}
-      You haven't created any investigations
+      <li class="muted">
+        You haven't created any investigations yet.
+      </li>
     {{/each}}
     </ul>
   </script>

@@ -1,0 +1,27 @@
+.main-section {
+  height: 1000px;
+}
+
+.left-side-nav {
+  @include side-nav();
+  
+  
+  background-color: $light-grey;
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid darken($light-grey, 10%);
+}
+
+.left-side-nav li {
+  padding-left: 12px;
+}
+
+.left-side-nav a:hover {
+  background-color: darken($light-grey, 10%);
+  padding-left: 12px;
+  margin-left: -12px;
+}
+
+.muted {
+  opacity: 0.5;
+}

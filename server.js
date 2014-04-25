@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')();
 var compress = require('compression')();
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
+var errorHandler = require('errorhandler');
 
 var pages = require('./routes/pages.js');
 var signup = require('./routes/signup.js');
@@ -32,12 +33,12 @@ app.use('/api', api);
 app.use('/portal', portal);
 
 if (app.get('env') === 'development') {
-  app.use(require('errorhandler')({
+  app.use(errorHandler({
     dumpExceptions: true,
     showStack: true
   }));
 } else {
-  app.use(require('errorhandler')());
+  app.use(errorHandler());
 }
 
 // Routes

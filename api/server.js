@@ -11,7 +11,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 var app = express();
 
-// Configuration
+app.all('*', function (req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.send(401);
+  }
+});
+
 app.use('/v1', api);
 app.use(errorHandler);
 

@@ -6,8 +6,34 @@
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
- <script type="text/x-handlebars">
-    {{outlet}}
+  <script type="text/x-handlebars">
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h1 class="title">{{outlet title}}</h1>
+          </section>
+          
+          <section class="right">
+            {{user.name}}
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          {{outlet off-canvas}}
+        </aside>
+
+        <section class="main-section">
+          {{outlet main}}
+        </section>
+
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
   </script>
   
   <script type="text/x-handlebars" data-template-name="project" >
@@ -19,41 +45,19 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="projects">
-    <div class="off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
-        <nav class="tab-bar">
-          <section class="left-small">
-            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-          </section>
-
-          <section class="middle tab-bar-section">
-            <h1 class="title">{{outlet title}}</h1>
-          </section>
-        </nav>
-
-        <aside class="left-off-canvas-menu">
-          <ul class="off-canvas-list">
-            <li><label>Projects<span class="right" {{action "createProject"}}>+</span></label></li>
-            {{#each itemController="Project"}}
-              <li>
-                {{#link-to 'project' this}}            
-                  {{name}}
-                  <span class="right" {{action "deleteProject"}}>&times;</span> 
-                {{/link-to}}
-              </li>
-            {{else}}
-              You don't have any projects
-            {{/each}}
-          </ul>
-        </aside>
-
-        <section class="main-section">
-          {{outlet main}}
-        </section>
-
-      <a class="exit-off-canvas"></a>
-      </div>
-    </div>
+    <ul class="off-canvas-list">
+      <li><label>Projects<span class="right" {{action "createProject"}}>+</span></label></li>
+      {{#each itemController="Project"}}
+        <li>
+          {{#link-to 'project' this}}            
+            {{name}}
+            <span class="right" {{action "deleteProject"}}>&times;</span> 
+          {{/link-to}}
+        </li>
+      {{else}}
+        You don't have any projects
+      {{/each}}
+    </ul>
   </script>
   
   <script type="text/x-handlebars" id="investigations">

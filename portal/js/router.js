@@ -1,7 +1,7 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function(){
     this.resource('project', {path: '/project/:project_id'}, function(){
-      this.resource('investigation', {path: 'investigations/:investigation_id'});  
+      this.resource('investigation', {path: 'investigations/:investigation_id'});
     });
   });
 });
@@ -13,6 +13,11 @@ App.Router.reopen({
 App.ProjectsRoute = Ember.Route.extend({
   model: function () {
     return this.store.find('project');
+  },
+  renderTemplate: function() {
+    this.render('projects', { 
+      outlet: 'off-canvas' 
+    });
   }
 });
 

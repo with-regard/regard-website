@@ -10,9 +10,11 @@ App.ApplicationSerializer = DS.RESTSerializer.extend({
 });
 
 App.ApplicationController = Ember.Controller.extend({
+  user: null,
   init: function () {
+    self = this;
     $.get("portal/user", function (user) {
-      Ember.set('App.User', user);
+      self.set('user', user);
     });
   }
 });

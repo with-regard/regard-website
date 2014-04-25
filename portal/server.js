@@ -5,6 +5,7 @@ var app = express();
 
 // Routes
 app.get('/', function(req, res){
+  console.dir(req.user);
   res.sendfile('index.html', {root: __dirname })
 });
 

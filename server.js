@@ -3,10 +3,14 @@
 var express = require('express');
 var bodyParser = require('body-parser')();
 var compress = require('compression')();
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+
 var pages = require('./routes/pages.js');
 var signup = require('./routes/signup.js');
 var api = require('./api/server.js');
 var portal = require('./portal/server.js');
+var auth = require('./modules/auth.js');
 
 var app = express();
 
@@ -18,6 +22,12 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser);
 app.use(compress);
+app.use(cookieParser(secret));
+app.use(cookieSession({
+  keys: [secret],
+}));
+
+app.use(auth);
 app.use('/api', api);
 app.use('/portal', portal);
 
@@ -34,7 +44,7 @@ if (app.get('env') === 'development') {
 app.get('/', pages.index);
 app.get('/contact', pages.contact);
 app.post('/signup', signup.sendToMailchimp);
-app.get('/signup', function(req, res){
+app.get('/signup', function (req, res) {
   res.redirect('/');
 });
 

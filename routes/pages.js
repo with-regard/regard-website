@@ -1,7 +1,11 @@
 "use strict";
 
 exports.index = function (req, res) {
-  res.render('index');
+  if (req.isAuthenticated()) {
+    res.redirect('/portal');
+  } else {
+    res.render('index');
+  }
 };
 
 exports.contact = function (req, res) {

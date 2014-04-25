@@ -1,4 +1,2 @@
-trello-clone
+Regard-dev-portal
 ============
-
-A Trello like application to experiment with Ember

@@ -3,7 +3,7 @@
 var express = require('express');
 var compress = require('compression')();
 var bodyParser = require('body-parser')();
-var api = require('./modules/api.js');
+var api = require('./modules/projectController.js');
 var errorHandler = require('./modules/errorHandler.js');
 var mongoose = require('mongoose');
 

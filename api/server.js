@@ -12,8 +12,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 var app = express();
 
 // Configuration
-app.use(compress);
-app.use(bodyParser);
 app.use('/v1', api);
 app.use(errorHandler);
 

@@ -5,8 +5,12 @@ var app = express();
 
 // Routes
 app.get('/', function(req, res){
-  console.dir(req.user);
-  res.sendfile('index.html', {root: __dirname })
+  if(req.isAuthenticated()){
+    console.dir(req.user);
+    res.sendfile('index.html', {root: __dirname });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.use(express.static(__dirname + '/js'));

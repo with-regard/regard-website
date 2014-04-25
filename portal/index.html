@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/css/foundation.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+ <script type="text/x-handlebars">
+    {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" data-template-name="project" >
+    {{#if isEditing}}
+      {{input value=bufferedName focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
+    {{else}}
+      <span {{action "editProjectName"}}>{{name}}</span>
+    {{/if}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="projects">
+    <div class="off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+        <nav class="tab-bar">
+          <section class="left-small">
+            <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+          </section>
+
+          <section class="middle tab-bar-section">
+            <h1 class="title">{{outlet title}}</h1>
+          </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <li><label>Projects<span class="right" {{action "createProject"}}>+</span></label></li>
+            {{#each itemController="Project"}}
+              <li>
+                {{#link-to 'project' this}}            
+                  {{name}}
+                  <span class="right" {{action "deleteProject"}}>&times;</span> 
+                {{/link-to}}
+              </li>
+            {{else}}
+              You don't have any projects
+            {{/each}}
+          </ul>
+        </aside>
+
+        <section class="main-section">
+          {{outlet main}}
+        </section>
+
+      <a class="exit-off-canvas"></a>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="investigations">
+    <ul class="side-nav">
+      <li class="heading">Investigations</li>
+    {{#each investigations}}
+      <li>
+        {{#link-to 'investigation' this}}            
+          {{name}}
+        {{/link-to}}
+      </li>  
+    {{else}}
+      You haven't created any investigations
+    {{/each}}
+    </ul>
+  </script>
+  
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.0.js"></script>
+  <script src="js/libs/ember-data.js"></script>
+  
+  <script src="js/mixins/NestedRecordsMixin.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/controllers/ProjectController.js"></script>
+  <script src="js/controllers/ProjectsController.js"></script>
+  <script src="js/models/ProjectModel.js"></script>
+  <script src="js/models/InvestigationModel.js"></script>
+  
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

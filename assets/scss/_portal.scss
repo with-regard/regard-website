@@ -2,9 +2,13 @@
   height: 1000px;
 }
 
+nav.tab-bar {
+  border-bottom: 1px solid darken($tabbar-bg, 10%);
+  padding-right: 20px;
+}
+
 .left-side-nav {
   @include side-nav();
-  
   
   background-color: $light-grey;
   width: 200px;
@@ -16,10 +20,11 @@
   padding-left: 12px;
 }
 
-.left-side-nav a:hover {
+.left-side-nav li a:hover {
   background-color: darken($light-grey, 10%);
   padding-left: 12px;
   margin-left: -12px;
+  color: $black !important;
 }
 
 .muted {

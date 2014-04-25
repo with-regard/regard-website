@@ -32,6 +32,4 @@ app.get('/', function (req, res) {
   res.send('Regard website api running');
 });
 
-// Go
-app.listen(process.env.port || 3001);
-console.log("Regard website api running");
+module.exports = app;

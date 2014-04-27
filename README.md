@@ -18,6 +18,15 @@ npm install
 ```
 gulp
 ```
+## Organization
+
+Everything is in one repository for the moment (to make authentication simpler).
+
+The project page at [withregard.io](http://withregard.io) lives in the `website` folder.
+The developer portal lives in the `portal` folder.
+The api for the developer portal lives in the `api` folder. 
+
+Each of these exports an express app which is loaded by `server.js` in the root. 
 
 ## Deployment
 

@@ -2,7 +2,7 @@
 
 var express = require('express');
 var Project = require('../schemas/project.js');
-var User = require('../../schemas/userSchema.js');
+var User = require('../schemas/userSchema.js');
 
 var app = express();
 

@@ -1,7 +1,7 @@
 "use strict";
 
 var express = require('express');
-var api = require('./modules/projectController.js');
+var projectController = require('./modules/projectController.js');
 var errorHandler = require('./modules/errorHandler.js');
 var mongoose = require('mongoose');
 
@@ -19,7 +19,7 @@ app.all('*', function (req, res, next) {
   }
 });
 
-app.use('/v1', api);
+app.use('/v1', projectController);
 app.use(errorHandler);
 
 // Routes

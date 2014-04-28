@@ -15,7 +15,7 @@ App.ProjectsRoute = Ember.Route.extend({
     return this.store.find('project');
   },
   afterModel: function(projects, transition) {
-    if (projects.get('length') === 1) {
+    if (projects.get('length') > 1) {
       this.transitionTo('project', projects.objectAt(0));
     }
   },

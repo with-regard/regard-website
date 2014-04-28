@@ -2,6 +2,7 @@
 
 var express = require('express');
 var compress = require('compression')();
+var requireSSLinProduction = require('./modules/requireSSLinProduction.js');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var errorHandler = require('errorhandler');
@@ -13,6 +14,7 @@ var website = require('./website/server.js');
 
 var app = express();
 app.use(compress);
+app.use(requireSSLinProduction);
 var secret = process.env.COOKIE_SECRET || 'secret';
 
 app.use(cookieParser(secret));

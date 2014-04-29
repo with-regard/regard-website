@@ -7,6 +7,8 @@ var Project = require('../schemas/project.js');
 var app = express();
 
 app.get('/investigations/:id', function (req, res, next) {
+  // Check user can access this investigation
+
   Investigation.findById(req.params.id).exec().then(function (investigation) {
     if (!investigation) {
       res.send(404);
@@ -32,34 +34,17 @@ app.post('/investigations', function (req, res, next) {
   var investigation = new Investigation({
     name: req.body.investigation.name
   });
-  
+
   Investigation.create(investigation).then(function () {
-    Project.findByIdAndUpdate("5357fb84e15ed4ec0cf3d4f5", {
-      $push: {
-        investigation_ids: investigation._id
-      }
-    }, {
-      upsert: true
-    }).exec().then(function (project) {
-      res.json({
-        "project": project,
-        "investigation": investigation
-      });
-    }, next);
-  });
+    res.json({
+      "investigation": investigation
+    });
+  }, next);
 });
 
 app.delete('/investigations/:id', function (req, res, next) {
-  Investigation.findById(req.params.id).exec().then(function (investigation) {
-    investigation.remove().exec().then(function () {
-      Project.findByIdAndUpdate("5357fb84e15ed4ec0cf3d4f5", {
-        $pull: {
-          project_ids: investigation._id
-        }
-      }).exec().then(function () {
-        res.send(200);
-      }, next);
-    }, next)
+  Investigation.findById(req.params.id).exec().then(function () {
+    res.send(200);
   }, next);
 });
 

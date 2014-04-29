@@ -8,7 +8,7 @@ var app = express();
 
 app.get('/projects/:id', function (req, res, next) {
   // Check if this user can access this project
-  User.findById(req.user._id).where('project_ids').in([req.params.id]).exec().then(function (allowed) {
+  User.findById(req.user._id).where('project_ids'). in ([req.params.id]).exec().then(function (allowed) {
     if (!allowed) {
       res.send(401);
     } else {
@@ -55,31 +55,15 @@ app.post('/projects', function (req, res, next) {
   });
 
   Project.create(project).then(function () {
-    User.findByIdAndUpdate(req.user._id, {
-      $push: {
-        project_ids: project._id
-      }
-    }, {
-      upsert: true
-    }).exec().then(function () {
-      res.json({
-        "project": project
-      });
-    }, next);
-  });
+    res.json({
+      "project": project
+    });
+  }, next);
 });
 
 app.delete('/projects/:id', function (req, res, next) {
-  Project.findById(req.params.id).exec().then(function (project) {
-    project.remove().exec().then(function () {
-      User.findByIdAndUpdate(req.user._id, {
-        $pull: {
-          project_ids: project._id
-        }
-      }).exec().then(function () {
-        res.send(200);
-      }, next);
-    }, next)
+  Project.findById(req.params.id).exec().then(function () {
+    res.send(200);
   }, next);
 });
 

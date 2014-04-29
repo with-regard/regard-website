@@ -7,20 +7,13 @@ var User = require('../schemas/userSchema.js');
 var app = express();
 
 app.get('/projects/:id', function (req, res, next) {
-  // Check if this user can access this project
-  User.findById(req.user._id).where('project_ids'). in ([req.params.id]).exec().then(function (allowed) {
-    if (!allowed) {
-      res.send(401);
-    } else {
-      Project.findById(req.params.id).exec().then(function (project) {
-        if (!project) {
-          res.send(404);
-        }
-        res.json({
-          "project": project
-        });
-      }, next);
+  Project.findById(req.params.id).exec().then(function (project) {
+    if (!project) {
+      res.send(404);
     }
+    res.json({
+      "project": project
+    });
   }, next);
 });
 
@@ -28,7 +21,7 @@ app.get('/projects', function (req, res, next) {
   User.findById(req.user._id).exec().then(function (user) {
     Project.find({
       '_id': {
-        $in: user.project_ids
+        $in: user.projects
       }
     }).exec().then(function (projects) {
       res.json({

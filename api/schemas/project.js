@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var projectSchema = new Schema({
   name: String,
-  investigation_ids: Array
+  investigations: Array
 });
 
 module.exports = mongoose.model('Project', projectSchema);

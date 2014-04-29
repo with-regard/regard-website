@@ -3,6 +3,7 @@
 var express = require('express');
 var projectController = require('./modules/projectController.js');
 var investigationController = require('./modules/investigationController.js');
+var userController = require('./modules/userController.js');
 var errorHandler = require('./modules/errorHandler.js');
 var mongoose = require('mongoose');
 
@@ -22,6 +23,7 @@ app.all('*', function (req, res, next) {
 
 app.use('/v1', projectController);
 app.use('/v1', investigationController);
+app.use('/v1', userController);
 app.use(errorHandler);
 
 // Routes

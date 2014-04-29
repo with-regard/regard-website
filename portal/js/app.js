@@ -1,5 +1,5 @@
 var App = Ember.Application.create({
-  LOG_TRANSITIONS: true, 
+  LOG_TRANSITIONS: true,
 
   // Extremely detailed logging, highlighting every internal
   // step made while transitioning into a route, including
@@ -27,11 +27,6 @@ App.ApplicationController = Ember.Controller.extend({
   }
 });
 
-App.ProjectSerializer = DS.RESTSerializer.extend(DS.NestedRecordsMixin, {
+App.ProjectSerializer = DS.RESTSerializer.extend({
   primaryKey: '_id',
-  attrs: {
-    investigations: {
-      embedded: 'always'
-    }
-  }
 });

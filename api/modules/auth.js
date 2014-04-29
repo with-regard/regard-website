@@ -3,7 +3,7 @@
 var express = require('express');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
-var users = require('./userController.js');
+var users = require('./authController.js');
 
 var app = express();
 

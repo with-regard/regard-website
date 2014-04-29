@@ -8,8 +8,7 @@ App.InvestigationsController = Ember.ArrayController.extend({
       var project = this.get('controllers.project.content');
       
       investigation.save().then(function(){
-        project.get('investigations').addObject(investigation);
-        
+        project.get('investigations').pushObject(investigation);
         project.save();
       });
     }

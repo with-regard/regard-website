@@ -78,7 +78,19 @@
         You haven't created any investigations yet.
       </li>
     {{/each}}
-    </ul>
+    </ul>  
+      
+    <div class="main-container">
+      {{outlet}}
+    </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="investigation">
+    <div class="row full-width">
+      <div class="medium-12 columns">
+        <h2>{{name}}</h2>  
+      </div>
+    </div>  
   </script>
   
   <script type="text/x-handlebars" id="projects/error">
@@ -89,8 +101,6 @@
       </div>
     </div>
   </script>
-  
-  
   
   <script src="portal/libs/jquery-1.10.2.js"></script>
   <script src="portal/libs/handlebars-1.1.2.js"></script>
@@ -105,9 +115,7 @@
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
   
-  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.2/js/foundation.min.js"></script>
-  <script>
-    $(document).foundation();
-  </script>
+  <script src="/assets/js/foundation.min.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>

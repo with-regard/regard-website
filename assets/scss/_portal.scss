@@ -1,5 +1,8 @@
+$side-nav-width: 200px;
+
 .main-section {
-  height: 1000px;
+  min-height: 1000px;
+  position: relative;
 }
 
 nav.tab-bar {
@@ -11,9 +14,12 @@ nav.tab-bar {
   @include side-nav();
   
   background-color: $light-grey;
-  width: 200px;
-  height: 100%;
+  width: $side-nav-width;
   border-right: 1px solid darken($light-grey, 10%);
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
 }
 
 .left-side-nav li {
@@ -29,4 +35,14 @@ nav.tab-bar {
 
 .muted {
   opacity: 0.5;
+}
+
+.main-container {
+  margin-left: $side-nav-width;
+  margin-top: 0 !important;
+}
+
+.row.full-width {
+  width: 100%;
+  max-width: 100%; 
 }

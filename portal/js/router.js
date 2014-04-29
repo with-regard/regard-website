@@ -1,7 +1,9 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function(){
-    this.resource('project', {path: '/project/:project_id'}, function(){
-      this.resource('investigation', {path: 'investigations/:investigation_id'});
+    this.resource('project', {path: '/project/:project_id'}, function() {
+      this.resource('investigations', function(){
+        this.resource('investigation', {path: '/:investigation_id'});  
+      });
     });
   });
 });
@@ -38,6 +40,6 @@ App.ProjectRoute = Ember.Route.extend({
     
     this.render({
       outlet: 'title'
-    })
+    });
   }
 });

@@ -60,7 +60,6 @@ app.post('/projects', function (req, res, next) {
         project_ids: project._id
       }
     }, {
-      safe: true,
       upsert: true
     }).exec().then(function () {
       res.json({

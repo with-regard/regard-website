@@ -1,4 +1,5 @@
 App.ProjectController = Ember.ObjectController.extend({
+  needs: ['user'],
   isEditing: false,
 
   // We use the bufferedName to store the original value of
@@ -44,6 +45,14 @@ App.ProjectController = Ember.ObjectController.extend({
 
   deleteProject: function () {
     var project = this.get('model');
-    project.destroyRecord();
+    project.deleteRecord();
+    var user = this.get('controllers.user.content');
+    
+    project.save().then(function () {
+      user.get('projects').then(function (projects) {
+        projects.pullObject(project);
+        user.save();
+      });
+    });
   },
 });

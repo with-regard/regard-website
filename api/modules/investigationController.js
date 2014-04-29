@@ -19,6 +19,14 @@ app.get('/investigations/:id', function (req, res, next) {
   }, next);
 });
 
+app.get('/investigations', function(req, res, next){
+  Investigation.find().exec().then(function(investigations) {
+    res.json({
+      investigations: investigations
+    })
+  })
+});
+
 app.put('/investigations/:id', function (req, res, next) {
   Investigation.findById(req.params.id).exec().then(function (investigation) {
     investigation.name = req.body.project.name;

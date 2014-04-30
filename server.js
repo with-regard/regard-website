@@ -18,7 +18,7 @@ app.use(compress);
 app.use(requireSSLinProduction);
 app.use(bodyParser);
 
-var secret = process.env.COOKIE_SECRET || 'secret';
+var secret = process.env.COOKIE_SECRET;
 
 app.use(cookieParser(secret));
 app.use(cookieSession({
@@ -39,5 +39,5 @@ if (app.get('env') === 'development') {
   app.use(errorHandler());
 }
 
-app.listen(process.env.port || 3000);
-console.log("Express server started");
+app.listen(process.env.port);
+console.log("Express server started on " + process.env.port);

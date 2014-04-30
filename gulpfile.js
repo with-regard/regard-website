@@ -103,8 +103,16 @@ gulp.task('watch', function (event) {
 });
 
 gulp.task('server', function () {
+  var productConfig = require('./development-config.json');
+  
+  if (productConfig['port'] === -1) {
+      console.log('You need to have a product config defined');
+      process.exit(-1);
+  }
+      
   nodemon({
-    script: 'server.js'
+    script: 'server.js',
+    env: productConfig
   })
     .on('restart', function () {
       console.log('restarted node');

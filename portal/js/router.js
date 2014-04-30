@@ -1,14 +1,10 @@
 App.Router.map(function () {
-  this.resource('users', {path: '/'}, function() {
-    this.resource('user', {path: '/:user_id'}, function() {
-      this.resource('projects', {path: '/projects'}, function() {
-        this.resource('project', {path: '/project/:project_id'}, function() {
-          this.resource('investigations', function(){
-            this.resource('investigation', {path: '/:investigation_id'});  
-          });
-        });    
-      });  
-    });  
+  this.resource('projects', {path: '/'}, function() {
+    this.resource('project', {path: '/:project_id'}, function() {
+      this.resource('investigations', function(){
+        this.resource('investigation', {path: '/:investigation_id'});  
+      });
+    });    
   });
 });
 
@@ -16,7 +12,7 @@ App.Router.reopen({
   rootURL: '/portal'
 });
 
-App.UsersRoute = Ember.Route.extend({
+App.ApplicationRoute = Ember.Route.extend({
   model: function () {
     return this.store.find('user');
   }

@@ -48,10 +48,10 @@ App.ProjectRoute = Ember.Route.extend({
     project.get('investigations');
   },
   renderTemplate: function() {
-    this.render('investigationsList', {
+    this.render({
       outlet: 'main'
     });
-    this.render({
+    this.render('project-title', {
       outlet: 'title'
     });
   }

@@ -20,7 +20,6 @@ var svg = svgSprites.svg;
 var png = svgSprites.png;
 
 var outputDir = 'website/dist';
-var serverPort = '3000';
 var watching = false;
 
 // Paths
@@ -85,12 +84,11 @@ gulp.task('sprites', function () {
   gulp.src(paths.icons)
     .pipe(svg({
       className: ".%f-icon",
-      cssFile: "../../../assets/sprites/_sprites.scss",
-      preview: {
-        svgSprite: "sprites/preview-svg-sprite.html"
-      }
+      cssFile: "_sprites.scss"        
     }))
-    .pipe(gulp.dest(outputDir + '/assets'));
+    .pipe(gulp.dest('assets/scss'))
+    .pipe(png())
+    
 });
 
 // Watch files
@@ -104,8 +102,16 @@ gulp.task('watch', function (event) {
 });
 
 gulp.task('server', function () {
+  var productConfig = require('./development-config.json');
+  
+  if (productConfig['port'] === -1) {
+      console.log('You need to have a product config defined');
+      process.exit(-1);
+  }
+      
   nodemon({
-    script: 'server.js'
+    script: 'server.js',
+    env: productConfig
   })
     .on('restart', function () {
       console.log('restarted node');

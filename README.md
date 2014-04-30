@@ -19,7 +19,8 @@ npm install
 gulp
 ```
 5. Configure local dev values
-Copy sample-config.json to development-config.json. You can find the values for the github application in the Regard Github account under applications.
+
+Copy sample-config.json to development-config.json. You can find the values for the Github application [here](https://github.com/organizations/with-regard/settings/applications/).
 
 ## Organization
 

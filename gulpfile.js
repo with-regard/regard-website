@@ -20,7 +20,6 @@ var svg = svgSprites.svg;
 var png = svgSprites.png;
 
 var outputDir = 'website/dist';
-var serverPort = '3000';
 var watching = false;
 
 // Paths

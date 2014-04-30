@@ -1,4 +1,5 @@
 {
+    "MONGODB_CONNECTION_STRING": "",
     "GITHUB_APP_ID": "",
     "GITHUB_APP_SECRET": "",
     "port": -1,

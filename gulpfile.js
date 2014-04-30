@@ -84,12 +84,11 @@ gulp.task('sprites', function () {
   gulp.src(paths.icons)
     .pipe(svg({
       className: ".%f-icon",
-      cssFile: "../../../assets/sprites/_sprites.scss",
-      preview: {
-        svgSprite: "sprites/preview-svg-sprite.html"
-      }
+      cssFile: "_sprites.scss"        
     }))
-    .pipe(gulp.dest(outputDir + '/assets'));
+    .pipe(gulp.dest('assets/scss'))
+    .pipe(png())
+    
 });
 
 // Watch files

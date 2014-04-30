@@ -1,6 +1,6 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
-    this.resource('project', {path: '/:project_id'}, function() {
+    this.resource('project', {path: 'projects/:project_id'}, function() {
       this.resource('investigations', function() {
         this.resource('investigation', {path: '/:investigation_id'});  
       });
@@ -19,9 +19,8 @@ App.ApplicationRoute = Ember.Route.extend({
     });
   },
   afterModel: function(user, transition) {
-    user.get('projects').then(function(projects) {
-      console.log(['Loaded', projects.content.length, 'projects'].join(' '));
-    })
+    user.get('projects');
+    this.transitionTo('project');
   }
 })
 
@@ -30,9 +29,7 @@ App.ProjectsRoute = Ember.Route.extend({
     return this.store.all('project');
   },
   afterModel: function(projects, transition) {
-    if (projects.get('length') > 1) {
-      this.transitionTo('project', projects.objectAt(0));
-    }
+    this.transitionTo('project', projects.objectAt(0));
   },
   renderTemplate: function() {
     this.render('projects', { 
@@ -45,12 +42,13 @@ App.ProjectRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('project', params.project_id);    
   },
-  
+  afterModel: function(project, transition) {
+    project.get('investigations');
+  },
   renderTemplate: function() {
-    this.render('investigations', { 
-      outlet: 'main' 
+    this.render('investigationsList', {
+      outlet: 'main'
     });
-    
     this.render({
       outlet: 'title'
     });

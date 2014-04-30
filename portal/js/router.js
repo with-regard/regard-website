@@ -20,7 +20,7 @@ App.ApplicationRoute = Ember.Route.extend({
   },
   afterModel: function(user, transition) {
     user.get('projects');
-    this.transitionTo('project');
+    this.transitionTo('projects');
   }
 })
 

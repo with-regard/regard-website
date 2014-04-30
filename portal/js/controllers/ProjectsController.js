@@ -6,10 +6,8 @@ App.ProjectsController = Ember.ArrayController.extend({
       var user = this.get('controllers.application.content');
 
       project.save().then(function () {
-        user.get('projects').then(function (projects) {
-          projects.pushObject(project);
-          user.save();
-        });
+        user.get('projects').pushObject(project);
+        user.save();
       });
     }
   }

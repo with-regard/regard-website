@@ -18,17 +18,19 @@ app.get('/projects/:id', function (req, res, next) {
 });
 
 app.get('/projects', function (req, res, next) {
-  User.findById(req.user._id).exec().then(function (user) {
-    Project.find({
-      '_id': {
-        $in: user.projects
-      }
-    }).exec().then(function (projects) {
-      res.json({
-        "projects": projects
-      });
-    }, next);
-  })
+  if(!req.query.ids){
+    res.send(400, 'You must specify a list of ids');
+  }
+  
+  Project.find({
+    '_id': {
+      $in: req.query.ids
+    }
+  }).exec().then(function (projects) {
+    res.json({
+      "projects": projects
+    });
+  }, next);
 });
 
 app.put('/projects/:id', function (req, res, next) {

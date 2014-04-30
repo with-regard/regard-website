@@ -20,7 +20,15 @@ app.get('/investigations/:id', function (req, res, next) {
 });
 
 app.get('/investigations', function(req, res, next){
-  Investigation.find().exec().then(function(investigations) {
+  if(!req.query.ids){
+    res.send(400, 'You must specify a list of ids');
+  }
+  
+  Investigation.find({
+      '_id': {
+        $in: req.query.ids
+      }
+    }).exec().then(function(investigations) {
     res.json({
       investigations: investigations
     })

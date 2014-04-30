@@ -19,16 +19,16 @@ app.get('/investigations/:id', function (req, res, next) {
   }, next);
 });
 
-app.get('/investigations', function(req, res, next){
-  if(!req.query.ids){
+app.get('/investigations', function (req, res, next) {
+  if (!req.query.ids) {
     res.send(400, 'You must specify a list of ids');
   }
-  
+
   Investigation.find({
-      '_id': {
-        $in: req.query.ids
-      }
-    }).exec().then(function(investigations) {
+    '_id': {
+      $in: req.query.ids
+    }
+  }).exec().then(function (investigations) {
     res.json({
       investigations: investigations
     })

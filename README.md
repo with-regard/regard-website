@@ -18,6 +18,13 @@ npm install
 ```
 gulp
 ```
+5. Configure local dev values
+```
+GITHUB_APP_ID:
+GITHUB_APP_SECRET:
+```
+You can get these values from the GitHub account settings for Regard
+
 ## Organization
 
 Everything is in one repository for the moment (to make authentication simpler).

@@ -66,7 +66,7 @@
   
   <script type="text/x-handlebars" id="investigations">
     <ul class="left-side-nav">
-      <li class="heading">Investigations <span class="secondary label">New</span></li>
+      <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
     {{#each investigations}}
       <li>
         {{#link-to 'investigation' this}}            

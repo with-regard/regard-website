@@ -34,6 +34,7 @@ app.get('/projects', function (req, res, next) {
 app.put('/projects/:id', function (req, res, next) {
   Project.findById(req.params.id).exec().then(function (project) {
     project.name = req.body.project.name;
+    project.investigations = req.body.project.investigations;
     project.save();
 
     res.json({

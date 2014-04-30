@@ -1,34 +1,25 @@
-'use strict';
+"use strict";
 
+var express = require('express');
 var User = require('../schemas/userSchema.js');
 
-function createNewUserFromGithub(profile) {
-  // passport normalizes the response.
-  var raw = profile._json;
+var app = express();
 
-  var user = new User({
-    githubId: raw.id,
-    name: raw.name,
-    avatar_url: raw.avatar_url
+app.get('/users', function (req, res, next) {
+  res.json({
+    "users": [req.user]
   });
+});
 
-  user.save();
-}
+app.put('/users/:id', function (req, res, next) {
+  User.findById(req.params.id).exec().then(function (user) {
+    user.projects = req.body.user.projects;
+    user.save();
 
-function fetchUserByGithubId(data) {
-  return User.findOne({
-    githubId: data.githubId
-  }).exec();
-}
+    res.json({
+      "user": user
+    });
+  }, next);
+});
 
-exports.findOrCreateUser = function (profile) {
-  return fetchUserByGithubId({
-    githubId: profile.id
-  }).then(function (user) {
-    return user || createNewUserFromGithub(profile);
-  });
-};
-
-exports.fetchUserById = function (id) {
-  return User.findById(id).exec();
-};
+module.exports = app;

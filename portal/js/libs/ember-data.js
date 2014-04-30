@@ -3,7 +3,7 @@
  * @copyright Copyright 2011-2014 Tilde Inc. and contributors.
  *            Portions Copyright 2011 LivingSocial Inc.
  * @license   Licensed under MIT license (see license.js)
- * @version   1.0.0-beta.7+canary.32028af7
+ * @version   1.0.0-beta.7+canary.ab589b32
  */
 (function(global) {
 var define, requireModule, require, requirejs;
@@ -1597,11 +1597,11 @@ define("ember-data/lib/core",
       /**
         @property VERSION
         @type String
-        @default '1.0.0-beta.7+canary.32028af7'
+        @default '1.0.0-beta.7+canary.ab589b32'
         @static
       */
       DS = Ember.Namespace.create({
-        VERSION: '1.0.0-beta.7+canary.32028af7'
+        VERSION: '1.0.0-beta.7+canary.ab589b32'
       });
 
       if (Ember.libraries) {
@@ -8884,7 +8884,8 @@ define("ember-data/lib/system/store",
       @module ember-data
     */
 
-    var Adapter = __dependency1__["default"];
+    var InvalidError = __dependency1__.InvalidError;
+    var Adapter = __dependency1__.Adapter;
     var get = Ember.get, set = Ember.set;
     var once = Ember.run.once;
     var isNone = Ember.isNone;
@@ -10657,7 +10658,7 @@ define("ember-data/lib/system/store",
         store.didSaveRecord(record, payload);
         return record;
       }, function(reason) {
-        if (reason instanceof DS.InvalidError) {
+        if (reason instanceof InvalidError) {
           store.recordWasInvalid(record, reason.errors);
         } else {
           store.recordWasError(record, reason);

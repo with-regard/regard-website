@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <script type="text/x-handlebars">
+  <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
         <nav class="tab-bar">
@@ -20,7 +20,7 @@
           
           <section class="right-large">
             <div class="right">
-              <a href="/logout">{{user.name}}</a>
+              <a href="/logout">{{name}}</a>
             </div>
           </section>
         </nav>
@@ -66,18 +66,18 @@
   
   <script type="text/x-handlebars" id="investigations">
     <ul class="left-side-nav">
-      <li class="heading">Investigations <span class="secondary label">New</span></li>
-    {{#each investigations}}
-      <li>
-        {{#link-to 'investigation' this}}            
-          {{name}}
-        {{/link-to}}
-      </li>  
-    {{else}}
-      <li class="muted">
-        You haven't created any investigations yet.
-      </li>
-    {{/each}}
+      <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
+      {{#each investigations}}
+        <li>
+          {{#link-to 'investigation' this}}            
+            {{name}}
+          {{/link-to}}
+        </li>  
+      {{else}}
+        <li class="muted">
+          You haven't created any investigations yet.
+        </li>
+      {{/each}}
     </ul>  
       
     <div class="main-container">
@@ -104,16 +104,20 @@
   
   <script src="portal/libs/jquery-1.10.2.js"></script>
   <script src="portal/libs/handlebars-1.1.2.js"></script>
-  <script src="portal/libs/ember-1.5.0.js"></script>
+  <script src="portal/libs/ember.js"></script>
   <script src="portal/libs/ember-data.js"></script>
   
-  <script src="portal/mixins/NestedRecordsMixin.js"></script>
   <script src="portal/app.js"></script>
   <script src="portal/router.js"></script>
+  
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/ProjectsController.js"></script>
+  <script src="portal/controllers/InvestigationsController.js"></script>
+  <script src="portal/controllers/UserController.js"></script>
+  
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
+  <script src="portal/models/UserModel.js"></script>
   
   <script src="/assets/js/foundation.min.js"></script>
   <script src="/assets/js/main.js"></script>

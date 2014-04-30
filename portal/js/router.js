@@ -29,7 +29,9 @@ App.ProjectsRoute = Ember.Route.extend({
     return this.store.all('project');
   },
   afterModel: function(projects, transition) {
-    this.transitionTo('project', projects.objectAt(0));
+    if(!Ember.isEmpty(projects)){
+      this.transitionTo('project', projects.objectAt(0));  
+    }
   },
   renderTemplate: function() {
     this.render('projects', { 

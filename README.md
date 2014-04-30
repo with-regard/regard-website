@@ -19,11 +19,7 @@ npm install
 gulp
 ```
 5. Configure local dev values
-```
-GITHUB_APP_ID:
-GITHUB_APP_SECRET:
-```
-You can get these values from the GitHub account settings for Regard
+Copy sample-config.json to development-config.json. You can find the values for the github application in the Regard Github account under applications.
 
 ## Organization
 

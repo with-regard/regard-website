@@ -17,3 +17,4 @@ dist
 assets/sprites
 assets/scss/_sprites.scss
 assets/scss/sprites/**
+development-config.json

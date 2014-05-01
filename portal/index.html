@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Regard developer portal</title>
   <link rel="stylesheet" href="assets/css/main.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 </head>
 <body>
   <script type="text/x-handlebars" data-template-name="application">
@@ -26,11 +27,25 @@
         </nav>
 
         <aside class="left-off-canvas-menu">
-          {{outlet off-canvas}}
+          <ul class="off-canvas-list">
+            <li>
+              <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
+            </li>
+            {{#each project in projects}}
+              <li>
+                {{#link-to 'project' project}}            
+                  {{project.name}}
+                  <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                {{/link-to}}
+              </li>
+            {{else}}
+              You don't have any projects
+            {{/each}}
+          </ul>
         </aside>
 
         <section class="main-section">
-          {{outlet main}}
+          {{outlet}}
         </section>
 
         <a class="exit-off-canvas"></a>
@@ -45,32 +60,18 @@
       <span {{action "editProjectName"}}>{{name}}</span>
     {{/if}}
   </script>
-
-  <script type="text/x-handlebars" data-template-name="projects">
-    <ul class="off-canvas-list">
-      <li>
-        <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
-      </li>
-      {{#each itemController="Project"}}
-        <li>
-          {{#link-to 'project' this}}            
-            {{name}}
-            <span class="right" {{action "deleteProject"}}>&times;</span> 
-          {{/link-to}}
-        </li>
-      {{else}}
-        You don't have any projects
-      {{/each}}
-    </ul>
-  </script>
   
   <script type="text/x-handlebars" id="project">
     <ul class="left-side-nav">
       <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
-      {{#each investigations}}
+      {{#each investigation in investigations}}
         <li>
-          {{#link-to 'investigation' this}}            
-            {{name}}
+          {{#link-to 'investigation' investigation}}            
+            {{investigation.name}}
+            <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
+            <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
+              <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
+            </ul>
           {{/link-to}}
         </li>  
       {{else}}
@@ -102,6 +103,25 @@
     </div>
   </script>
   
+  <script type="text/x-handlebars" id="investigation/error">
+    <div class="row pad">
+      <div class="medium-6 medium-centered columns text-center">
+        <h3>Investigation not found</h3>
+        <p>This investigation may be private. If someone gave you this link, they may need to invite you to the project.</p>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="projects/index">
+    <div class="row pad">
+      <div class="medium-12 medium-centered columns text-center">
+        <img src="/assets/img/regard-logo-color.svg" height="200px" width="200px"/>
+        <h1>Regard</h1>
+        <p>Get answers to questions about a user's behavior and their environment.</p>
+      </div>
+    </div>
+  </script>
+  
   <script src="portal/libs/jquery-1.10.2.js"></script>
   <script src="portal/libs/handlebars-1.1.2.js"></script>
   <script src="portal/libs/ember.js"></script>
@@ -110,8 +130,8 @@
   <script src="portal/app.js"></script>
   <script src="portal/router.js"></script>
   
+  <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
-  <script src="portal/controllers/ProjectsController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
@@ -119,5 +139,6 @@
   
   <script src="/assets/js/foundation.min.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js"></script>
 </body>
 </html>

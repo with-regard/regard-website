@@ -20,6 +20,17 @@ App.ProjectController = Ember.ObjectController.extend({
       });
     },
     
+    deleteInvestigation: function (investigation) {
+      var project = this.get('model');
+
+      project.get('investigations').then(function (investigations) {
+        investigations.removeObject(investigation);
+        project.save();
+      });
+
+      investigation.destroyRecord();
+    },
+    
     editProjectName: function () {
       this.set('isEditing', true);
     },

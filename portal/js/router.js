@@ -1,9 +1,7 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
-    this.resource('project', {path: 'projects/:project_id'}, function() {
-      this.resource('investigations', {path: '/investigations'}, function() {
-        this.resource('investigation', {path: '/:investigation_id'});  
-      });
+    this.resource('project', {path: '/:project_id'}, function() {
+      this.resource('investigation', {path: '/:investigation_id'});
     });
   });
 });
@@ -17,28 +15,12 @@ App.ApplicationRoute = Ember.Route.extend({
     return this.store.find('user').then(function(result){
       return result.get('firstObject');
     });
-  },
-  afterModel: function(user, transition) {
-    user.get('projects');
-    this.transitionTo('projects');
   }
 })
-
-App.ProjectsRoute = Ember.Route.extend({
-  model: function () {
-    return this.store.all('project');
-  },
-  renderTemplate: function() {
-    this.render({ outlet: 'off-canvas' });
-  }
-});
 
 App.ProjectRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('project', params.project_id);    
-  },
-  afterModel: function(project, transition) {
-    project.get('investigations');
   },
   renderTemplate: function() {
     this.render('project');

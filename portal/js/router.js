@@ -1,7 +1,7 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
     this.resource('project', {path: '/:project_id'}, function() {
-      this.resource('investigations', {path: '/investigations'});
+      this.resource('investigation', {path: '/:investigation_id'});
     });
   });
 });
@@ -17,7 +17,6 @@ App.ApplicationRoute = Ember.Route.extend({
     });
   },
   afterModel: function(user, transition) {
-    user.get('projects');
     this.transitionTo('projects');
   }
 })

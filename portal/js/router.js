@@ -15,9 +15,6 @@ App.ApplicationRoute = Ember.Route.extend({
     return this.store.find('user').then(function(result){
       return result.get('firstObject');
     });
-  },
-  afterModel: function(user, transition) {
-    this.transitionTo('projects');
   }
 })
 

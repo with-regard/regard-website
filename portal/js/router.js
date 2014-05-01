@@ -29,9 +29,7 @@ App.ProjectsRoute = Ember.Route.extend({
     return this.store.all('project');
   },
   renderTemplate: function() {
-    this.render('projects', { 
-      outlet: 'off-canvas' 
-    });
+    this.render({ outlet: 'off-canvas' });
   }
 });
 
@@ -43,9 +41,7 @@ App.ProjectRoute = Ember.Route.extend({
     project.get('investigations');
   },
   renderTemplate: function() {
-    this.render('investigations', {
-      outlet: 'main'
-    });
+    this.render('project');
     this.render('project-title', {
       outlet: 'title'
     });

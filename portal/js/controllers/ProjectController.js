@@ -8,6 +8,18 @@ App.ProjectController = Ember.ObjectController.extend({
   bufferedName: Ember.computed.oneWay('name'),
 
   actions: {
+    createInvestigation: function () {
+      var investigation = this.store.createRecord('investigation');
+      var project = this.get('model');
+      
+      investigation.save().then(function(){
+        project.get('investigations').then(function(investigations){
+          investigations.pushObject(investigation);
+          project.save();
+        });
+      });
+    },
+    
     editProjectName: function () {
       this.set('isEditing', true);
     },

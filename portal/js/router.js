@@ -21,12 +21,6 @@ App.ApplicationRoute = Ember.Route.extend({
   }
 })
 
-App.ProjectsRoute = Ember.Route.extend({
-  model: function () {
-    return this.store.all('project');
-  }
-});
-
 App.ProjectRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('project', params.project_id);    

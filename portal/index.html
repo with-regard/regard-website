@@ -64,10 +64,14 @@
   <script type="text/x-handlebars" id="project">
     <ul class="left-side-nav">
       <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
-      {{#each investigations}}
+      {{#each investigation in investigations}}
         <li>
-          {{#link-to 'investigation' this}}            
-            {{name}}
+          {{#link-to 'investigation' investigation}}            
+            {{investigation.name}}
+            <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
+            <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
+              <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
+            </ul>
           {{/link-to}}
         </li>  
       {{else}}

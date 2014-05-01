@@ -26,9 +26,10 @@ nav.tab-bar {
   margin: 0;
 }
 
-.left-side-nav li a, .left-side-nav li.heading, .left-side-nav li.muted {
+.left-side-nav li a:not(.button), .left-side-nav li.heading, .left-side-nav li.muted {
   padding: 5px 15px;
   color: $black !important;
+  display: inline-block;
 }
 
 .left-side-nav li a:hover {
@@ -39,6 +40,10 @@ nav.tab-bar {
   border-left: 5px solid $regard-green;
   padding-left: 10px;
   color: $regard-green !important;
+}
+
+.left-side-nav li a.menu-actions {
+  display: inline-block;
 }
 
 .muted {

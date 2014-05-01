@@ -19,3 +19,9 @@ App.ApplicationSerializer = DS.RESTSerializer.extend({
     }
   }
 });
+
+App.ProjectView = Ember.View.extend({
+  didInsertElement: function() {
+    $(document).foundation();
+  }
+})

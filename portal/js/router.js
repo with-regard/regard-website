@@ -27,9 +27,6 @@ App.ApplicationRoute = Ember.Route.extend({
 App.ProjectsRoute = Ember.Route.extend({
   model: function () {
     return this.store.all('project');
-  },
-  renderTemplate: function() {
-    this.render({ outlet: 'off-canvas' });
   }
 });
 

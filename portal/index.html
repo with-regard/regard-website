@@ -26,11 +26,25 @@
         </nav>
 
         <aside class="left-off-canvas-menu">
-          {{outlet off-canvas}}
+          <ul class="off-canvas-list">
+            <li>
+              <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
+            </li>
+            {{#each project in projects}}
+              <li>
+                {{#link-to 'project' project}}            
+                  {{project.name}}
+                  <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                {{/link-to}}
+              </li>
+            {{else}}
+              You don't have any projects
+            {{/each}}
+          </ul>
         </aside>
 
         <section class="main-section">
-          {{outlet main}}
+          {{outlet}}
         </section>
 
         <a class="exit-off-canvas"></a>
@@ -44,24 +58,6 @@
     {{else}}
       <span {{action "editProjectName"}}>{{name}}</span>
     {{/if}}
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="projects">
-    <ul class="off-canvas-list">
-      <li>
-        <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
-      </li>
-      {{#each itemController="Project"}}
-        <li>
-          {{#link-to 'project' this}}            
-            {{name}}
-            <span class="right" {{action "deleteProject"}}>&times;</span> 
-          {{/link-to}}
-        </li>
-      {{else}}
-        You don't have any projects
-      {{/each}}
-    </ul>
   </script>
   
   <script type="text/x-handlebars" id="project">
@@ -110,8 +106,8 @@
   <script src="portal/app.js"></script>
   <script src="portal/router.js"></script>
   
+  <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
-  <script src="portal/controllers/ProjectsController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>

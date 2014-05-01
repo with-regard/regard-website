@@ -1,9 +1,7 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
-    this.resource('project', {path: 'projects/:project_id'}, function() {
-      this.resource('investigations', {path: '/investigations'}, function() {
-        this.resource('investigation', {path: '/:investigation_id'});  
-      });
+    this.resource('project', {path: '/:project_id'}, function() {
+      this.resource('investigations', {path: '/investigations'});
     });
   });
 });
@@ -33,9 +31,6 @@ App.ProjectsRoute = Ember.Route.extend({
 App.ProjectRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('project', params.project_id);    
-  },
-  afterModel: function(project, transition) {
-    project.get('investigations');
   },
   renderTemplate: function() {
     this.render('project');

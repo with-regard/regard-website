@@ -1,6 +1,9 @@
 {
   "name": "regard",
   "version": "1.0.3",
+  "engines": {
+    "node": "0.10.26"
+  },
   "description": "Website for regard",
   "main": "server.js",
   "author": "",

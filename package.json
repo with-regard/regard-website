@@ -30,6 +30,6 @@
     "errorhandler": "~1.0.0",
     "body-parser": "~1.0.2",
     "mongoose": "~3.8.8",
-    "regard-authentication": "git://github.com/with-regard/regard-authentication"
+    "regard-authentication": "with-regard/regard-authentication"
   }
 }

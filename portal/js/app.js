@@ -4,7 +4,7 @@ var App = Ember.Application.create({
 });
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: '/api',
+  host: 'website-api.' + window.location.hostname,
   namespace: 'v1'
 });
 

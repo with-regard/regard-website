@@ -8,7 +8,6 @@ var errorHandler = require('errorhandler');
 
 var regardUserStore = require('./modules/regard-user-store.js');
 var auth = require('regard-authentication');
-var api = require('./api/server.js');
 var portal = require('./portal/server.js');
 var website = require('./website/server.js');
 
@@ -19,7 +18,6 @@ app.use(requireSSLinProduction);
 app.use(bodyParser);
 
 app.use(auth(regardUserStore));
-app.use('/api', api);
 app.use('/portal', portal);
 app.use('/', website);
 

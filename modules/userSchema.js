@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING);
+
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({

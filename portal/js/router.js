@@ -12,8 +12,13 @@ App.Router.reopen({
 
 App.ApplicationRoute = Ember.Route.extend({
   model: function () {
+    var self = this;
+    
     return this.store.find('user').then(function(result){
       return result.get('firstObject');
+    }, function(error){
+      self.render('user/error');
+      throw new Error('failed to get user');
     });
   }
 })

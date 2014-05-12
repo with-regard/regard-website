@@ -52,13 +52,20 @@ App.BarChartComponent = Ember.Component.extend({
       .attr("x", function (d) {
         return x(d.name);
       })
+      .attr("y", height)
       .attr("width", x.rangeBand())
+      .attr("height", 0)
+      .transition()
+        .delay(function(d, i) { return i * 50; }) // time between drawing bars
+        .duration(400) // time to grow the bar to full height
       .attr("y", function (d) {
         return y(d.value);
       })
       .attr("height", function (d) {
         return height - y(d.value);
-      });
+      })
+    
+      
   },
 
   didInsertElement: function () {

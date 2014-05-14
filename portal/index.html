@@ -90,7 +90,11 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{name}}</h2>
-        {{bar-chart width=400 height=200 data=chartData}}
+        {{#each chart in charts}}
+          {{bar-chart width=400 height=200 data=chart.chartData}}
+        {{else}}
+          <p>No data to display.</p>
+        {{/each}}
       </div>
     </div>  
   </script>
@@ -150,11 +154,11 @@
   
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
-  <script src="portal/controllers/InvestigationController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
   <script src="portal/models/UserModel.js"></script>
+  <script src="portal/models/ChartModel.js"></script>
   
   <script src="portal/components/BarChartComponent.js"></script>
   

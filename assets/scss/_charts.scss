@@ -1,12 +1,12 @@
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: $black;
   shape-rendering: crispEdges;
 }
 
 .bar {
-  fill: steelblue;
+  fill: $regard-green;
 }
 
 .x.axis path {

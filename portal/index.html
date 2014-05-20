@@ -92,7 +92,19 @@
         <h2>{{name}}</h2>
         <a href='#' {{action "createChart"}}>Add Chart</a>
         {{#each chart in charts}}
-          {{bar-chart width=400 height=200 data=chart.chartData}}
+          {{outlet}}
+        {{else}}
+          <p>No data to display.</p>
+        {{/each}}
+      </div>
+    </div>  
+  </script>
+  
+  <script type="text/x-handlebars" id="chart">
+    <div class="row full-width">
+      <div class="medium-12 columns">
+        {{#each chart in chartdata}}
+          {{bar-chart width=400 height=200 data=chart.data}}
         {{else}}
           <p>No data to display.</p>
         {{/each}}
@@ -161,6 +173,7 @@
   <script src="portal/models/InvestigationModel.js"></script>
   <script src="portal/models/UserModel.js"></script>
   <script src="portal/models/ChartModel.js"></script>
+  <script src="portal/models/ChartDataModel.js"></script>
   
   <script src="portal/components/BarChartComponent.js"></script>
   

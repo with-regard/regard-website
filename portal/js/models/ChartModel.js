@@ -1,5 +1,5 @@
 App.Chart = DS.Model.extend({
   query: DS.attr('string'),
-  chartData: DS.attr(),
+  chartdata: DS.hasMany('chartdata'),
   investigation: DS.belongsTo('investigation')
 });

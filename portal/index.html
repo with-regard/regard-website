@@ -91,7 +91,8 @@
       <div class="medium-12 columns">
         <h2>{{name}}</h2>
         {{#each chart in charts}}
-          {{#each chartdata in chart.chartdata}}
+          {{chart.query}}
+          {{#each chartdata in chart.chartdata}}  
             {{bar-chart width=800 height=600 data=chartdata.values}}
           {{/each}}
         {{else}}

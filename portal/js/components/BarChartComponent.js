@@ -4,12 +4,12 @@ App.BarChartComponent = Ember.Component.extend({
   margin: {
     top: 20,
     right: 20,
-    bottom: 200,
-    left: 40
+    bottom: 20,
+    left: 20
   },
 
   w: function () {
-    return this.get('width') - this.get('margin.left') - this.get('margin.right');
+    return this.get('width') - this.get('margin.left') - this.get('margin.right') - 243;
   }.property('width'),
 
   h: function () {
@@ -17,7 +17,7 @@ App.BarChartComponent = Ember.Component.extend({
   }.property('height'),
 
   transformG: function () {
-    return "translate(" + this.get('margin.left') + "," + this.get('margin.top') + ")";
+    return "translate(" + (this.get('margin.left') + 243) + "," + this.get('margin.top') + ")";
   }.property(),
 
   transformX: function () {
@@ -27,51 +27,45 @@ App.BarChartComponent = Ember.Component.extend({
   draw: function () {
     var width = this.get('w');
     var height = this.get('h');
-    var data = this.get('data');
+    var data = this.get('data').sort(function (a, b) {
+      return d3.descending(a.value, b.value);
+    });
     var svg = d3.select('#' + this.get('elementId'));
-    var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
-    var y = d3.scale.linear().range([height, 0]);
+    var x = d3.scale.linear().range([0, width]);
+    var y = d3.scale.ordinal().rangeRoundBands([1, height], 0.1);
     var xAxis = d3.svg.axis().scale(x).orient("bottom");
     var yAxis = d3.svg.axis().scale(y).orient("left");
-    
-    x.domain(data.map(function (d) {
+
+    y.domain(data.map(function (d) {
       return d.name;
     }));
-    
-    y.domain([0, d3.max(data, function (d) {
+
+    x.domain([0, d3.max(data, function (d) {
       return d.value;
     })]);
 
-    svg.select(".axis.x").call(xAxis).selectAll("text")
-      .style("text-anchor", "end")
-      .attr("dx", "-0.8em")
-      .attr("dy", -x.rangeBand() / 4)
-      .attr("transform", function (d) {
-        return "rotate(-90)"
-      });
-
+    svg.select(".axis.x").call(xAxis);
     svg.select(".axis.y").call(yAxis);
 
     svg.select(".rects").selectAll("rect")
       .data(data)
-      .enter().append("rect")
+
+    .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function (d) {
-        return x(d.name);
+      .attr("y", function (d) {
+        return y(d.name);
       })
-      .attr("y", height)
-      .attr("width", x.rangeBand())
-      .attr("height", 0)
+      .attr("x", 1)
+      .attr("height", y.rangeBand())
+      .attr("width", 0)
       .transition()
       .delay(function (d, i) {
-        return i * 50;
+        return i * 20;
       }) // time between drawing bars
     .duration(400) // time to grow the bar to full height
-    .attr("y", function (d) {
-      return y(d.value);
-    })
-      .attr("height", function (d) {
-        return height - y(d.value);
+    .attr("x", 1)
+      .attr("width", function (d) {
+        return x(d.value);
       })
   },
 

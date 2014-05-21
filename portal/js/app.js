@@ -3,6 +3,9 @@ var App = Ember.Application.create({
   LOG_TRANSITIONS_INTERNAL: true
 });
 
+Ember.Inflector.inflector.irregular('chartdata', 'chartdata');
+
+
 App.ApplicationAdapter = DS.RESTAdapter.extend({
   host: 'https://website-api.withregard.io',
   namespace: 'v1',

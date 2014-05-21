@@ -4,7 +4,7 @@ App.BarChartComponent = Ember.Component.extend({
   margin: {
     top: 20,
     right: 20,
-    bottom: 30,
+    bottom: 200,
     left: 40
   },
 
@@ -25,7 +25,6 @@ App.BarChartComponent = Ember.Component.extend({
   }.property('h'),
 
   draw: function () {
-    var formatPercent = d3.format(".0%");
     var width = this.get('w');
     var height = this.get('h');
     var data = this.get('data');
@@ -33,16 +32,24 @@ App.BarChartComponent = Ember.Component.extend({
     var x = d3.scale.ordinal().rangeRoundBands([0, width], 0.1);
     var y = d3.scale.linear().range([height, 0]);
     var xAxis = d3.svg.axis().scale(x).orient("bottom");
-    var yAxis = d3.svg.axis().scale(y).orient("left").ticks(5).tickFormat(formatPercent);
-
+    var yAxis = d3.svg.axis().scale(y).orient("left");
+    
     x.domain(data.map(function (d) {
       return d.name;
     }));
+    
     y.domain([0, d3.max(data, function (d) {
       return d.value;
     })]);
 
-    svg.select(".axis.x").call(xAxis);
+    svg.select(".axis.x").call(xAxis).selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-0.8em")
+      .attr("dy", -x.rangeBand() / 4)
+      .attr("transform", function (d) {
+        return "rotate(-90)"
+      });
+
     svg.select(".axis.y").call(yAxis);
 
     svg.select(".rects").selectAll("rect")
@@ -56,16 +63,16 @@ App.BarChartComponent = Ember.Component.extend({
       .attr("width", x.rangeBand())
       .attr("height", 0)
       .transition()
-        .delay(function(d, i) { return i * 50; }) // time between drawing bars
-        .duration(400) // time to grow the bar to full height
-      .attr("y", function (d) {
-        return y(d.value);
-      })
+      .delay(function (d, i) {
+        return i * 50;
+      }) // time between drawing bars
+    .duration(400) // time to grow the bar to full height
+    .attr("y", function (d) {
+      return y(d.value);
+    })
       .attr("height", function (d) {
         return height - y(d.value);
       })
-    
-      
   },
 
   didInsertElement: function () {

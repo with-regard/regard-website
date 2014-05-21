@@ -92,7 +92,7 @@
         <h2>{{name}}</h2>
         {{#each chart in charts}}
           {{#each chartdata in chart.chartdata}}
-            {{bar-chart width=400 height=200 data=chartdata.values}}
+            {{bar-chart width=800 height=600 data=chartdata.values}}
           {{/each}}
         {{else}}
           <a href='#' {{action "createChart"}}>Add Chart</a>
@@ -140,7 +140,7 @@
   <script type="text/x-handlebars" id="components/bar-chart">
     <g {{bind-attr transform=transformG}}>
       <g class="x axis" {{bind-attr transform=transformX}}></g>
-      <g class="y axis"><text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor:end;">Frequency</text></g>
+      <g class="y axis" {{bind-attr transform=transformY}}></g>
       <g class="rects"></g>
     </g>
   </script>

@@ -1,7 +1,9 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
     this.resource('project', {path: '/:project_id'}, function() {
-      this.resource('investigation', {path: '/:investigation_id'});
+      this.resource('investigation', {path: '/:investigation_id'}, function() {
+        this.resource('chart', {path: '/:chart_id'});
+      });
     });
   });
 });

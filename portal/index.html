@@ -93,7 +93,7 @@
         {{#each chart in charts}}
           {{chart.query}}
           {{#each chartdata in chart.chartdata}}  
-            {{bar-chart width=800 height=600 data=chartdata.values}}
+            {{bar-chart width=800 height=1200 data=chartdata.values}}
           {{/each}}
         {{else}}
           <a href='#' {{action "createChart"}}>Add Chart</a>

@@ -21,7 +21,7 @@ App.BarChartComponent = Ember.Component.extend({
   }.property(),
 
   transformX: function () {
-    return "translate(0," + this.get('h') + ")";
+    return "translate(0,0)"; // + this.get('h') + ")";
   }.property('h'),
 
   draw: function () {
@@ -31,9 +31,11 @@ App.BarChartComponent = Ember.Component.extend({
       return d3.descending(a.value, b.value);
     });
     var svg = d3.select('#' + this.get('elementId'));
+    
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.ordinal().rangeRoundBands([1, height], 0.1);
-    var xAxis = d3.svg.axis().scale(x).orient("bottom");
+    
+    var xAxis = d3.svg.axis().scale(x).orient("top");
     var yAxis = d3.svg.axis().scale(y).orient("left");
 
     y.domain(data.map(function (d) {

@@ -8,3 +8,15 @@
 .bar {
   fill: $regard-green;
 }
+
+.bar:hover {
+  fill: darken( $regard-green, 10% );
+}
+
+.axis {
+  font-size: 80%;
+}
+
+.axis.y line, .axis.y path {
+  display: none;
+}

@@ -66,7 +66,7 @@ App.BarChartComponent = Ember.Component.extend({
     .attr("x", 1)
       .attr("width", function (d) {
         return x(d.value);
-      })
+      });
   },
 
   didInsertElement: function () {

@@ -14,7 +14,11 @@ App.BarChartComponent = Ember.Component.extend({
   draw: function () {
     var width = this.get('w');
     var data = this.get('data').sort(function (a, b) {
-      return d3.descending(a.value, b.value);
+      if(a.value === b.value) {
+        return d3.ascending(a.name, b.name);
+      } else {
+        return d3.descending(a.value, b.value);  
+      }
     });
     var svg = d3.select('#' + this.get('elementId'));
     

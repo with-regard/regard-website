@@ -95,8 +95,6 @@
           {{#each chartdata in chart.chartdata}}  
             {{bar-chart width=800 data=chartdata.values}}
           {{/each}}
-        {{else}}
-          <a href='#' {{action "createChart"}}>Add Chart</a>
         {{/each}}
       </div>
     </div>  

@@ -27,7 +27,11 @@
           
           <section class="right-large">
             <div class="right">
-              <a href="/logout">{{name}} {{isDeveloper}}</a>
+              {{#if canEdit}}
+                <a href="/logout">{{name}}</a>
+              {{else}}
+                <span>Anonymous user</span>
+              {{/if}}
             </div>
           </section>
         </nav>

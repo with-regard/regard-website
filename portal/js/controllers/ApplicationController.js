@@ -1,4 +1,4 @@
-App.ApplicationController = Ember.ObjectController.extend({
+App.ApplicationController = App.AuthenticationController.extend({
   actions: {
     createProject: function () {
       var project = this.store.createRecord('project');

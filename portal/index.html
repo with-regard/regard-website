@@ -7,6 +7,12 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 </head>
 <body>
+  
+  <script type="text/x-handlebars" data-template-name="user-welcome" >
+    <h1>User welcome template</h1>
+  </script>
+  
+  
   <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
@@ -21,7 +27,11 @@
           
           <section class="right-large">
             <div class="right">
-              <a href="/logout">{{name}}</a>
+              {{#if canEdit}}
+                <a href="/logout">{{name}}</a>
+              {{else}}
+                <span>Anonymous user</span>
+              {{/if}}
             </div>
           </section>
         </nav>
@@ -29,13 +39,19 @@
         <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list">
             <li>
-              <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
+              <label>Projects 
+                {{#if canEdit}}
+                  <span class="label" {{action "createProject"}}>New</span>
+                {{/if}}
+              </label>
             </li>
             {{#each project in projects}}
               <li>
                 {{#link-to 'project' project}}            
                   {{project.name}}
-                  <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                  {{#if canEdit}}
+                    <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                  {{/if}}
                 {{/link-to}}
               </li>
             {{else}}
@@ -57,21 +73,28 @@
     {{#if isEditing}}
       {{input value=bufferedName focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
     {{else}}
-      <span {{action "editProjectName"}}>{{name}}</span>
+      {{#if canEdit}}
+        <span {{action "editProjectName"}}>{{name}}</span>
+      {{else}}
+        {{name}}
+      {{/if}}
     {{/if}}
   </script>
   
   <script type="text/x-handlebars" id="project">
     <ul class="left-side-nav">
-      <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
+      <li class="heading">Investigations {{#if canEdit}}<span class="secondary label" {{action "createInvestigation"}}>New</span>{{/if}}</li>
       {{#each investigation in investigations}}
         <li>
           {{#link-to 'investigation' investigation}}            
             {{investigation.name}}
-            <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
-            <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
-              <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
-            </ul>
+            
+            {{#if canEdit}}
+              <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
+              <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
+                <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
+              </ul>
+            {{/if}}
           {{/link-to}}
         </li>  
       {{else}}
@@ -154,6 +177,7 @@
   <script src="portal/app.js"></script>
   <script src="portal/router.js"></script>
   
+  <script src="portal/controllers/AuthenticationController.js"></script>    
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>

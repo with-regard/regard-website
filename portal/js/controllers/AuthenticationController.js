@@ -4,5 +4,5 @@ App.AuthenticationController = Ember.ObjectController.extend({
   canEdit: function() {
     var user = this.get('controllers.application.content');
     return user.get('isDeveloper');
-  }
+  }.property()
 });

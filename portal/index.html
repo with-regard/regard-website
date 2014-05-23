@@ -41,7 +41,9 @@
               <li>
                 {{#link-to 'project' project}}            
                   {{project.name}}
-                  <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                  {{#if canEdit}}
+                    <span class="right" {{action "deleteProject" project}}>&times;</span> 
+                  {{/if}}
                 {{/link-to}}
               </li>
             {{else}}
@@ -63,13 +65,17 @@
     {{#if isEditing}}
       {{input value=bufferedName focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
     {{else}}
-      <span {{action "editProjectName"}}>{{name}}</span>
+      {{#if canEdit}}
+        <span {{action "editProjectName"}}>{{name}}</span>
+      {{else}}
+        {{name}}
+      {{/if}}
     {{/if}}
   </script>
   
   <script type="text/x-handlebars" id="project">
     <ul class="left-side-nav">
-      <li class="heading">Investigations <span class="secondary label" {{action "createInvestigation"}}>New</span></li>
+      <li class="heading">Investigations {{#if canEdit}}<span class="secondary label" {{action "createInvestigation"}}>New</span>{{/if}}</li>
       {{#each investigation in investigations}}
         <li>
           {{#link-to 'investigation' investigation}}            
@@ -160,6 +166,7 @@
   <script src="portal/app.js"></script>
   <script src="portal/router.js"></script>
   
+  <script src="portal/controllers/AuthenticationController.js"></script>    
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>

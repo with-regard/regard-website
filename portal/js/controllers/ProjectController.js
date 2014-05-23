@@ -1,4 +1,4 @@
-App.ProjectController = Ember.ObjectController.extend({
+App.ProjectController = App.AuthenticationController.extend({
   needs: ['application'],
   isEditing: false,
 

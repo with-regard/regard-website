@@ -17,6 +17,10 @@
   font-size: 80%;
 }
 
-.axis.y line, .axis.y path {
+.axis.value line, .axis.value path, .axis.y line, .axis.y path {
   display: none;
+}
+
+.axis.value text, .axis.x {
+  fill: lighten($black, 10%);
 }

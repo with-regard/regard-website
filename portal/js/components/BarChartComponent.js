@@ -2,13 +2,14 @@ App.BarChartComponent = Ember.Component.extend({
   tagName: 'svg',
   attributeBindings: 'width'.w(),
   barHeight: 20,
+  yAxisLabelsWidth: 240,
 
   w: function () {
-    return this.get('width') - 200 - 20;
+    return this.get('width') - this.get('yAxisLabelsWidth') - 20;
   }.property('width'),
 
   transformG: function () {
-    return "translate(" + 200 + "," + "22" + ")";
+    return "translate(" + this.get('yAxisLabelsWidth') + "," + "22" + ")";
   }.property(),
 
   draw: function () {
@@ -25,6 +26,12 @@ App.BarChartComponent = Ember.Component.extend({
     var xAxis = d3.svg.axis().scale(x).orient("top").tickFormat(d3.format("d")).tickSubdivide(0);
     var yAxis = d3.svg.axis().scale(y).orient("left");
 
+    var roundedValues = function (d, index) {
+      return Math.round(data[index].value);
+    }
+
+    var valueAxis = d3.svg.axis().scale(y).orient("left").tickFormat(roundedValues);
+
     var max = d3.max(data, function (d) {
       return +d.value;
     });
@@ -35,12 +42,12 @@ App.BarChartComponent = Ember.Component.extend({
     }));
 
     svg.select(".axis.x").call(xAxis);
-    svg.select(".axis.y").call(yAxis);
+    svg.select(".axis.y").attr("transform", "translate(-40,0)").call(yAxis);
+    svg.select(".axis.value").call(valueAxis);
 
-    svg.select(".rects").selectAll("rect")
+    svg.select(".chart").selectAll("rect")
       .data(data)
-
-    .enter().append("rect")
+      .enter().append("rect")
       .attr("class", "bar")
       .attr("y", function (d) {
         return y(d.name);

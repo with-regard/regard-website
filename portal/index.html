@@ -80,10 +80,13 @@
         <li>
           {{#link-to 'investigation' investigation}}            
             {{investigation.name}}
-            <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
-            <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
-              <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
-            </ul>
+            
+            {{#if canEdit}}
+              <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
+              <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
+                <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
+              </ul>
+            {{/if}}
           {{/link-to}}
         </li>  
       {{else}}

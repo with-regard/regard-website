@@ -27,7 +27,6 @@ App.ApplicationRoute = Ember.Route.extend({
   },
   afterModel: function(user, transition) {
     if (!user.get('isDeveloper')) {
-      console.log("transitioning");
       this.transitionTo('user-welcome');
     }
   }

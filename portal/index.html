@@ -7,6 +7,12 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 </head>
 <body>
+  
+  <script type="text/x-handlebars" data-template-name="user-welcome" >
+    <h1>User welcome template</h1>
+  </script>
+  
+  
   <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
@@ -21,7 +27,7 @@
           
           <section class="right-large">
             <div class="right">
-              <a href="/logout">{{name}}</a>
+              <a href="/logout">{{name}} {{isDeveloper}}</a>
             </div>
           </section>
         </nav>

@@ -1,11 +1,13 @@
 App.Router.map(function () {
   this.resource('projects', {path: '/'}, function() {
+    this.resource('user-welcome');
     this.resource('project', {path: '/:project_id'}, function() {
       this.resource('investigation', {path: '/:investigation_id'}, function() {
         this.resource('chart', {path: '/:chart_id'});
       });
     });
   });
+
 });
 
 App.Router.reopen({
@@ -22,6 +24,12 @@ App.ApplicationRoute = Ember.Route.extend({
       self.render('user/error');
       throw new Error('failed to get user');
     });
+  },
+  afterModel: function(user, transition) {
+    if (!user.get('isDeveloper')) {
+      console.log("transitioning");
+      this.transitionTo('user-welcome');
+    }
   }
 })
 

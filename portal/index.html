@@ -35,7 +35,11 @@
         <aside class="left-off-canvas-menu">
           <ul class="off-canvas-list">
             <li>
-              <label>Projects <span class="label" {{action "createProject"}}>New</span></label>
+              <label>Projects 
+                {{#if canEdit}}
+                  <span class="label" {{action "createProject"}}>New</span>
+                {{/if}}
+              </label>
             </li>
             {{#each project in projects}}
               <li>

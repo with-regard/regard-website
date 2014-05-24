@@ -104,7 +104,7 @@
   <script type="text/x-handlebars" id="investigation">
     <div class="row full-width">
       <div class="medium-12 columns">
-        <h2>{{name}}</h2>
+        <h2>{{editable value=name editable=canEdit}}</h2>
         {{#each chart in charts}}
           {{chart.query}}
           {{#each chartdata in chart.chartdata}}  

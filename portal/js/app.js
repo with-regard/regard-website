@@ -1,19 +1,17 @@
 var App = Ember.Application.create({
-  //LOG_TRANSITIONS: true,
-  //LOG_TRANSITIONS_INTERNAL: true
+  LOG_TRANSITIONS: true,
+  LOG_TRANSITIONS_INTERNAL: true
 });
 
 Ember.Inflector.inflector.irregular('chartdata', 'chartdata');
 
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: 'http://int-dev.withregard.io:3001',
+  host: 'https://website-api.withregard.io',
   namespace: 'v1',
-  ajax: function (url, method, hash) {
+  ajax: function(url, method, hash) {
     hash = hash || {};
-    hash.xhrFields = {
-      withCredentials: true
-    };
+    hash.xhrFields = {withCredentials: true};
     return this._super(url, method, hash);
   }
 });

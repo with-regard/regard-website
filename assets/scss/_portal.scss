@@ -63,3 +63,11 @@ nav.tab-bar {
 .row.pad {
   padding: 50px 0;
 }
+
+.editable {
+  cursor: text;
+}
+
+.editable:hover, .editable:focus {
+  outline: 1px dotted $black;
+}

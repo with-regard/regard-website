@@ -70,15 +70,7 @@
   </script>
   
   <script type="text/x-handlebars" data-template-name="project-title" >
-    {{#if isEditing}}
-      {{input value=bufferedName focus-out="doneEditing" insert-newline="doneEditing" escape-press="cancelEditing"}}
-    {{else}}
-      {{#if canEdit}}
-        <span {{action "editProjectName"}}>{{name}}</span>
-      {{else}}
-        {{name}}
-      {{/if}}
-    {{/if}}
+    {{editable value=name editable=canEdit}}
   </script>
   
   <script type="text/x-handlebars" id="project">

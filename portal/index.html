@@ -12,6 +12,13 @@
     <h1>User welcome template</h1>
   </script>
   
+  <script type="text/x-handlebars" data-template-name="chart/edit" >
+    <h3>Editing chart</h3>
+    {{input type="text" value=queryName}}
+    {{textarea value=queryDefinition rows="10"}}
+    <button {{action 'create'}}>Create</button>
+  </script>
+  
   
   <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
@@ -105,14 +112,24 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
-        {{#each charts}}
-          {{partial 'chart'}}
+        {{#each chart in charts}}
+          {{#link-to 'chart.edit' chart}}{{id}}{{/link-to}}
+          {{outlet}}
+        {{else}}
+          <button {{action 'createBarChart'}}>Create new bar chart</button>
         {{/each}}
+        
+        
       </div>
     </div>  
   </script>
     
   <script type="text/x-handlebars" id="chart">
+  {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" id="chart/index">
+    <p>This is a chart</p>
   {{query}}
   {{#each chartdata in chartdata}}  
     {{bar-chart width=800 data=chartdata.values}}
@@ -177,6 +194,7 @@
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>
+  <script src="portal/controllers/ChartController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>

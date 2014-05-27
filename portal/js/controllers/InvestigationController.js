@@ -1,3 +1,3 @@
-App.InvestigationController = Ember.ObjectController.extend({
+App.InvestigationController = App.AuthenticationController.extend({
   
 });

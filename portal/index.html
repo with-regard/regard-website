@@ -113,8 +113,11 @@
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
         {{#each chart in charts}}
-          {{#link-to 'chart.edit' chart}}{{id}}{{/link-to}}
-          {{outlet}}
+          <ul>
+          <li>{{#link-to 'chart.edit' chart}}edit {{chart.id}}{{/link-to}}</li>
+          <li>{{#link-to 'chart.index' chart}}view {{chart.id}}{{/link-to}}</li>
+          </ul>
+            {{outlet}}
         {{else}}
           <button {{action 'createBarChart'}}>Create new bar chart</button>
         {{/each}}

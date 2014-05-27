@@ -105,14 +105,18 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
-        {{#each chart in charts}}
-          {{chart.query}}
-          {{#each chartdata in chart.chartdata}}  
-            {{bar-chart width=800 data=chartdata.values}}
-          {{/each}}
+        {{#each charts}}
+          {{partial 'chart'}}
         {{/each}}
       </div>
     </div>  
+  </script>
+    
+  <script type="text/x-handlebars" id="chart">
+  {{query}}
+  {{#each chartdata in chartdata}}  
+    {{bar-chart width=800 data=chartdata.values}}
+  {{/each}}
   </script>
   
   <script type="text/x-handlebars" id="projects/error">

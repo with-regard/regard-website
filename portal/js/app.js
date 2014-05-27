@@ -68,7 +68,7 @@ App.ContentEditableView = Ember.View.extend({
 
       // if the target of the click isn't the editable
       if (!editable.is(e.target)) {
-        e.target.blur();
+        editable.blur();
       }
     });
   },

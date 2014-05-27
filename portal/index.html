@@ -14,9 +14,9 @@
   
   <script type="text/x-handlebars" data-template-name="chart/edit" >
     <h3>Editing chart</h3>
-    {{input type="text" value=queryName}}
-    {{textarea value=queryDefinition rows="10"}}
-    <button {{action 'create'}}>Create</button>
+    {{input type="text" value=queryName placeholder="Query name"}}
+    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
+    <button {{action 'registerQuery'}}>Register query</button>
   </script>
   
   
@@ -194,7 +194,7 @@
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>
-  <script src="portal/controllers/ChartController.js"></script>
+  <script src="portal/controllers/ChartEditController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>

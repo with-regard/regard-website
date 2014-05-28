@@ -21,11 +21,7 @@ App.ApplicationRoute = Ember.Route.extend({
     var self = this;
     
     return this.store.find('user').then(function(user) {
-      if (user) {
-        return user.get('firstObject');
-      } else {
-        return new App.User();
-      }
+      return user.get('firstObject');
     }, function(error){
       console.log();
     });

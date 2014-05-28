@@ -13,8 +13,6 @@ App.ApplicationController = App.AuthenticationController.extend({
     },
     
     deleteProject: function (project) {
-      console.log(project);
-      
       var user = this.get('model');
 
       user.get('projects').then(function (projects) {

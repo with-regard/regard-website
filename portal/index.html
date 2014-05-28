@@ -24,9 +24,11 @@
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
         <nav class="tab-bar">
+          {{#unless isAnonymous}}
           <section class="left-small">
             <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
           </section>
+          {{/unless}}
 
           <section class="middle tab-bar-section">
             <h1 class="title">{{outlet title}}</h1>

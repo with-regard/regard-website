@@ -36,14 +36,18 @@ App.ProjectView = Ember.View.extend({
 
 App.ContentEditableView = Ember.View.extend({
   tagName: 'span',
-  classNames: ['editable'],
+  classNameBindings: ['canEdit'],
   attributeBindings: ['contenteditable'],
   editable: false,
 
-  contenteditable: (function () {
+  contenteditable: function () {
     var editable = this.get('editable');
     return editable ? 'true' : undefined;
-  }).property('editable'),
+  }.property('editable'),
+  
+  canEdit: function() {
+    return this.get('editable') ? 'editable' : '';
+  }.property('canEdit'),
 
   // Observers:
   valueObserver: (function () {
@@ -67,8 +71,8 @@ App.ContentEditableView = Ember.View.extend({
       var editable = $('.editable');
 
       // if the target of the click isn't the editable
-      if (!editable.is(e.target)) {
-        e.target.blur();
+      if (!editable.is(e.target) && editable.is(":focus")) {
+        editable.blur();
       }
     });
   },
@@ -86,6 +90,7 @@ App.ContentEditableView = Ember.View.extend({
       this.set('value', this.get('originalValue'));
       e.target.blur();
     } else {
+      this.set('hasEdited', true);
       this.set('value', this.$().text());
     }
   },
@@ -99,7 +104,7 @@ App.ContentEditableView = Ember.View.extend({
   },
 
   focusOut: function () {
-    if (this.get('value') !== this.get('originalValue')) {
+    if (this.get('hasEdited')) {      
       this.get('model').save();
     }
   },

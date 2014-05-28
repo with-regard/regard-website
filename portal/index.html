@@ -12,14 +12,23 @@
     <h1>User welcome template</h1>
   </script>
   
+  <script type="text/x-handlebars" data-template-name="chart/edit" >
+    <h3>Editing chart</h3>
+    {{input type="text" value=queryName placeholder="Query name"}}
+    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
+    <button {{action 'registerQuery'}}>Register query</button>
+  </script>
+  
   
   <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
         <nav class="tab-bar">
+          {{#unless isAnonymous}}
           <section class="left-small">
             <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
           </section>
+          {{/unless}}
 
           <section class="middle tab-bar-section">
             <h1 class="title">{{outlet title}}</h1>
@@ -28,9 +37,10 @@
           <section class="right-large">
             <div class="right">
               {{#if canEdit}}
-                <a href="/logout">{{name}}</a>
+                {{name}}
+                <a href="/logout">Log out</a>
               {{else}}
-                <span>Anonymous user</span>
+                <a href="/login">Log in</a>
               {{/if}}
             </div>
           </section>
@@ -106,13 +116,30 @@
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
         {{#each chart in charts}}
-          {{chart.query}}
-          {{#each chartdata in chart.chartdata}}  
-            {{bar-chart width=800 data=chartdata.values}}
-          {{/each}}
+          <ul>
+          <li>{{#link-to 'chart.edit' chart}}edit {{chart.id}}{{/link-to}}</li>
+          <li>{{#link-to 'chart.index' chart}}view {{chart.id}}{{/link-to}}</li>
+          </ul>
+            {{outlet}}
+        {{else}}
+          <button {{action 'createBarChart'}}>Create new bar chart</button>
         {{/each}}
+        
+        
       </div>
     </div>  
+  </script>
+    
+  <script type="text/x-handlebars" id="chart">
+  {{outlet}}
+  </script>
+  
+  <script type="text/x-handlebars" id="chart/index">
+    <p>This is a chart</p>
+  {{query}}
+  {{#each chartdata in chartdata}}  
+    {{bar-chart width=800 data=chartdata.values}}
+  {{/each}}
   </script>
   
   <script type="text/x-handlebars" id="projects/error">
@@ -173,6 +200,7 @@
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>
+  <script src="portal/controllers/ChartEditController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>

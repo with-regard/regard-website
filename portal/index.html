@@ -116,24 +116,19 @@
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
         {{#each chart in charts}}
-          <ul>
-          <li>{{#link-to 'chart.edit' chart}}edit {{chart.id}}{{/link-to}}</li>
-          <li>{{#link-to 'chart.index' chart}}view {{chart.id}}{{/link-to}}</li>
-          </ul>
-            {{outlet}}
+          {{#link-to 'chart.edit' chart}}edit{{/link-to}}
+          {{outlet}}
         {{else}}
           <button {{action 'createBarChart'}}>Create new bar chart</button>
         {{/each}}
-        
-        
       </div>
     </div>  
   </script>
     
   <script type="text/x-handlebars" id="chart">
-  {{outlet}}
+    {{outlet}}
   </script>
-  
+    
   <script type="text/x-handlebars" id="chart/index">
     <p>This is a chart</p>
   {{query}}

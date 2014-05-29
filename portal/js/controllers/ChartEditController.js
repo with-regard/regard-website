@@ -10,6 +10,7 @@ App.ChartEditController = App.AuthenticationController.extend({
       chartdata.set('id', chart.id);
       
       chart.get('chartdata').then(function(chartdatas){
+        chartdatas.clear();
         chartdatas.pushObject(chartdata);
         chart.save();
       })

@@ -42,12 +42,6 @@ App.ProjectRoute = Ember.Route.extend({
 });
 
 App.InvestigationRoute = Ember.Route.extend({
-  setupController: function(controller, model){
-    console.log('setup controller hit');
-    model.reload();
-    controller.set('model', model);
-  },
-  
   model: function(params) {
     return this.store.find('investigation', params.investigation_id);    
   },

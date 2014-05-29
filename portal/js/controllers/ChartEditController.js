@@ -13,7 +13,7 @@ App.ChartEditController = App.AuthenticationController.extend({
         chartdatas.clear();
         chartdatas.pushObject(chartdata);
         chart.save();
-      })
+      });
     }
   }
 });

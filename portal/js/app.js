@@ -123,3 +123,7 @@ App.ContentEditableView = Ember.View.extend({
 });
 
 Ember.Handlebars.helper('editable', App.ContentEditableView);
+
+Ember.Handlebars.helper('print-json', function(value, options) {
+  return new Ember.Handlebars.SafeString(JSON.stringify(value));
+});

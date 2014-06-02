@@ -6,9 +6,13 @@ $warm-grey: #E9E5D8;
 $regard-green: #87bc28;
 $darker-green: #73B02D;
 
+
+$sidebar-bg: #43454D;
+$sidebar-selected-bg: #3D3F45;
+$sidebar-highlight: #4A4D56;
 // We use these as default colors throughout
 $primary-color: $regard-green;
-$secondary-color: $black;
+$secondary-color: $sidebar-highlight;
 $alert-color: #f04124;
 $success-color: $darker-green;
 $warning-color: #f08a24;

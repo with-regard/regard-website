@@ -13,9 +13,9 @@ nav.tab-bar {
 .left-side-nav {
   @include side-nav();
   
-  background-color: $light-grey;
+  background-color: $sidebar-bg;
   width: $side-nav-width;
-  border-right: 1px solid darken($light-grey, 10%);
+  border-right: 1px solid $sidebar-selected-bg;
   position: absolute;
   top:0;
   bottom:0;
@@ -26,20 +26,28 @@ nav.tab-bar {
   margin: 0;
 }
 
-.left-side-nav li a:not(.button), .left-side-nav li.heading, .left-side-nav li.muted {
+.left-side-nav li.heading {
+  font-size: 1em;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  color: $white;
+}
+
+.left-side-nav li a:not(.button), , .left-side-nav li.muted {
   padding: 5px 15px;
-  color: $black !important;
+  color: $white !important;
   display: inline-block;
 }
 
 .left-side-nav li a:hover {
-  background-color: darken($light-grey, 5%);
+  
 }
 
 .left-side-nav li a.active {
+  background-color: $sidebar-selected-bg;
   border-left: 5px solid $regard-green;
   padding-left: 10px;
-  color: $regard-green !important;
+  color: $white !important;
 }
 
 .left-side-nav li a.menu-actions {

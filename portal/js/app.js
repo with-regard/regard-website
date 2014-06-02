@@ -7,7 +7,7 @@ Ember.Inflector.inflector.irregular('chartdata', 'chartdata');
 
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: 'http://int-dev.withregard.io:3001',
+  host: 'https://website-api.withregard.io',
   namespace: 'v1',
   ajax: function(url, method, hash) {
     hash = hash || {};
@@ -123,3 +123,7 @@ App.ContentEditableView = Ember.View.extend({
 });
 
 Ember.Handlebars.helper('editable', App.ContentEditableView);
+
+Ember.Handlebars.helper('print-json', function(value, options) {
+  return new Ember.Handlebars.SafeString(JSON.stringify(value));
+});

@@ -1,6 +1,10 @@
 App.Router.map(function () {
-  this.resource('projects', {path: '/'}, function() {
+  
+  this.route('userevents', {path: '/userevents/:userevent_id'});
+  
+  this.resource('projects', {path: '/project'}, function() {
     this.resource('user-welcome');
+    
     this.resource('project', {path: '/:project_id'}, function() {
       this.resource('investigation', {path: '/:investigation_id'}, function() {
         this.route('new');

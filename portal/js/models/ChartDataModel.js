@@ -1,4 +1,4 @@
 App.Chartdata = DS.Model.extend({
-  chart: DS.belongsTo('chart'),
+  chart: DS.belongsTo('investigation'),
   values: DS.attr()
 });

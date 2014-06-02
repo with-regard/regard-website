@@ -107,29 +107,18 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
-        {{#each chart in charts}}
-          {{outlet}}
+        {{#if chartdata}}
+          {{#each chartdata in chartdata}}  
+            {{bar-chart width=800 data=chartdata.values}}
+          {{/each}}
         {{else}}
-          {{input type="text" value=queryName placeholder="Query name"}}
           {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
           <button {{action 'createBarChart'}}>Create chart</button>
-        {{/each}}
+        {{/if}}
       </div>
-    </div>  
+    </div>
   </script>
-    
-  <script type="text/x-handlebars" id="chart">
-    {{outlet}}
-  </script>
-    
-  <script type="text/x-handlebars" id="chart/index">
-    <p>This is a chart</p>
-  {{query}}
-  {{#each chartdata in chartdata}}  
-    {{bar-chart width=800 data=chartdata.values}}
-  {{/each}}
-  </script>
-  
+      
   <script type="text/x-handlebars" id="projects/error">
     <div class="row pad">
       <div class="medium-6 medium-centered columns text-center">
@@ -188,12 +177,10 @@
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
   <script src="portal/controllers/InvestigationController.js"></script>
-  <script src="portal/controllers/ChartEditController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
   <script src="portal/models/UserModel.js"></script>
-  <script src="portal/models/ChartModel.js"></script>
   <script src="portal/models/ChartDataModel.js"></script>
   
   <script src="portal/components/BarChartComponent.js"></script>

@@ -3,9 +3,7 @@ App.Router.map(function () {
     this.resource('user-welcome');
     this.resource('project', {path: '/:project_id'}, function() {
       this.resource('investigation', {path: '/:investigation_id'}, function() {
-        this.resource('chart', {path: '/:chart_id'}, function() {
-          this.route('edit');
-        });
+        this.resource('chart', {path: '/:chart_id'});
       });
     });
   });

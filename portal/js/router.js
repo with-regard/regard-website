@@ -38,3 +38,15 @@ App.ProjectRoute = Ember.Route.extend({
     });
   }
 });
+
+App.InvestigationRoute = Ember.Route.extend({
+  model: function(params) {
+    return this.store.find('investigation', params.investigation_id);    
+  },
+  afterModel: function(investigation) {
+    if(!investigation.get('queryDefinition')) {
+      this.transitionTo('investigation.new')
+    }
+  }
+  
+})

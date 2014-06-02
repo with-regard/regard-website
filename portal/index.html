@@ -107,16 +107,21 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
-        {{#if chartdata}}
-          {{#each chartdata in chartdata}}  
-            {{bar-chart width=800 data=chartdata.values}}
-          {{/each}}
-        {{else}}
-          {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
-          <button {{action 'createBarChart'}}>Create chart</button>
-        {{/if}}
+        
+        {{outlet}}
       </div>
     </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="investigation/index">
+    {{#each chartdata in chartdata}}  
+      {{bar-chart width=800 data=chartdata.values}}
+    {{/each}}
+  </script>
+  
+  <script type="text/x-handlebars" id="investigation/new">
+    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
+    <button {{action 'createBarChart'}}>Create chart</button>
   </script>
       
   <script type="text/x-handlebars" id="projects/error">
@@ -176,7 +181,7 @@
   <script src="portal/controllers/AuthenticationController.js"></script>    
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
-  <script src="portal/controllers/InvestigationController.js"></script>
+  <script src="portal/controllers/InvestigationNewController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>

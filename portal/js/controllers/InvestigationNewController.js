@@ -1,4 +1,4 @@
-App.InvestigationController = App.AuthenticationController.extend({
+App.InvestigationNewController = App.AuthenticationController.extend({
   actions: {
     createBarChart: function () {
       var self = this;
@@ -13,7 +13,9 @@ App.InvestigationController = App.AuthenticationController.extend({
           chartdatas.clear();
           chartdatas.pushObject(chartdata);
           investigation.save().then(function () {
-            chartdata.reload();
+            chartdata.reload().then(function(){
+              self.transitionToRoute('investigation', investigation);
+            });
           });
         });
       });

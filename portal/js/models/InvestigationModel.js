@@ -1,5 +1,7 @@
 App.Investigation = DS.Model.extend({
   name: DS.attr('string', {defaultValue: 'New investigation'}),
-  project: DS.belongsTo('project'),
-  charts: DS.hasMany('chart', {async: true}),
+  chartdata: DS.hasMany('chartdata', {async: true}),
+  queryDefinition: DS.attr('string'),
+  
+  project: DS.belongsTo('project')
 });

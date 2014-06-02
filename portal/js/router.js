@@ -7,9 +7,7 @@ App.Router.map(function () {
     
     this.resource('project', {path: '/:project_id'}, function() {
       this.resource('investigation', {path: '/:investigation_id'}, function() {
-        this.resource('chart', {path: '/:chart_id'}, function() {
-          this.route('edit');
-        });
+        this.route('new');
       });
     });
   });
@@ -50,14 +48,9 @@ App.InvestigationRoute = Ember.Route.extend({
     return this.store.find('investigation', params.investigation_id);    
   },
   afterModel: function(investigation) {
-    var self = this;
-    
-    investigation.get('charts').then(function(charts) {
-      var chart = charts.get('firstObject');
-      
-      if (chart) {
-        self.transitionTo('chart', chart);
-      }
-    })
+    if(!investigation.get('queryDefinition')) {
+      this.transitionTo('investigation.new')
+    }
   }
+  
 })

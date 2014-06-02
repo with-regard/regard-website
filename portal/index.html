@@ -11,15 +11,7 @@
   <script type="text/x-handlebars" data-template-name="user-welcome" >
     <h1>User welcome template</h1>
   </script>
-  
-  <script type="text/x-handlebars" data-template-name="chart/edit" >
-    <h3>Editing chart</h3>
-    {{input type="text" value=queryName placeholder="Query name"}}
-    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
-    <button {{action 'registerQuery'}}>Register query</button>
-  </script>
-  
-  
+    
   <script type="text/x-handlebars" data-template-name="application">
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
@@ -115,28 +107,23 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h2>{{editable value=name editable=canEdit}}</h2>
-        {{#each chart in charts}}
-          {{#link-to 'chart.edit' chart}}edit{{/link-to}}
-          {{outlet}}
-        {{else}}
-          <button {{action 'createBarChart'}}>Create new bar chart</button>
-        {{/each}}
+        
+        {{outlet}}
       </div>
-    </div>  
-  </script>
-    
-  <script type="text/x-handlebars" id="chart">
-    {{outlet}}
-  </script>
-    
-  <script type="text/x-handlebars" id="chart/index">
-    <p>This is a chart</p>
-  {{query}}
-  {{#each chartdata in chartdata}}  
-    {{bar-chart width=800 data=chartdata.values}}
-  {{/each}}
+    </div>
   </script>
   
+  <script type="text/x-handlebars" id="investigation/index">
+    {{#each chartdata in chartdata}}  
+      {{bar-chart width=800 data=chartdata.values}}
+    {{/each}}
+  </script>
+  
+  <script type="text/x-handlebars" id="investigation/new">
+    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
+    <button {{action 'createBarChart'}}>Create chart</button>
+  </script>
+      
   <script type="text/x-handlebars" id="projects/error">
     <div class="row pad">
       <div class="medium-6 medium-centered columns text-center">
@@ -202,13 +189,11 @@
   <script src="portal/controllers/AuthenticationController.js"></script>    
   <script src="portal/controllers/ApplicationController.js"></script>
   <script src="portal/controllers/ProjectController.js"></script>
-  <script src="portal/controllers/InvestigationController.js"></script>
-  <script src="portal/controllers/ChartEditController.js"></script>
+  <script src="portal/controllers/InvestigationNewController.js"></script>
   
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
   <script src="portal/models/UserModel.js"></script>
-  <script src="portal/models/ChartModel.js"></script>
   <script src="portal/models/ChartDataModel.js"></script>
   <script src="portal/models/UserEventModel.js"></script>
   

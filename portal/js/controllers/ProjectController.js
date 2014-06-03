@@ -9,10 +9,14 @@ App.ProjectController = App.AuthenticationController.extend({
 
   actions: {
     createInvestigation: function () {
+      var self = this;
+      
       var investigation = this.store.createRecord('investigation');
       var project = this.get('model');
       
       investigation.save().then(function(){
+        self.transitionToRoute('investigation', investigation);
+        
         project.get('investigations').then(function(investigations){
           investigations.pushObject(investigation);
           project.save();

@@ -9,6 +9,8 @@ App.InvestigationNewController = App.AuthenticationController.extend({
       
       var investigation = this.get('model');
       investigation.set('queryDefinition', this.get('queryDefinition'))
+      investigation.set('xAxisLabel', this.get('xAxisLabel'))
+      investigation.set('yAxisLabel', this.get('yAxisLabel'))
       
       investigation.save().then(function () {
         self.transitionToRoute('investigation', investigation);
@@ -39,8 +41,8 @@ App.InvestigationNewController = App.AuthenticationController.extend({
        }
     }
     
-    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('x-axis-label'), this.get('y-axis-label'), this.get('selectedEventType'))
-  }.property('selectedVerb', 'x-axis-label', 'y-axis-label', 'selectedEventType'),
+    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('xAxisLabel'), this.get('yAxisLabel'), this.get('selectedEventType'))
+  }.property('selectedVerb', 'xAxisLabel', 'yAxisLabel', 'selectedEventType'),
   
   verbs: ['Sum', 'Mean', 'Min', 'Max', 'CountUniqueValues'],
   

@@ -24,6 +24,7 @@ nav.tab-bar {
 
 .left-side-nav li {
   margin: 0;
+  position: relative;
 }
 
 .left-side-nav li.heading {
@@ -33,10 +34,10 @@ nav.tab-bar {
   color: $white;
 }
 
-.left-side-nav li a:not(.button), , .left-side-nav li.muted {
+.left-side-nav li a:not(.button), .left-side-nav li.muted {
   padding: 5px 15px;
   color: $white !important;
-  display: inline-block;
+  width: 100%;
 }
 
 .left-side-nav li a:hover {
@@ -51,7 +52,10 @@ nav.tab-bar {
 }
 
 .left-side-nav li a.menu-actions {
-  display: inline-block;
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .muted {

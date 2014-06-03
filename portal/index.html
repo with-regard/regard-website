@@ -114,9 +114,7 @@
   </script>
   
   <script type="text/x-handlebars" id="investigation/index">
-    {{#each chartdata in chartdata}}  
-      {{bar-chart width=800 data=chartdata.values}}
-    {{/each}}
+    {{bar-chart width=800 data=chartdata}}
   </script>
   
   <script type="text/x-handlebars" id="investigation/new">
@@ -138,6 +136,15 @@
       <div class="medium-6 medium-centered columns text-center">
         <h3>Investigation not found</h3>
         <p>This investigation may be private. If someone gave you this link, they may need to invite you to the project.</p>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/x-handlebars" id="project/error">
+    <div class="row pad">
+      <div class="medium-6 medium-centered columns text-center">
+        <h3>Project not found</h3>
+        <p>This project may be private. If someone gave you this link, they may need to invite you to the project.</p>
       </div>
     </div>
   </script>
@@ -195,7 +202,6 @@
   <script src="portal/models/ProjectModel.js"></script>
   <script src="portal/models/InvestigationModel.js"></script>
   <script src="portal/models/UserModel.js"></script>
-  <script src="portal/models/ChartDataModel.js"></script>
   <script src="portal/models/UserEventModel.js"></script>
   
   <script src="portal/components/BarChartComponent.js"></script>

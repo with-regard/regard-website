@@ -23,11 +23,6 @@ App.ApplicationRoute = Ember.Route.extend({
     return this.store.find('user').then(function(user) {
       return user.get('firstObject');
     });
-  },
-  actions: {
-    error: function(error, transition) {
-      console.log(error.message)
-    }
   }
 });
 
@@ -45,12 +40,22 @@ App.ProjectRoute = Ember.Route.extend({
 
 App.InvestigationRoute = Ember.Route.extend({
   model: function(params) {
-    return this.store.find('investigation', params.investigation_id);    
+    return this.store.find('investigation', params.investigation_id)
   },
-  afterModel: function(investigation) {
+  afterModel: function(investigation, transition) {
     if(!investigation.get('queryDefinition')) {
       this.transitionTo('investigation.new')
-    }
+    } else {
+      var promise = new Ember.RSVP.Promise(function(resolve, reject) {
+        var adapter = new App.ApplicationAdapter;
+        $.getJSON(adapter.buildURL('chartdata', investigation.id), resolve).fail(reject)
+      });
+      
+      promise.then(function(data){
+        investigation.set('chartdata', data)
+      });
+      
+      return promise;
+    } 
   }
-  
 })

@@ -11,7 +11,7 @@ App.BarChartComponent = Ember.Component.extend({
   transformG: function () {
     return "translate(" + this.get('yAxisLabelsWidth') + "," + "22" + ")";
   }.property(),
-
+  
   draw: function () {
     var width = this.get('w');
     var data = this.get('data').sort(function (a, b) {
@@ -68,5 +68,10 @@ App.BarChartComponent = Ember.Component.extend({
 
   didInsertElement: function () {
     this.draw();
-  }
+  },
+  
+  redraw: function() {
+    console.log('redrawing...');
+    this.draw()
+  }.observes('data')
 });

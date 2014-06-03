@@ -118,8 +118,16 @@
   </script>
   
   <script type="text/x-handlebars" id="investigation/new">
-    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
-    <button {{action 'createBarChart'}}>Create chart</button>
+    <div class="medium-4 columns">
+      
+      {{view Ember.Select content=eventTypes value=selectedEventType}}
+      {{view Ember.Select content=verbs value=selectedVerb}}
+      {{input value=x-axis-label placeholder="x axis"}}
+      {{input value=y-axis-label placeholder="y axis"}}
+      <button {{action 'createBarChart'}}>Create chart</button>
+      
+      <pre>{{queryDefinition}}</pre>
+    </div>
   </script>
       
   <script type="text/x-handlebars" id="projects/error">

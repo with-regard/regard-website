@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>Regard developer portal</title>
   <link rel="stylesheet" href="assets/css/main.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 </head>
 <body>
   
@@ -82,13 +81,6 @@
         <li>
           {{#link-to 'investigation' investigation}}            
             {{investigation.name}}
-            
-            {{#if canEdit}}
-              <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
-              <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
-                <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
-              </ul>
-            {{/if}}
           {{/link-to}}
         </li>  
       {{else}}
@@ -106,8 +98,8 @@
   <script type="text/x-handlebars" id="investigation">
     <div class="row full-width">
       <div class="medium-12 columns">
-        <h2>{{editable value=name editable=canEdit}}</h2>
-        
+        <h3>{{editable value=name editable=canEdit}}</h3>
+        <a {{action 'deleteInvestigation' this}}>delete investigation</a>
         {{outlet}}
       </div>
     </div>
@@ -236,6 +228,5 @@
   
   <script src="/assets/js/foundation.min.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js"></script>
 </body>
 </html>

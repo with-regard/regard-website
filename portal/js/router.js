@@ -30,12 +30,24 @@ App.ProjectRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('project', params.project_id);    
   },
+  afterModel: function(project, transition) {
+    console.log(transition.target);
+    
+    
+    if(transition.target == 'project') {
+      var self = this;
+    
+      project.get('investigations').then(function(investigations){
+        self.transitionTo('investigation', investigations.get('firstObject'));
+      })
+    }
+  },
   renderTemplate: function() {
     this.render('project');
     this.render('project-title', {
       outlet: 'title'
     });
-  }
+  },
 });
 
 App.InvestigationRoute = Ember.Route.extend({

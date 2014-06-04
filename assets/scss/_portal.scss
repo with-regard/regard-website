@@ -1,4 +1,4 @@
-$side-nav-width: 200px;
+$side-nav-width: 250px;
 
 .main-section {
   min-height: 1000px;
@@ -24,34 +24,39 @@ nav.tab-bar {
 
 .left-side-nav li {
   margin: 0;
+  position: relative;
 }
 
 .left-side-nav li.heading {
   font-size: 1em;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-bottom: 10px;
   color: $white;
 }
 
-.left-side-nav li a:not(.button), , .left-side-nav li.muted {
-  padding: 5px 15px;
+.left-side-nav li a:not(.button), .left-side-nav li.muted {
+  padding: 5px 20px;
+  width: 100%;
   color: $white !important;
-  display: inline-block;
 }
 
 .left-side-nav li a:hover {
-  
+  background-color: $sidebar-selected-bg;
+  color: $white !important;
 }
 
 .left-side-nav li a.active {
   background-color: $sidebar-selected-bg;
   border-left: 5px solid $regard-green;
-  padding-left: 10px;
-  color: $white !important;
+  padding-left: 15px;
+  color: $regard-green !important;
 }
 
 .left-side-nav li a.menu-actions {
-  display: inline-block;
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .muted {
@@ -78,4 +83,14 @@ nav.tab-bar {
 
 .editable:hover, .editable:focus {
   outline: 1px dotted $black;
+}
+
+.label {
+  border: 1px solid darken($white, 50%);
+  border-radius: 3px;
+}
+
+li.heading .label {
+  position: absolute;
+  right: 12px;
 }

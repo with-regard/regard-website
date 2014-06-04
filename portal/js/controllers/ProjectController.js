@@ -9,10 +9,14 @@ App.ProjectController = App.AuthenticationController.extend({
 
   actions: {
     createInvestigation: function () {
+      var self = this;
+      
       var investigation = this.store.createRecord('investigation');
       var project = this.get('model');
       
       investigation.save().then(function(){
+        self.transitionToRoute('investigation', investigation);
+        
         project.get('investigations').then(function(investigations){
           investigations.pushObject(investigation);
           project.save();
@@ -20,16 +24,7 @@ App.ProjectController = App.AuthenticationController.extend({
       });
     },
     
-    deleteInvestigation: function (investigation) {
-      var project = this.get('model');
-
-      project.get('investigations').then(function (investigations) {
-        investigations.removeObject(investigation);
-        project.save();
-      });
-
-      investigation.destroyRecord();
-    },
+    
     
     editProjectName: function () {
       this.set('isEditing', true);

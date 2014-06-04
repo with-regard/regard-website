@@ -14,7 +14,7 @@
 }
 
 .axis {
-  font-size: 80%;
+  font-size: 0.8em;
 }
 
 .axis.value line, .axis.value path, .axis.y line, .axis.y path {
@@ -23,4 +23,16 @@
 
 .axis.value text, .axis.x {
   fill: lighten($black, 10%);
+}
+
+.axis-label {
+  font-size: 1.2em;
+}
+
+.y.axis .axis-label {
+  text-anchor: end;
+}
+
+.x.axis .axis-label {
+  text-anchor: start;
 }

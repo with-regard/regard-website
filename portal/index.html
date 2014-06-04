@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <title>Regard developer portal</title>
   <link rel="stylesheet" href="assets/css/main.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
 </head>
 <body>
   
@@ -82,13 +81,6 @@
         <li>
           {{#link-to 'investigation' investigation}}            
             {{investigation.name}}
-            
-            {{#if canEdit}}
-              <a href="#" class="menu-actions" data-dropdown="investigation-actions">&hellip;</a>
-              <ul id="investigation-actions" class="f-dropdown" data-dropdown-content>
-                <li><a href="#" {{action "deleteInvestigation" investigation}}>Delete investigation</a></li>
-              </ul>
-            {{/if}}
           {{/link-to}}
         </li>  
       {{else}}
@@ -106,20 +98,28 @@
   <script type="text/x-handlebars" id="investigation">
     <div class="row full-width">
       <div class="medium-12 columns">
-        <h2>{{editable value=name editable=canEdit}}</h2>
-        
+        <h3>{{editable value=name editable=canEdit}}</h3>
+        <a {{action 'deleteInvestigation' this}}>delete investigation</a>
         {{outlet}}
       </div>
     </div>
   </script>
   
   <script type="text/x-handlebars" id="investigation/index">
-    {{bar-chart width=800 data=chartdata}}
+    {{bar-chart width=800 data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
   </script>
   
   <script type="text/x-handlebars" id="investigation/new">
-    {{textarea value=queryDefinition rows="10" placeholder="Query definition"}}
-    <button {{action 'createBarChart'}}>Create chart</button>
+    <div class="medium-4 columns">
+      
+      {{view Ember.Select content=eventTypes value=selectedEventType}}
+      {{view Ember.Select content=verbs value=selectedVerb}}
+      {{input value=xAxisLabel placeholder="x axis"}}
+      {{input value=yAxisLabel placeholder="y axis"}}
+      <button {{action 'createBarChart'}}>Create chart</button>
+      
+      <pre>{{queryDefinition}}</pre>
+    </div>
   </script>
       
   <script type="text/x-handlebars" id="projects/error">
@@ -159,7 +159,8 @@
   
   <script type="text/x-handlebars" id="userevents">
     <div class="row pad">
-      <div class="medium-12 medium-centered columns text-center">
+      <div class="medium-12 medium-centered columns">
+        <h3>Here's all the data we have on you.</h3>
         {{print-json events}}
       </div>
     </div>
@@ -193,8 +194,12 @@
   
   <script type="text/x-handlebars" id="components/bar-chart">
     <g {{bind-attr transform=transformG}}>
-      <g class="x axis" {{bind-attr transform=transformX}}></g>
-      <g class="y axis" {{bind-attr transform=transformY}}></g>
+      <g class="x axis" {{bind-attr transform=transformX}}>
+        <text class="axis-label" transform="translate(0,-30)">{{xAxisLabel}}</text>
+      </g>
+      <g class="y axis" {{bind-attr transform=transformY}}>
+        <text class="axis-label">{{yAxisLabel}}</text>
+      </g>
       <g class="value axis"></g>
       <g class="chart"></g>
     </g>
@@ -224,6 +229,5 @@
   
   <script src="/assets/js/foundation.min.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.0/fastclick.min.js"></script>
 </body>
 </html>

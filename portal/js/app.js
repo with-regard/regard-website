@@ -1,17 +1,14 @@
 var App = Ember.Application.create({
-  LOG_STACKTRACE_ON_DEPRECATION: true,
-  LOG_BINDINGS: true,
-  LOG_TRANSITIONS: true,
-  LOG_TRANSITIONS_INTERNAL: true,
-  LOG_VIEW_LOOKUPS: true,
-  LOG_ACTIVE_GENERATION: true
+  //LOG_STACKTRACE_ON_DEPRECATION: true,
+  //LOG_BINDINGS: true,
+  //LOG_TRANSITIONS: true,
+  //LOG_TRANSITIONS_INTERNAL: true,
+  //LOG_VIEW_LOOKUPS: true,
+  //LOG_ACTIVE_GENERATION: true
 });
 
-Ember.Inflector.inflector.irregular('chartdata', 'chartdata');
-
-
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: 'https://website-api.withregard.io',
+  host: 'http://int-dev.withregard.io:3001',
   namespace: 'v1',
   ajax: function(url, method, hash) {
     hash = hash || {};
@@ -129,5 +126,6 @@ App.ContentEditableView = Ember.View.extend({
 Ember.Handlebars.helper('editable', App.ContentEditableView);
 
 Ember.Handlebars.helper('print-json', function(value, options) {
-  return new Ember.Handlebars.SafeString(JSON.stringify(value));
+  var result = '<pre>' + JSON.stringify(value, undefined, 4) + '</pre>';
+  return new Handlebars.SafeString(result);
 });

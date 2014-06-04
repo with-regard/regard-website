@@ -1,25 +1,26 @@
 App.BarChartComponent = Ember.Component.extend({
   tagName: 'svg',
-  attributeBindings: 'width'.w(),
   barHeight: 20,
   yAxisLabelsWidth: 240,
 
-  w: function () {
+  chartWidth: function () {
     return this.get('width') - this.get('yAxisLabelsWidth') - 20;
   }.property('width'),
 
   transformG: function () {
-    return "translate(" + this.get('yAxisLabelsWidth') + "," + "22" + ")";
+    return "translate(" + this.get('yAxisLabelsWidth') + "," + "52" + ")";
   }.property(),
   
   draw: function () {
-    var width = this.get('w');
+    var width = this.get('chartWidth');
     var data = this.get('data').sort(function (a, b) {
       return d3.descending(+a.value, +b.value);
     });
 
     var svg = d3.select('#' + this.get('elementId'));
-
+    svg.attr('width', '100%');
+    svg.attr('viewbox', '0 0 ' + width + ' ' + data.length * this.get('barHeight'));
+    
     var x = d3.scale.linear().range([0, width]);
     var y = d3.scale.ordinal().rangeRoundBands([0, data.length * this.get('barHeight')], 0.1);
 
@@ -68,10 +69,5 @@ App.BarChartComponent = Ember.Component.extend({
 
   didInsertElement: function () {
     this.draw();
-  },
-  
-  redraw: function() {
-    console.log('redrawing...');
-    this.draw()
-  }.observes('data')
+  }
 });

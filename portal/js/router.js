@@ -40,7 +40,7 @@ App.ProjectRoute = Ember.Route.extend({
     
       project.get('investigations').then(function(investigations){
         self.transitionTo('investigation', investigations.get('firstObject'));
-      })
+      });
     }
   },
   renderTemplate: function() {

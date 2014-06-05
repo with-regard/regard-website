@@ -159,11 +159,12 @@
   
   <script type="text/x-handlebars" id="userevents">
     <div class="row pad">
-      <div class="medium-6 columns">
-        <h3>Here's all the data we have on you.</h3>
+      <div class="medium-8 columns">
+        <h3>Brackets is collecting your data with Regard.</h3>
+        <p>Here's all the data we have on you. You can see how Brackets are using the data {{#link-to 'projects'}} here {{/link-to}}</p>
       </div>
-      <div class="medium-2 columns">
-        <button {{action 'deleteData'}}>Forget me</button>
+      <div class="medium-3 columns">
+        <a class="button alert" {{action 'deleteData'}}>Delete my data</a>
       </div>
       <div class="medium-12 medium-centered columns">
         {{print-json events}}

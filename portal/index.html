@@ -99,7 +99,9 @@
     <div class="row full-width">
       <div class="medium-12 columns">
         <h3>{{editable value=name editable=canEdit}}</h3>
+        {{#if canEdit}}
         <a {{action 'deleteInvestigation' this}}>delete investigation</a>
+        {{/if}}
         {{outlet}}
       </div>
     </div>

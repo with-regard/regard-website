@@ -46,6 +46,8 @@ App.InvestigationNewController = App.AuthenticationController.extend({
   
   verbs: ['Sum', 'Mean', 'Min', 'Max', 'CountUniqueValues'],
   
+  eventTypes: [],
+  
   loadEventTypes: function() {
     // See: https://github.com/with-regard/regard-query/wiki/Common-queries
     var self = this;

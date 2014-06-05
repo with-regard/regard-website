@@ -8,7 +8,7 @@ var App = Ember.Application.create({
 });
 
 App.ApplicationAdapter = DS.RESTAdapter.extend({
-  host: 'http://int-dev.withregard.io:3001',
+  host: 'https://website-api.withregard.io',
   namespace: 'v1',
   ajax: function(url, method, hash) {
     hash = hash || {};

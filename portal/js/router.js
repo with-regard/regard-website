@@ -31,10 +31,7 @@ App.ProjectRoute = Ember.Route.extend({
     return this.store.find('project', params.project_id);    
   },
   afterModel: function(project, transition) {
-    console.log(transition.target);
-    
-    
-    if(transition.target == 'project') {
+    if(transition.targetName == 'project.index') {
       var self = this;
     
       project.get('investigations').then(function(investigations){

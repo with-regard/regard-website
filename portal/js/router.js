@@ -22,6 +22,11 @@ App.ApplicationRoute = Ember.Route.extend({
     return this.store.find('user').then(function(user) {
       return user.get('firstObject');
     });
+  },
+  afterModel: function(user) {
+    if(user.get('isUser')) {
+      this.transitionTo('userevents', user.get('userId'));
+    }
   }
 });
 

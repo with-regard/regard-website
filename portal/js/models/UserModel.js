@@ -4,4 +4,5 @@ App.User = DS.Model.extend({
   isDeveloper: DS.attr('boolean'),
   isUser: DS.attr('boolean'),
   isAnonymous: DS.attr('boolean'),
+  userId: DS.attr('string')
 });

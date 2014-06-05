@@ -11,7 +11,6 @@ App.Router.map(function () {
       });
     });
   });
-
 });
 
 App.Router.reopen({

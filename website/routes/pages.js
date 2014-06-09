@@ -8,8 +8,8 @@ exports.index = function (req, res) {
   }
 };
 
-exports.contact = function (req, res) {
-  res.render('contact', {
-    menu: 'contact'
+exports.about = function (req, res) {
+  res.render('about', {
+    menu: 'about'
   });
 };

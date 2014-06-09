@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.get('/', pages.index);
-app.get('/contact', pages.contact);
+app.get('/about', pages.about);
 app.post('/signup', signup.sendToMailchimp);
 app.get('/signup', function (req, res) {
   res.redirect('/');

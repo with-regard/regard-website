@@ -6,14 +6,26 @@ $sparklineHeight: 84px;
   background: url('../img/tiny_grid.png') repeat bottom left;
   border-top: 1px solid rgba($black, 0.2);
   border-bottom: 1px solid rgba($black, 0.2);
-}
+  
+  h1 {
+    font-size: 72px;  
+    letter-spacing: -2px;
+    
+    .transparent:hover {
+      background: url('../img/tiny_grid.png') repeat 3px;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+  
+  h2 {
+    font-size: 28px; 
+    color: rgba($black, 0.8);
+  }
 
-.hero h4 {
-  color: rgba($black, 0.8);
-}
-
-.hero form {
-  margin-top: 50px;
+  form {
+    margin-top: 50px;
+  }
 }
 
 .form-explanation {
@@ -95,3 +107,4 @@ $sparklineHeight: 84px;
   top: 50%;
   transform: translateY(-50%);
 }
+

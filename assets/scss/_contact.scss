@@ -1,14 +1,4 @@
-.profile
-{
-    padding: 50px 0;
-      
-    h5
-    {
-        color: $primary-color;
-    }
-}
-
-.git-icon
+.git-icon 
 {
   margin-right: 0px;
   padding-right: 0px;
@@ -16,7 +6,16 @@
 
 .twit-icon
 {
+  margin-right: 0px;
+  padding-right: 0px;
   margin-left: -5px;
   padding-left: 0px;
   margin-top: 4px;
+}
+
+.mail-icon
+{
+  margin-left: -14px;
+  padding-left: 0px;
+  margin-top: -16px;
 }

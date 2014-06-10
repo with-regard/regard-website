@@ -1,5 +1,27 @@
+$footer-height: 3rem;
+
+html, body {
+  height: 100%;
+}
+
+main {
+  min-height: 100%;
+  margin-bottom: -$footer-height;
+}
+
+main:after {
+  content: "";
+  display: block;
+}
+
+footer, main:after {
+  /* .push must be the same height as footer */
+  height: $footer-height; 
+}
+
 footer {
   background-color: $black;
   color: rgba($white, 0.5);
-  padding: 20px 0;
+  padding: 1rem 0;
+  text-align: center;
 }

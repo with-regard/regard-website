@@ -8,7 +8,7 @@ $sparklineHeight: 84px;
   border-bottom: 1px solid rgba($black, 0.2);
   
   h1 {
-    font-size: 72px;  
+    font-size: 5rem;
     letter-spacing: -2px;
     
     .transparent:hover {
@@ -18,8 +18,13 @@ $sparklineHeight: 84px;
     }
   }
   
+  @media #{$small-only} {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  
   h2 {
-    font-size: 28px; 
     color: rgba($black, 0.8);
   }
 
@@ -45,7 +50,6 @@ $sparklineHeight: 84px;
 
 .big-green {
   background-color: $darker-green;
-  padding-bottom: 80px;
 }
 
 .big-green h1, .big-green h2, .big-green h3, .big-green h4, .big-green h5, .big-green p {
@@ -65,6 +69,11 @@ $sparklineHeight: 84px;
 }
 
 .big-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.big-padding-top {
   padding-top: 80px;
 }
 

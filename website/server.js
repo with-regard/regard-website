@@ -17,5 +17,7 @@ app.get('/signup', function (req, res) {
 });
 
 app.use(express.static(__dirname + '/dist'));
+app.use(pages.notFound);
+
 
 module.exports = app;

@@ -2,7 +2,7 @@
 
 # ----------------------
 # KUDU Deployment Script
-# Version: 0.1.5
+# Version: 0.1.10
 # ----------------------
 
 # Helpers
@@ -57,10 +57,10 @@ if [[ ! -n "$KUDU_SYNC_CMD" ]]; then
 
   if [[ ! -n "$KUDU_SERVICE" ]]; then
     # In case we are running locally this is the correct location of kuduSync
-    KUDU_SYNC_CMD="kuduSync"
+    KUDU_SYNC_CMD=kuduSync
   else
     # In case we are running on kudu service this is the correct location of kuduSync
-    KUDU_SYNC_CMD="$APPDATA/npm/node_modules/kuduSync/bin/kuduSync"
+    KUDU_SYNC_CMD=$APPDATA/npm/node_modules/kuduSync/bin/kuduSync
   fi
 fi
 
@@ -130,7 +130,7 @@ fi
 # Post deployment stub
 if [[ -n "$POST_DEPLOYMENT_ACTION" ]]; then
   POST_DEPLOYMENT_ACTION=${POST_DEPLOYMENT_ACTION//\"}
-  cd "${POST_DEPLOYMENT_ACTION%\\*}"
+  cd "${POST_DEPLOYMENT_ACTION_DIR%\\*}"
   "$POST_DEPLOYMENT_ACTION"
   exitWithMessageOnError "post deployment action failed"
 fi

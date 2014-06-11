@@ -1,21 +1,62 @@
-.git-icon 
-{
-  margin-right: 0px;
-  padding-right: 0px;
+.pic {
+  display:block;
+  width: 220px;
+  height: 220px;
 }
 
-.twit-icon
-{
-  margin-right: 0px;
-  padding-right: 0px;
-  margin-left: -5px;
-  padding-left: 0px;
-  margin-top: 4px;
+.neil {
+  background-image: url("/assets/img/profiles/neil.jpg");
 }
 
-.mail-icon
-{
-  margin-left: -14px;
-  padding-left: 0px;
-  margin-top: -16px;
+.neil:hover {
+  background-image: url("/assets/img/profiles/neil_crazy.jpg");
+}
+
+.kevin {
+  background-image: url("/assets/img/profiles/kevin.jpg");
+}
+
+.kevin:hover {
+  background-image: url("/assets/img/profiles/kevin_crazy.jpg");
+}
+
+.david {
+  background-image: url("/assets/img/profiles/david.jpg");
+}
+
+.david:hover {
+  background-image: url("/assets/img/profiles/david_crazy.jpg");
+}
+
+.andrew {
+  background-image: url("/assets/img/profiles/andrew.jpg");
+}
+
+.andrew:hover {
+  background-image: url("/assets/img/profiles/andrew_crazy.jpg");
+}
+
+.icons {
+  width: 100%;
+}
+
+.icon {
+  display:inline-block;
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.twit-icon {
+  background-image: url("/assets/img/bird_blue_32.png");
+}
+
+.github-icon {
+  background-image: url("/assets/img/Github-Mark-32px.png");
+}
+
+.email-icon {
+  background-image: url("/assets/img/mail.png");
 }

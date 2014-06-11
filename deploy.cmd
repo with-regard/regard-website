@@ -106,12 +106,12 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 )
 
 node --version
-%NODE_EXE% --version
+"%NODE_EXE%" --version
 
 :: 4. Run gulp
 IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
    pushd "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd %NODE_EXE%  ".\node_modules\gulp\bin\gulp.js" build
+  call :ExecuteCmd "%NODE_EXE%"  .\node_modules\gulp\bin\gulp.js build
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )

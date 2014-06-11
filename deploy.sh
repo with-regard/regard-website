@@ -125,14 +125,17 @@ if [ -e "$DEPLOYMENT_TARGET/gulpfile.js" ]; then
   cd - > /dev/null
 fi
 
+echo "Gulp Passed"
+
 ##################################################################################################################################
 
 # Post deployment stub
-if [[ -n "$POST_DEPLOYMENT_ACTION" ]]; then
-  POST_DEPLOYMENT_ACTION=${POST_DEPLOYMENT_ACTION//\"}
-  cd "${POST_DEPLOYMENT_ACTION_DIR%\\*}"
-  "$POST_DEPLOYMENT_ACTION"
-  exitWithMessageOnError "post deployment action failed"
-fi
+#if [[ -n "$POST_DEPLOYMENT_ACTION" ]]; then
+#
+#  POST_DEPLOYMENT_ACTION=${POST_DEPLOYMENT_ACTION//\"}
+#  cd "${POST_DEPLOYMENT_ACTION_DIR%\\*}"
+#  "$POST_DEPLOYMENT_ACTION"
+#  exitWithMessageOnError "post deployment action failed"
+#fi
 
 echo "Finished successfully."

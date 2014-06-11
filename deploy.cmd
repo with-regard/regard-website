@@ -105,6 +105,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
+node --version
+
 :: 4. Run gulp
 IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
    pushd "%DEPLOYMENT_TARGET%"

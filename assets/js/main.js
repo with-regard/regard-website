@@ -19,7 +19,7 @@ require(['regard'], function (regard) {
     if (sessionId) {
         regard.setSessionId(sessionId);
     } else {
-        sessionStorage.setItem(regard.getSessionId());
+        sessionStorage.setItem('sessionId', regard.getSessionId());
     }
 
     regard.setRegardURL('https://api.withregard.io/track/v1/WithRegard/Regard/event');

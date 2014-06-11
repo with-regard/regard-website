@@ -106,7 +106,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 )
 
 :: 4. Run gulp
-IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.json" (
+IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
    pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd .\node_modules\.bin\gulp.cmd build
   IF !ERRORLEVEL! NEQ 0 goto error

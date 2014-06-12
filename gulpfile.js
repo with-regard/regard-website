@@ -20,7 +20,6 @@ var svg = svgSprites.svg;
 var png = svgSprites.png;
 
 var outputDir = 'website/dist';
-var watching = false;
 
 // Paths
 var paths = {
@@ -29,27 +28,9 @@ var paths = {
   icons: ['assets/icons/*.svg']
 };
 
-var devnull = function () {
-  var stream = new WritableStream({
-    objectMode: true
-  });
-  stream._write = function (chunk, encoding, callback) {
-    callback();
-  };
-  return stream;
-};
-
-var liveReloadifWatching = function () {
-  if (watching) {
-    return livereload();
-  } else {
-    return devnull();
-  }
-};
-
 // Compile Sass
 gulp.task('sass', function () {
-  gulp.src(['assets/scss/*.scss', '!assets/scss/_variables.scss'])
+  return gulp.src(['assets/scss/*.scss', '!assets/scss/_variables.scss'])
     .pipe(plumber())
     .pipe(sass({
       sourceComments: 'map'
@@ -60,35 +41,32 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(outputDir + '/assets/css'))
     .pipe(minifycss())
     .pipe(gulp.dest(outputDir + '/assets/css'))
-    .pipe(liveReloadifWatching());
 });
 
 // Uglify JS
 gulp.task('uglify', function () {
-  gulp.src(paths.scripts)
+  return gulp.src(paths.scripts)
     .pipe(plumber())
     .pipe(uglify({
       outSourceMap: false
     }))
     .pipe(gulp.dest(outputDir + '/assets/js'))
-    .pipe(liveReloadifWatching());
 });
 
 // Copy images.
 gulp.task('copyimages', function () {
-  gulp.src(paths.images)
+  return gulp.src(paths.images)
     .pipe(gulp.dest(outputDir + '/assets/img'));
 });
 
 gulp.task('sprites', function () {
-  gulp.src(paths.icons)
+  return gulp.src(paths.icons)
     .pipe(svg({
       className: ".%f-icon",
       cssFile: "_sprites.scss"        
     }))
     .pipe(gulp.dest('assets/scss'))
     .pipe(png())
-    
 });
 
 // Watch files
@@ -97,11 +75,9 @@ gulp.task('watch', function (event) {
   gulp.watch(paths.images, ['copyimages']);
   gulp.watch(paths.icons, ['sprites']);
   gulp.watch(paths.scripts, ['uglify']);
-
-  watching = true;
 });
 
-gulp.task('server', function () {
+gulp.task('server', ['watch'], function (cb) {
   var productConfig = require('./development-config.json');
   
   if (productConfig['port'] === -1) {
@@ -118,10 +94,10 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('azure-exit', ['build'], function (event) {
+gulp.task('azure-exit', ['build'], function (cb) {
 	process.exit(0);
+	cb(err);
 });
-
 
 gulp.task('build', ['sprites', 'sass', 'uglify', 'copyimages']);
 gulp.task('azure', ['azure-exit']);

@@ -118,7 +118,8 @@ $sparklineHeight: 84px;
 }
 
 #user-events{
-  height: 600px;
-  width: 800px; 
+  height: 500px;
+  width: 100%; 
+  overflow-y: hidden;
 }
 

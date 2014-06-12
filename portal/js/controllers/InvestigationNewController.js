@@ -41,21 +41,8 @@ App.InvestigationNewController = App.AuthenticationController.extend({
        }
     }
     
-    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('xAxisLabel'), this.get('yAxisLabel'), this.get('selectedEventType'))
-  }.property('selectedVerb', 'xAxisLabel', 'yAxisLabel', 'selectedEventType'),
+    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('xAxisLabel'), this.get('yAxisLabel'), this.get('eventType'))
+  }.property('selectedVerb', 'xAxisLabel', 'yAxisLabel', 'eventType'),
   
   verbs: ['Sum', 'Mean', 'Min', 'Max', 'CountUniqueValues'],
-  
-  eventTypes: [],
-  
-  loadEventTypes: function() {
-    // See: https://github.com/with-regard/regard-query/wiki/Common-queries
-    var self = this;
-    var adapter = new App.ApplicationAdapter;
-    $.getJSON(adapter.buildURL('chartdata', 'event-types'), function(data){
-      var events = data.mapBy('event-type')
-      self.set('eventTypes', events);
-      self.set('selectedEventType', events.get('firstObject'));
-    })
-  },
 });

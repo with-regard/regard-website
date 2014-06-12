@@ -124,5 +124,5 @@ gulp.task('azure-exit', ['build'], function (event) {
 
 
 gulp.task('build', ['sprites', 'sass', 'uglify', 'copyimages']);
-gulp.task('azure', ['build', 'azure-exit']);
+gulp.task('azure', ['azure-exit']);
 gulp.task('default', ['build', 'watch', 'server']);

@@ -22,7 +22,7 @@ require(['regard'], function (regard) {
         sessionStorage.setItem('sessionId', regard.getSessionId());
     }
 
-    regard.setRegardURL('https://api.withregard.io/track/v1/WithRegard/Regard/event');
+    regard.setRegardURL('https://api.withregard.io/track/v1/regard/website/event');
 
     regard.trackEvent('page.visited', {
         'page.url': document.URL

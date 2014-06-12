@@ -114,6 +114,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
   call :ExecuteCmd "%NODE_EXE%"  .\node_modules\gulp\bin\gulp.js azure
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
+  echo Finished Build
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

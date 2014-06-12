@@ -1,8 +1,4 @@
 App.InvestigationNewController = App.AuthenticationController.extend({
-  init: function() {
-    this.loadEventTypes();
-  },
-  
   actions: {
     createBarChart: function () {
       var self = this;

@@ -29,7 +29,7 @@ var paths = {
 };
 
 // Compile Sass
-gulp.task('sass', function () {
+gulp.task('sass', ['sprites'], function () {
   return gulp.src(['assets/scss/*.scss', '!assets/scss/_variables.scss'])
     .pipe(plumber())
     .pipe(sass({

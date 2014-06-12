@@ -10,18 +10,18 @@ require(['regard'], function (regard) {
     var userId = localStorage.getItem('userId');
     var sessionId = sessionStorage.getItem('sessionId');
 
-    if (userId) {
-        regard.setUserId(userId);
-    } else {
-        localStorage.setItem('userId', regard.getUserId());
+    if (!userId) {
+        userId = regard.getUserId();
+        localStorage.setItem('userId', userId);
+    } 
+    
+    if (!sessionId) {
+        sessionId = regard.getSessionId();
+        sessionStorage.setItem('sessionId', sessionId);
     }
 
-    if (sessionId) {
-        regard.setSessionId(sessionId);
-    } else {
-        sessionStorage.setItem('sessionId', regard.getSessionId());
-    }
-
+    regard.setSessionId(sessionId);
+    regard.setUserId(userId);
     regard.setRegardURL('https://api.withregard.io/track/v1/regard/website/event');
 
     regard.trackEvent('page.visited', {
@@ -29,4 +29,9 @@ require(['regard'], function (regard) {
     }).then(function (e) {
         console.log(e)  
     });
+  
+    var userEventsLink = 'https://withregard.io/portal#/userevents/' + userId;
+  
+    $('#userLink').append('<a href=\"'+userEventsLink + '\">My data</a>');
+    $('#user-events').attr('src', userEventsLink);
 });

@@ -56,8 +56,8 @@ App.InvestigationRoute = Ember.Route.extend({
     return this.store.find('investigation', params.investigation_id)
   },
   afterModel: function(investigation, transition) {
-    if(!investigation.get('queryDefinition')) {
-      this.transitionTo('investigation.new')
+    if(!investigation.get('queryDefinition') || transition.targetName == 'investigation.new') {
+      this.transitionTo('investigation.new');
     } else {
       var promise = new Ember.RSVP.Promise(function(resolve, reject) {
         var adapter = new App.ApplicationAdapter;

@@ -25,8 +25,8 @@ require(['regard'], function (regard) {
     regard.setRegardURL('https://api.withregard.io/track/v1/regard/website/event');
 
     regard.trackEvent('page.visited', {
-        'page.url': document.URL
+        'page.path': location.pathname
     }).then(function (e) {
-        console.log(e)
+        console.log(e)  
     });
 });

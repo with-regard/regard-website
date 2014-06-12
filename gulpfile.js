@@ -99,6 +99,6 @@ gulp.task('azure-exit', ['build'], function (cb) {
 	cb(err);
 });
 
-gulp.task('build', ['sprites', 'sass', 'uglify', 'copyimages']);
+gulp.task('build', ['sass', 'uglify', 'copyimages']);
 gulp.task('azure', ['azure-exit']);
-gulp.task('default', ['build', 'watch', 'server']);
+gulp.task('default', ['sprites', 'build', 'watch', 'server']); //there is a race condition here so it will probably fail the first time

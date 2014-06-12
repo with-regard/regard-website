@@ -1,0 +1,73 @@
+
+.anonymous-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -0px 0;
+}
+
+.book-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -68px 0;
+}
+
+.conversation-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -136px 0;
+}
+
+.graph-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -204px 0;
+}
+
+.performance-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -272px 0;
+}
+
+.stethoscope-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -340px 0;
+}
+
+.support-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -408px 0;
+}
+
+.users-icon {
+	width: 68px;
+	height: 68px;
+	background-position: -476px 0;
+}
+
+.no-svg .anonymous-icon,
+.no-svg .book-icon,
+.no-svg .conversation-icon,
+.no-svg .graph-icon,
+.no-svg .performance-icon,
+.no-svg .stethoscope-icon,
+.no-svg .support-icon,
+.no-svg .users-icon {
+	display: inline-block;
+	background-image: url("../sprites/png-sprite.png");
+	background-size: 544px 68px;
+}
+
+.anonymous-icon,
+.book-icon,
+.conversation-icon,
+.graph-icon,
+.performance-icon,
+.stethoscope-icon,
+.support-icon,
+.users-icon {
+	display: inline-block;
+	background-image: url("../sprites/svg-sprite.svg");
+}

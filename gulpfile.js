@@ -118,7 +118,7 @@ gulp.task('server', function () {
     });
 });
 
-gulp.task('azure-exit', function (event) {
+gulp.task('azure-exit', ['build'], function (event) {
 	process.exit(0);
 });
 

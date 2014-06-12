@@ -118,5 +118,11 @@ gulp.task('server', function () {
     });
 });
 
+gulp.task('azure-exit', function (event) {
+	process.exit(0);
+});
+
+
 gulp.task('build', ['sprites', 'sass', 'uglify', 'copyimages']);
+gulp.task('azure', ['build', 'azure-exit']);
 gulp.task('default', ['build', 'watch', 'server']);

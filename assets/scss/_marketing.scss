@@ -117,8 +117,8 @@ $sparklineHeight: 84px;
   transform: translateY(-50%);
 }
 
-a#userevents {
-  color: $regard-green;
+.usereventslink {
+  color: $regard-green !important;
 }
 
 .hero-arrow {

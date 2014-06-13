@@ -30,7 +30,7 @@ require(['regard'], function (regard) {
     console.log(e)
   });
 
-  var userEventsLink = 'https://withregard.io/portal#/userevents/' + userId;
+  var userEventsLink = 'portal#/userevents/' + userId;
   $('#userLink').append('<a href=\"' + userEventsLink + '\" target="_blank">My data</a>');
   $('#user-events').attr('src', userEventsLink);
 });

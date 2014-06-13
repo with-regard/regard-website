@@ -24,8 +24,6 @@ App.ProjectController = App.AuthenticationController.extend({
       });
     },
     
-    
-    
     editProjectName: function () {
       this.set('isEditing', true);
     },

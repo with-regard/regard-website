@@ -71,4 +71,4 @@ App.InvestigationRoute = Ember.Route.extend({
       return promise;
     } 
   }
-})
+});

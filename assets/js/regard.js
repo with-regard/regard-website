@@ -30,7 +30,7 @@ require(['regard'], function (regard) {
     console.log(e)
   });
 
-  var userEventsLink = 'portal#/userevents/' + userId;
+  var userEventsLink = 'userdata/Regard/Website/' + userId;
   $('#userLink').append('<a href=\"' + userEventsLink + '\" target="_blank">My data</a>');
   $('#user-events').attr('src', userEventsLink);
 });

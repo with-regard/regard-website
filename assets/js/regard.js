@@ -30,5 +30,5 @@ require(['regard'], function (regard) {
     console.log(e)
   });
 
-  $('#userevents').attr('href',  'portal#/userevents/' + userId);
+  $('.usereventslink').attr('href',  'portal#/userevents/' + userId);
 });

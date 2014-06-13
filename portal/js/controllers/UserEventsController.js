@@ -7,7 +7,7 @@ App.UsereventsController = App.AuthenticationController.extend({
       var id = this.get('id');
       var url = adapter.buildURL('userevents', [id, 'delete-data'].join('/'));
       
-      $.getJSON(url).complete(function () {
+      $.post(url).complete(function () {
         self.get('model').reload();
       });
     }

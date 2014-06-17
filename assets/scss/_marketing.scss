@@ -87,7 +87,7 @@ $sparklineHeight: 84px;
 
 @media #{$small-only} {
   .big-padding {
-    padding: 50px 0 0 0;
+    padding: 50px 0 50px 0;
   }
 }
 
@@ -116,4 +116,28 @@ $sparklineHeight: 84px;
   top: 50%;
   transform: translateY(-50%);
 }
+
+.usereventslink {
+  color: $regard-green !important;
+}
+
+.hero-arrow {
+  position: absolute;
+  top: -170px;
+  transform: scale(0.6);
+  right: 220px;
+  animation: fadein 2s;
+}
+
+@media #{$small-only} {
+   .hero-arrow {
+     display: none;
+   }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 

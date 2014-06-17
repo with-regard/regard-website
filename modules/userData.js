@@ -8,7 +8,7 @@ function createUser(userId) {
   var user = new User({
     userId: userId,
     isUser: true,
-    projects: ["538ca8326f34f7a0075ddbbe"]
+    projects: ["53997a47b12b52200c7e3b88"]
   });
 
   return new Promise(function (fulfill, reject){

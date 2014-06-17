@@ -77,7 +77,7 @@ gulp.task('watch', function (event) {
   gulp.watch(paths.scripts, ['uglify']);
 });
 
-gulp.task('server', ['watch'], function (cb) {
+gulp.task('server', ['build'], function (cb) {
   var productConfig = require('./development-config.json');
   
   if (productConfig['port'] === -1) {
@@ -101,4 +101,4 @@ gulp.task('azure-exit', ['build'], function (cb) {
 
 gulp.task('build', ['sass', 'uglify', 'copyimages']);
 gulp.task('azure', ['azure-exit']);
-gulp.task('default', ['sprites', 'build', 'watch', 'server']); //there is a race condition here so it will probably fail the first time
+gulp.task('default', ['sprites', 'server', 'watch']); //there is a race condition here so it will probably fail the first time

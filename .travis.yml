@@ -1,8 +1,0 @@
-language: node_js
-node_js:
-- '0.10'
-before_install: npm install -g gulp
-install: npm install
-before_script: gulp build
-GH_TOKEN:
-  secure: WOvOinpQhcZkftJBgaqNF1ivmbsBl7aUdCM0bRQtZOrWbI1xdmcXPAUs5FMbvREDxLALTnKIuQPtcRrB+hYmmMvXnhIP472KVxoVjzsJDkex3k6v7tvoGiylWJNLL/PG46ZZrb4WuGZNRWUoV5P6Jg61FOhKrcL9B1YPO6E20LA=

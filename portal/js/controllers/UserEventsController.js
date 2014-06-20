@@ -1,14 +1,16 @@
 App.UsereventsController = App.AuthenticationController.extend({
   actions: {
     deleteData: function () {
-      var self = this;
+      var model = this.get('model');
+      var organization = this.get('organization');
+      var product = this.get('product');
+      var id = this.get('id');
       
       var adapter = new App.ApplicationAdapter;
-      var id = this.get('id');
-      var url = adapter.buildURL('userevents', [id, 'delete-data'].join('/'));
+      var url = adapter.buildURL('userevents', [organization, product, id, 'delete-data'].join('/')); // this should be in the adapter
       
       $.post(url).complete(function () {
-        self.get('model').reload();
+        //model.reload(); // isn't going to work
       });
     }
   }

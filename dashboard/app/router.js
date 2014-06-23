@@ -18,8 +18,8 @@ Router.map(function() {
   });
 });
 
-Router.reopen({
-  rootURL: '/dashboard/'
-});
+// Router.reopen({
+//   rootURL: '/dashboard/'
+// });
 
 export default Router;

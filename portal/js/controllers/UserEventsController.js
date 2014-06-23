@@ -10,7 +10,8 @@ App.UsereventsController = App.AuthenticationController.extend({
       var url = adapter.buildURL('userevents', [organization, product, id, 'delete-data'].join('/')); // this should be in the adapter
       
       $.post(url).complete(function () {
-        //model.reload(); // isn't going to work
+        // hack
+        model.set('events' []);
       });
     }
   }

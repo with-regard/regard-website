@@ -48,5 +48,6 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   ]
 });
 
+app.import('vendor/foundation/js/foundation.js');
 
 module.exports = app.toTree();

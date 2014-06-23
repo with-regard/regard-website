@@ -1,7 +1,4 @@
 var express = require('express');
-var User = require('./userSchema.js');
-var Promise = require('promise');
-
 var router = express.Router();
 
 router.get('/userdata/:organization/:product/:user', function (req, res, next) {

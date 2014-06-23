@@ -1,5 +1,4 @@
-import Ember from 'ember';
-import AuthenticationController from '../authentication.js';
+import AuthenticationController from '../authentication';
 
 export default AuthenticationController.extend({
   actions: {
@@ -7,9 +6,9 @@ export default AuthenticationController.extend({
       var self = this;
 
       var investigation = this.get('model');
-      investigation.set('queryDefinition', this.get('queryDefinition'))
-      investigation.set('xAxisLabel', this.get('xAxisLabel'))
-      investigation.set('yAxisLabel', this.get('yAxisLabel'))
+      investigation.set('queryDefinition', this.get('queryDefinition'));
+      investigation.set('xAxisLabel', this.get('xAxisLabel'));
+      investigation.set('yAxisLabel', this.get('yAxisLabel'));
 
       investigation.save().then(function () {
         self.transitionToRoute('investigation', investigation);
@@ -38,9 +37,9 @@ export default AuthenticationController.extend({
              }
           }
        }
-    }
+    };
 
-    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('xAxisLabel'), this.get('yAxisLabel'), this.get('eventType'))
+    return JSON.stringify(barChartQuery, undefined, 4).fmt(this.get('selectedVerb'), this.get('xAxisLabel'), this.get('yAxisLabel'), this.get('eventType'));
   }.property('selectedVerb', 'xAxisLabel', 'yAxisLabel', 'eventType'),
 
   verbs: ['Sum', 'Mean', 'Min', 'Max', 'CountUniqueValues'],

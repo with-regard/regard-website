@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ApplicationAdapter from '../adapters/application';
 
 export default Ember.Route.extend({
   model: function(params) {
@@ -10,7 +11,7 @@ export default Ember.Route.extend({
       this.transitionTo('investigation.new');
     } else {
       var promise = new Ember.RSVP.Promise(function(resolve, reject) {
-        var adapter = new App.ApplicationAdapter();
+        var adapter = new ApplicationAdapter();
         $.getJSON(adapter.buildURL('chartdata', investigation.id), resolve).fail(reject);
       });
 

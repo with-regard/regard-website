@@ -1,5 +1,4 @@
-import Ember from 'ember';
-import AuthenticationController from './authentication.js';
+import AuthenticationController from './authentication';
 
 export default AuthenticationController.extend({
   needs: ['project'],
@@ -14,7 +13,7 @@ export default AuthenticationController.extend({
         investigations.removeObject(investigation);
         project.save();
         investigation.destroyRecord();
-        self.transitionToRoute('investigation', investigations.get('firstObject'))
+        self.transitionToRoute('investigation', investigations.get('firstObject'));
       });
     },
   }

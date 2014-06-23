@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import AuthenticationController from './authentication';
+import ApplicationAdapter from '../adapters/application';
 
 export default AuthenticationController.extend({
   actions: {
@@ -8,7 +9,7 @@ export default AuthenticationController.extend({
       var product = this.get('product');
       var id = this.get('id');
 
-      var adapter = new App.ApplicationAdapter();
+      var adapter = new ApplicationAdapter();
       var url = adapter.buildURL('userevents', [organization, product, id, 'delete-data'].join('/')); // this should be in the adapter
 
       $.post(url).complete(function () {

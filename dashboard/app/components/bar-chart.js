@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import d3 from 'd3';
 
 export default Ember.Component.extend({
   tagName: 'svg',
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
 
     var roundedValues = function (d, index) {
       return Math.round(data[index].value);
-    }
+    };
 
     var valueAxis = d3.svg.axis().scale(y).orient("left").tickFormat(roundedValues);
 

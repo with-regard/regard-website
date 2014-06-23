@@ -52,7 +52,7 @@ export default Ember.View.extend({
 
   keyUp: function (e) {
     // handle escape
-    if (e.keyCode == 27) {
+    if (e.keyCode === 27) {
       this.set('value', this.get('originalValue'));
       e.target.blur();
     } else {

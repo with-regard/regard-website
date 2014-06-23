@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import AuthenticationController from './authentication.js';
 
 export default Ember.ObjectController.extend({
   needs: ['application'],

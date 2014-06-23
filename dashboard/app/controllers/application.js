@@ -1,5 +1,4 @@
-import Ember from 'ember';
-import AuthenticationController from './authentication.js';
+import AuthenticationController from './authentication';
 
 export default AuthenticationController.extend({
   actions: {

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import d3 from 'd3';
+// d3 doesn't support amd modules so will be a global
 
 export default Ember.Component.extend({
   tagName: 'svg',

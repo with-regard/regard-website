@@ -11,7 +11,7 @@ App.UsereventsController = App.AuthenticationController.extend({
       
       $.post(url).complete(function () {
         // hack
-        model.set('events' []);
+        model.set('events', []);
       });
     }
   }

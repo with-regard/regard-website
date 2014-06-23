@@ -20,10 +20,6 @@ Router.map(function() {
 
 Router.reopen({
   rootURL: '/dashboard'
-  this.route('Application');
-  this.route('Project');
-  this.route('Investigation');
-  this.route('UserEvents');
 });
 
 export default Router;

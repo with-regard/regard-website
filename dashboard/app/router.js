@@ -19,7 +19,7 @@ Router.map(function() {
 });
 
 Router.reopen({
-  rootURL: '/dashboard'
+  rootURL: '/dashboard/'
 });
 
 export default Router;

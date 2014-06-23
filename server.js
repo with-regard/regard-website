@@ -20,7 +20,13 @@ app.use(bodyParser);
 
 app.use(auth(regardUserStore));
 app.use(userData);
-app.use(dashboard);
+
+app.use('/dashboard', express.static(__dirname + '/dist'));
+
+app.get('/dashboard/*', function (req, res, next) {
+  res.sendfile('index.html', { root: __dirname + '/dist' });
+});
+
 app.use(website);
 
 if (app.get('env') === 'development') {

@@ -105,14 +105,11 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   popd
 )
 
-node --version
-"%NODE_EXE%" --version
-
 :: 4. Install bower packages
 IF EXIST "%DEPLOYMENT_TARGET%\bower.json" (
   pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd !NPM_CMD! install bower
-  call :ExecuteCmd "%NODE_EXE%"  .\node_modules\.bin\bower install
+  call :ExecuteCmd "%NODE_EXE%" .\node_modules\bin\bower install
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )

@@ -116,7 +116,8 @@ IF EXIST "%DEPLOYMENT_TARGET%\bower.json" (
 
 :: 5. Run ember
 IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
-   pushd "%DEPLOYMENT_TARGET%"
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd !NPM_CMD! install ember-cli
   call :ExecuteCmd "%NODE_EXE%" .\node_modules\ember-cli\bin\ember build --environment production
   IF !ERRORLEVEL! NEQ 0 goto error
   popd

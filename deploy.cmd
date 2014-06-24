@@ -63,7 +63,7 @@ IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
     SET /p NODE_EXE=<"%DEPLOYMENT_TEMP%\__nodeVersion.tmp"
     IF !ERRORLEVEL! NEQ 0 goto error
   )
-  
+
   IF EXIST "%DEPLOYMENT_TEMP%\__npmVersion.tmp" (
     SET /p NPM_JS_PATH=<"%DEPLOYMENT_TEMP%\__npmVersion.tmp"
     IF !ERRORLEVEL! NEQ 0 goto error
@@ -100,7 +100,7 @@ call :SelectNodeVersion
 :: 3. Install npm packages
 IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd !NPM_CMD! install --production
+  call :ExecuteCmd !NPM_CMD! install --development
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
@@ -108,10 +108,19 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 node --version
 "%NODE_EXE%" --version
 
-:: 4. Run gulp
+:: 4. Install bower packages
+IF EXIST "%DEPLOYMENT_TARGET%\bower.json" (
+  pushd "%DEPLOYMENT_TARGET%"
+  call :ExecuteCmd !NPM_CMD! install bower
+  call :ExecuteCmd "%NODE_EXE%"  .\node_modules\.bin\bower install
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
+
+:: 5. Run ember
 IF EXIST "%DEPLOYMENT_TARGET%\gulpfile.js" (
    pushd "%DEPLOYMENT_TARGET%"
-  call :ExecuteCmd "%NODE_EXE%"  .\node_modules\gulp\bin\gulp.js azure
+  call :ExecuteCmd "%NODE_EXE%" .\node_modules\ember-cli\bin\ember build --environment production
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
   echo Finished Build

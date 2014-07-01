@@ -16,11 +16,11 @@ export default Ember.View.extend({
   }.property('canEdit'),
 
   // Observers:
-  valueObserver: (function () {
+  valueObserver: function () {
     if (this.get('value')) {
       this.setContent();
     }
-  }).observes('value'),
+  }.observes('value'),
 
   // Events:
   didInsertElement: function () {

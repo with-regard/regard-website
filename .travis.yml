@@ -10,6 +10,8 @@ env:
   global:
     secure: LGGMwEEgoh3BpmigoQGG3tuxIrKWPD83DToQktT5yrleiDvE0MbxBZ3ph14mZsq20/B7lgUtZLQ8EASSriRxuRv2HRbV8PD3vCx3J6YpLMe5dKcljElQsT6SO+aWUbpyDaaKZI/tgwGbY6HAoakJzwk0HOVSKXdmjL+SzRfZCpg=
 after_success:
+  - git config user.name "Travis-CI"
+  - git config user.email "travis@withregard.io"
   - git add .
   - git commit -m $TRAVIS_BUILD_ID
   - git remote add deploy $AZURE_REPO_URL

@@ -18,10 +18,11 @@ after_success:
   - rm -rf build_out/node_modules
   - git clone $AZURE_REPO_URL
   - cp -r build_out/* regard-dashboard/
+  - rm -rf regard-dashboard/*
   - cd regard-dashboard
   - git config user.name "Travis-CI"
-  - git config user.email "travis@withregard.io"j
-  - git add .
+  - git config user.email "travis@withregard.io"
+  - git add -A
   - git add -f dist
   - git commit -m $TRAVIS_BUILD_ID
   - git push --force origin master

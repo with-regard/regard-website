@@ -19,3 +19,5 @@ assets/scss/sprites/**
 development-config.json
 
 assets/scss/preview-svg-sprite.html
+
+vendor/**

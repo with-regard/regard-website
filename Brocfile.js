@@ -24,28 +24,24 @@ app.import({
   development: 'vendor/ember-data/ember-data.js',
   production:  'vendor/ember-data/ember-data.prod.js'
 }, {
-  'ember-data': [
-    'default'
-  ]
+  exports: {
+    'ember-data': ['default']
+  }
 });
 
 app.import({
   development: 'vendor/d3/d3.js',
   production:  'vendor/d3/d3.min.js'
 }, {
-  'd3': [
-    'default'
-  ]
+  exports: {
+    'd3': ['default']
+  }
 });
 
 app.import('vendor/ic-ajax/dist/named-amd/main.js', {
-  'ic-ajax': [
-    'default',
-    'defineFixture',
-    'lookupFixture',
-    'raw',
-    'request',
-  ]
+  exports: {
+    'ic-ajax': ['default', 'defineFixture', 'lookupFixture', 'raw', 'request']
+  }
 });
 
 app.import('vendor/foundation/js/foundation.js');

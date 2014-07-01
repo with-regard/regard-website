@@ -12,7 +12,9 @@ env:
 after_success:
   - git config user.name "Travis-CI"
   - git config user.email "travis@withregard.io"
-  - git add -f dist
+  - git clone $AZURE_REPO_URL
+  - cp -r dist/* regard-dashboard/
+  - cd regard-dashboard
+  - git add .
   - git commit -m $TRAVIS_BUILD_ID
-  - git remote add deploy $AZURE_REPO_URL
-  - git push --force deploy master
+  - git push --f origin master

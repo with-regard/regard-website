@@ -13,8 +13,9 @@ after_success:
   - shopt -s extglob
   - mkdir build_out
   - mv !(build_out) build_out/
+  - rm -rf build_out/.git
   - git clone $AZURE_REPO_URL
-  - cp -r build_out/ regard-dashboard/
+  - cp -r build_out/* regard-dashboard/
   - cd regard-dashboard
   - git config user.name "Travis-CI"
   - git config user.email "travis@withregard.io"j

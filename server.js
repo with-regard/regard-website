@@ -9,7 +9,6 @@ var errorHandler = require('errorhandler');
 var regardUserStore = require('./modules/regard-user-store.js');
 var auth = require('regard-authentication');
 var userData = require('./modules/userData.js');
-var dashboard = require('./dashboard/server.js');
 var website = require('./website/server.js');
 
 var app = express();

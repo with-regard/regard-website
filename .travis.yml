@@ -10,11 +10,14 @@ env:
   global:
     secure: LGGMwEEgoh3BpmigoQGG3tuxIrKWPD83DToQktT5yrleiDvE0MbxBZ3ph14mZsq20/B7lgUtZLQ8EASSriRxuRv2HRbV8PD3vCx3J6YpLMe5dKcljElQsT6SO+aWUbpyDaaKZI/tgwGbY6HAoakJzwk0HOVSKXdmjL+SzRfZCpg=
 after_success:
+  - shopt -s extglob
+  - mkdir build_out
+  - mv !(build_out) build_out/
   - git clone $AZURE_REPO_URL
-  - cp -r dist/* regard-dashboard/
+  - cp -r build_out/ regard-dashboard/
   - cd regard-dashboard
   - git config user.name "Travis-CI"
-  - git config user.email "travis@withregard.io"
+  - git config user.email "travis@withregard.io"j
   - git add .
   - git commit -m $TRAVIS_BUILD_ID
   - git push --force origin master

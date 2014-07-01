@@ -4,10 +4,10 @@
     "maxerr"        : 100,    // Maximum error before stopping.
 
     // Predefined globals whom JSHint will ignore.
-    "browser"       : false,   // Standard browser globals e.g. `window`, `document`.
+    "browser"       : true,   // Standard browser globals e.g. `window`, `document`.
     "node"          : true,
-    "jquery"        : false,
-    "predef"        : [], // Custom globals.
+    "jquery"        : true,
+    "predef"        : ["DashboardENV"], // Custom globals.
 
     // Development.
     "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.
@@ -32,7 +32,7 @@
     "expr"          : false,  // Tolerate `ExpressionStatement` as Programs.
     "forin"         : false,  // Tolerate `for in` loops without `hasOwnPrototype`.
     "immed"         : true,   // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
-    "latedef"       : true,   // Prohipit variable use before definition.
+    "latedef"       : true,   // Prohibit variable use before definition.
     "loopfunc"      : false,  // Allow functions to be defined within loops.
     "noarg"         : true,   // Prohibit use of `arguments.caller` and `arguments.callee`.
     "regexp"        : true,   // Prohibit `.` and `[^...]` in regular expressions.

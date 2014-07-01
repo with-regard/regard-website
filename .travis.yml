@@ -15,4 +15,4 @@ after_success:
   - git add .
   - git commit -m $TRAVIS_BUILD_ID
   - git remote add deploy $AZURE_REPO_URL
-  - git push deploy --quiet > /dev/null 2>&1
+  - git push deploy

@@ -17,4 +17,4 @@ after_success:
   - cd regard-dashboard
   - git add .
   - git commit -m $TRAVIS_BUILD_ID
-  - git push --f origin master
+  - git push --force origin master

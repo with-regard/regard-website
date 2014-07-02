@@ -50,4 +50,8 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 
 app.import('vendor/foundation/js/foundation.js');
 
+if (process.env.EMBER_ENV === 'development') {
+	require('lodash').extend(process.env, require('./config/development-config.json'));
+}
+
 module.exports = app.toTree();

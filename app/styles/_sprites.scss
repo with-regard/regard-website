@@ -56,7 +56,7 @@
 .no-svg .support-icon,
 .no-svg .users-icon {
 	display: inline-block;
-	background-image: url("../sprites/png-sprite.png");
+	background-image: url("/assets/sprites/png-sprite.png");
 	background-size: 544px 68px;
 }
 
@@ -69,5 +69,5 @@
 .support-icon,
 .users-icon {
 	display: inline-block;
-	background-image: url("../sprites/svg-sprite.svg");
+	background-image: url("/assets/sprites/svg-sprite.svg");
 }

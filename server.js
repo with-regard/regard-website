@@ -20,22 +20,19 @@ app.use(bodyParser);
 app.use(auth(regardUserStore));
 app.use(userData);
 
-app.use('/dashboard', express.static(__dirname + '/dist'));
-
 app.get('/dashboard', function (req, res, next) {
   res.sendfile('index.html', { root: __dirname + '/dist' });
 });
 
 app.use(website);
 
-if (app.get('env') === 'development') {
-  app.use(errorHandler({
-    dumpExceptions: true,
-    showStack: true
-  }));
-} else {
-  app.use(errorHandler());
-}
+app.use(express.static(__dirname + '/dist'));
+//app.use(pages.notFound);
+
+app.use(errorHandler({
+  dumpExceptions: true,
+  showStack: true
+}));
 
 app.listen(process.env.port);
-console.log("Express server started on " + process.env.port);
+console.log("Regard website started on " + process.env.port);

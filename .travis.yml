@@ -1,14 +1,23 @@
 language: node_js
 node_js:
 - '0.10'
-install: npm install; bower install
+
+install:
+  - npm install --quiet
+  - bower install
 script: ember build --environment production
+
 branches:
   only:
   - master
+
 env:
   global:
     secure: LGGMwEEgoh3BpmigoQGG3tuxIrKWPD83DToQktT5yrleiDvE0MbxBZ3ph14mZsq20/B7lgUtZLQ8EASSriRxuRv2HRbV8PD3vCx3J6YpLMe5dKcljElQsT6SO+aWUbpyDaaKZI/tgwGbY6HAoakJzwk0HOVSKXdmjL+SzRfZCpg=
+notifications:
+  slack:
+    secure: E7/BAKpSw1KIiloEPxjky7XgBKd2jR40bSlhS+/g3vjLvl+VzMhANxI4dmFJiVZaase6oQew98fGs6lpWDUEOAlZE32C09+5KC+bd/inQAF5QNUvIASg2XtmXju/ydF8MNPKLe/lAcVQpPYIu4wDn7BOZympYekSIiMD5t/l7Zc=
+
 after_success:
 - shopt -s extglob
 - mkdir build_out
@@ -24,9 +33,5 @@ after_success:
 - git config user.email "travis@withregard.io"
 - git add -A
 - git add -f dist
-- git commit -m "[ ${TRAVIS_BUILD_ID} ] [ ${TRAVIS_COMMIT_RANGE} ] ${TRAVIS_COMMIT}
-  "
+- git commit -m "[ ${TRAVIS_BUILD_ID} ] [ ${TRAVIS_COMMIT_RANGE} ] ${TRAVIS_COMMIT}"
 - git push --force origin master
-notifications:
-  slack:
-    secure: E7/BAKpSw1KIiloEPxjky7XgBKd2jR40bSlhS+/g3vjLvl+VzMhANxI4dmFJiVZaase6oQew98fGs6lpWDUEOAlZE32C09+5KC+bd/inQAF5QNUvIASg2XtmXju/ydF8MNPKLe/lAcVQpPYIu4wDn7BOZympYekSIiMD5t/l7Zc=

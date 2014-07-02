@@ -9,18 +9,18 @@
 
     {{BASE_TAG}}
 
-    <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="/assets/vendor.css">
+    <link rel="stylesheet" href="/assets/app.css">
   </head>
   <body>
     <script>
       window.DashboardENV = {{ENV}};
       window.EmberENV = window.DashboardENV.EmberENV;
     </script>
-    <script src="assets/vendor.js"></script>
-    <script src="assets/app.js"></script>
+    <script src="/assets/vendor.js"></script>
+    <script src="/assets/app.js"></script>
     <script>
-      window.Dashboard = require('app')['default'].create(DashboardENV.APP);
+      window.Dashboard = require('app/app')['default'].create(DashboardENV.APP);
     </script>
   </body>
 </html>

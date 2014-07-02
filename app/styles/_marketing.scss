@@ -125,6 +125,7 @@ $sparklineHeight: 84px;
   position: absolute;
   top: -170px;
   transform: scale(0.6);
+  -webkit-transform: scale(0.6);
   right: 220px;
   animation: fadein 2s;
 }

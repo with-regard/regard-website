@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard</title>
+    <title>Regard dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{BASE_TAG}}
 
     <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/regard.css">
+    <link rel="stylesheet" href="assets/app.css">
   </head>
   <body>
     <script>
@@ -18,9 +18,9 @@
       window.EmberENV = window.DashboardENV.EmberENV;
     </script>
     <script src="assets/vendor.js"></script>
-    <script src="assets/regard.js"></script>
+    <script src="assets/app.js"></script>
     <script>
-      window.Dashboard = require('dashboard/app')['default'].create(DashboardENV.APP);
+      window.Dashboard = require('app')['default'].create(DashboardENV.APP);
     </script>
   </body>
 </html>

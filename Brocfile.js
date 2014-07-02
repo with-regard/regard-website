@@ -3,7 +3,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
-  name: require('./package.json').name,
+  name: 'app',
   getEnvJSON: require('./config/environment'),
 
   fingerprint: {

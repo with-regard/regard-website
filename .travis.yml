@@ -5,7 +5,7 @@ install: npm install; bower install
 script: ember build --environment production
 branches:
   only:
-    - ember-cli
+    - master
 env:
   global:
     secure: LGGMwEEgoh3BpmigoQGG3tuxIrKWPD83DToQktT5yrleiDvE0MbxBZ3ph14mZsq20/B7lgUtZLQ8EASSriRxuRv2HRbV8PD3vCx3J6YpLMe5dKcljElQsT6SO+aWUbpyDaaKZI/tgwGbY6HAoakJzwk0HOVSKXdmjL+SzRfZCpg=

@@ -2,6 +2,8 @@
 
 Website for regard
 
+![build status](https://api.travis-ci.org/with-regard/regard-website.svg)
+
 ## Requirements
 
 1. Install [Node.js](http://nodejs.org)

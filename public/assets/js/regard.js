@@ -2,7 +2,7 @@
 
 requirejs.config({
   paths: {
-    'regard': 'https://github.com/with-regard/regard-js-client/releases/download/v0.5-alpha/regard'
+    'regard': 'https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard'
   }
 });
 

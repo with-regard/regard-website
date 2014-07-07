@@ -5,5 +5,7 @@ export default DS.Model.extend({
   isDeveloper: DS.attr('boolean'),
   isUser: DS.attr('boolean'),
   isAnonymous: DS.attr('boolean'),
-  userId: DS.attr('string')
+  userId: DS.attr('string'),
+
+  organizations: DS.hasMany('organization', {async: true}),
 });

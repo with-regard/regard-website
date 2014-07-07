@@ -5,7 +5,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('userevents', {path: '/userevents/:organization/:product/:userevent_id'});
+  this.route('user-events', {path: '/userevents/:organization/:product/:userevent_id'});
 
   this.resource('projects', {path: '/project'}, function() {
     this.resource('user-welcome');

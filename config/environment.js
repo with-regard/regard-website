@@ -28,10 +28,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.WEBSITE_API_URL = "http://int-dev.withregard.io:3001";
   }
 
   if (environment === 'production') {
-
+    ENV.WEBSITE_API_URL = "https://website-api.withregard.io";
   }
 
   return ENV;

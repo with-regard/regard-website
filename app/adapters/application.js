@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.RESTAdapter.extend({
-  host: 'http://int-dev.withregard.io:3001',
+  host: DashboardENV.WEBSITE_API_URL,
   namespace: 'v1',
   ajax: function(url, method, hash) {
     hash = hash || {};

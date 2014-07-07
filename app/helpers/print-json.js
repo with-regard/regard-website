@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Handlebars.helper('print-json', function(value) {
+export default Ember.Handlebars.makeBoundHelper(function(value) {
   var jsonString = Ember.Handlebars.Utils.escapeExpression(JSON.stringify(value, undefined, 4));
   var result = '<pre>' + jsonString + '</pre>';
 

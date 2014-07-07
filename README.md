@@ -7,18 +7,19 @@ Website for regard
 ## Requirements
 
 1. Install [Node.js](http://nodejs.org)
-2. Install [gulp](http://gulpjs.com/)
+2. Install [ember cli](http://iamstef.net/ember-cli/)
 ```
-npm install -g gulp
+npm install -g ember-cli
 ```
 
 3. Install dependencies
 ```
 npm install
+bower install
 ```
 4. Run gulp to start the development server
 ```
-gulp
+ember serve
 ```
 5. Configure local dev values
 
@@ -28,12 +29,10 @@ Copy sample-config.json to development-config.json. You can find the values for 
 
 Everything is in one repository for the moment (to make authentication simpler).
 
-The project page at [withregard.io](http://withregard.io) lives in the `website` folder.
-The developer portal lives in the `portal` folder.
-The api for the developer portal lives in the `api` folder. 
-
-Each of these exports an express app which is loaded by `server.js` in the root. 
+The marketing page at [withregard.io](http://withregard.io) lives in the `website` folder.
+The ember app lives in the app folder.
+Assets live in the public folder.
 
 ## Deployment
 
-Anything that gets pushed to master will be deployed. Azure runs `gulp build` which outputs to the *dist* directory. Make sure that the gulp build task exits and doesn't watch any files or start any servers.
+Anything that gets pushed to master will be built by travis and deployed to Azure websites.

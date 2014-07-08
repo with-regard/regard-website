@@ -7,10 +7,10 @@ export default Ember.Route.extend({
     });
   },
 
-  afterModel: function(user) {
-    if(user._data.organizations) {
+  afterModel: function(user, transition) {
+    if(user._data.organizations && transition.targetName === 'index') {
       var organizationId = user._data.organizations.get('firstObject.id');
       this.transitionTo('organization', organizationId);
-    } 
+    }
   }
 });

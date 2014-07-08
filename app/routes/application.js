@@ -5,5 +5,10 @@ export default Ember.Route.extend({
     return this.store.find('user').then(function(user) {
       return user.get('firstObject');
     });
+  },
+
+  afterModel: function(user) {
+    var organizationId = user._data.organizations.get('firstObject.id');
+    this.transitionTo('organization', organizationId);
   }
 });

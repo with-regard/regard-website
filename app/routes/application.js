@@ -8,7 +8,9 @@ export default Ember.Route.extend({
   },
 
   afterModel: function(user) {
-    var organizationId = user._data.organizations.get('firstObject.id');
-    this.transitionTo('organization', organizationId);
+    if(user._data.organizations) {
+      var organizationId = user._data.organizations.get('firstObject.id');
+      this.transitionTo('organization', organizationId);
+    } 
   }
 });

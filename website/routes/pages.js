@@ -1,7 +1,11 @@
 "use strict";
 
 exports.index = function (req, res) {
+  if (req.user && req.user.isDeveloper) {
+    res.redirect('/dashboard/');
+  } else {
     res.render('index');
+  }
 };
 
 exports.about = function (req, res) {

@@ -5,7 +5,7 @@
 <p>Add the script to the bottom of your page</p>
 <pre>
   <code class="html">
-    &lt;script type=&quot;text/javascript&quot; src=&quot;https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js&quot;&gt;&lt;/script&gt;
   </code>
 </pre>
 
@@ -13,13 +13,13 @@
 
 <pre>
   <code class="javascript">
-  regard.setOrganization('{{organization.id}}');
-  regard.setProject('{{project.id}}');
+regard.setOrganization('{{organization.id}}');
+regard.setProject('{{project.id}}');
 
-  regard.trackEvent('page.visited', {
-    'page.path': location.pathname,
-    'page.referrer': document.referrer
-  });
+regard.trackEvent('page.visited', {
+  'page.path': location.pathname,
+  'page.referrer': document.referrer
+});
   </code>
 </pre>
 

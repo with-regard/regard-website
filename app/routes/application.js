@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   },
 
   afterModel: function(user, transition) {
-    if(!user._data.organizations || true) {
+    if(!user._data.organizations) {
       this.transitionTo('setup');
     }
 

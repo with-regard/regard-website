@@ -3,6 +3,15 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
 
+  init: function() {
+    var login = this.get('controllers.application.content.login');
+    this.set('organization', login);
+  },
+
+  nextButtonDisabled: function() {
+    return !(this.get('organization') && this.get('project'));
+  }.property('organization', 'project'),
+
   actions: {
     createOrganization: function() {
       var self = this;

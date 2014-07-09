@@ -1,9 +1,16 @@
-<h1>Welcome to Regard - let's get started</h1>
+<h1>Welcome to Regard</h1>
 <p>To get started, we need to know the name of your organization and product. Don't worry, you can change these later.</p>
 
-{{input value=organization placeholder="organization name"}}
+<label>
+  Organization:
+  {{input value=organization placeholder="organization name"}}
+</label>
+
+<label>
+  Project:
 {{input value=project placeholder="project name"}}
+</label>
 
 <div class="clearfix">
-  <button class="right" {{action 'createOrganization'}}>Next step - install client</button>
+  <button class="right" {{action 'createOrganization'}} {{bind-attr disabled=nextButtonDisabled}}>Next step - install client</button>
 </div>

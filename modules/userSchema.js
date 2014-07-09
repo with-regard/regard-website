@@ -8,7 +8,9 @@ var userSchema = new Schema({
   name: String,
   avatar_url: String,
   projects: Array,
-  userId: String, 
+  userId: String,
+  email: String,
+  login: String,
   isUser: Boolean,
   isDeveloper: Boolean
 });

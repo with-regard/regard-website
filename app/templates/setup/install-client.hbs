@@ -2,34 +2,31 @@
 
 <p>To send us data you need to configure your organization and product. Then you can send us events that describe how users are using your product</p>
 <h3>Javascript</h3>
-<p>Install using require.js</p>
+<p>Add the script to the bottom of your page</p>
+<pre>
+  <code class="html">
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js&quot;&gt;&lt;/script&gt;
+  </code>
+</pre>
+
+<p>Set your organization and project ids and send us an event.</p>
 
 <pre>
   <code class="javascript">
-requirejs.config({
-  paths: {
-    'regard': 'https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard'
-  }
-});
-
-require(['regard'], function (regard) {
-  regard.setOrganization('{{organization}}');
-  regard.setProduct('{{product}}');
+  regard.setOrganization('{{organization.id}}');
+  regard.setProject('{{project.id}}');
 
   regard.trackEvent('page.visited', {
     'page.path': location.pathname,
     'page.referrer': document.referrer
-  }).then(function (e) {
-    console.log(e)
   });
-});
   </code>
 </pre>
 
-<p>or <a href="https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js" target="_blank">download the javascript client library</a></p>
+<p>You can download the client library <a href="https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js" target="_blank">here</a></p>
 
 <div class="clearfix">
-  <button class="right" {{action 'goToProject'}}>Setup completed - see the data</button>
+  <button class="right" {{action 'goToProject'}}>Setup complete - go to project</button>
 </div>
 
 <div class="alert-box secondary">

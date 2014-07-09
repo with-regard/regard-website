@@ -8,7 +8,11 @@ export default Ember.Route.extend({
   },
 
   afterModel: function(user, transition) {
-    if(user._data.organizations && transition.targetName === 'index') {
+    if(!user._data.organizations || true) {
+      this.transitionTo('setup');
+    }
+
+    if(transition.targetName === 'index') {
       var organizationId = user._data.organizations.get('firstObject.id');
       this.transitionTo('organization', organizationId);
     }

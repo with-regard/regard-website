@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
 
     goToProject: function() {
       var organizationId = this.get('organization.id');
-      this.transistionToRoute('organization', organizationId);
+      this.transitionToRoute('organization', organizationId);
     }
   }
 });

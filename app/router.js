@@ -19,8 +19,8 @@ Router.map(function() {
     this.route('create-organization');
     this.route('install-client');
   })
-  this.route('setup/create-organization');
-  this.route('setup/install-client');
+
+  this.route('user-welcome');
 });
 
 export default Router;

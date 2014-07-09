@@ -9,7 +9,8 @@ function createNewUserFromGithub(profile) {
   var user = new User({
     githubId: raw.id,
     name: raw.name,
-    avatar_url: raw.avatar_url
+    avatar_url: raw.avatar_url,
+    isDeveloper: true
   });
 
   user.save();

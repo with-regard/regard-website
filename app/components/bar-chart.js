@@ -15,7 +15,7 @@ export default Ember.Component.extend({
       datasets: [
         {
           data: rawData.map(function(elem) { return elem.value; }),
-          
+
           fillColor: "rgba(115,176,45,0.5)",
           strokeColor: "rgba(115,176,45,0.8)",
           highlightFill: "rgba(115,176,45,0.75)",

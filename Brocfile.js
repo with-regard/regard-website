@@ -39,6 +39,15 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   }
 });
 
+app.import({
+  development: 'vendor/chartjs/Chart.js',
+  production:  'vendor/chartjs/Chart.min.js'
+}, {
+  exports: {
+    'chartjs': ['default']
+  }
+});
+
 app.import('vendor/foundation/js/foundation.js');
 
 if (process.env.EMBER_ENV === 'development') {

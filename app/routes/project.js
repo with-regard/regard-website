@@ -10,11 +10,13 @@ export default Ember.Route.extend({
       var self = this;
 
       project.get('investigations').then(function(investigations){
-        self.transitionTo('investigation', investigations.get('firstObject'));
+        if(investigations.get('firstObject')) {
+          self.transitionTo('investigation', investigations.get('firstObject'));
+        }
       });
     }
   },
-  
+
   renderTemplate: function() {
     this.render('project');
     this.render('project-title', {

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
     return this.store.find('investigation', params.investigation_id);
   },
 
-  afterModel: function(investigation, transition) {
+  afterModel: function(investigation, transition) {    
     if(!investigation.get('queryDefinition') || transition.targetName === 'investigation.new') {
       this.transitionTo('investigation.new');
     } else {

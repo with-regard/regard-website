@@ -14,6 +14,13 @@ Router.map(function() {
       });
     });
   });
+
+  this.resource('setup', {path: '/setup'}, function() {
+    this.route('create-organization');
+    this.route('install-client');
+  })
+
+  this.route('user-welcome');
 });
 
 export default Router;

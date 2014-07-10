@@ -1,0 +1,14 @@
+<h1>Welcome to Regard</h1>
+<p>To get started, we need to know the name of your organization and product. Don't worry, you can change these later.</p>
+
+<label>
+  Organization: {{input value=organization}}
+</label>
+
+<label>
+  Project: {{input value=project}}
+</label>
+
+<div class="clearfix">
+  <button class="right" {{action 'createOrganization'}} {{bind-attr disabled=nextButtonDisabled}}>Next step - install client</button>
+</div>

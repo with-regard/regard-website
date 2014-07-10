@@ -1,0 +1,34 @@
+<h1>Install client</h1>
+
+<p>To send us data you need to configure your organization and product. Then you can send us events that describe how users are using your product</p>
+<h3>Javascript</h3>
+<p>Add the script to the bottom of your page</p>
+<pre>
+  <code class="html">
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js&quot;&gt;&lt;/script&gt;
+  </code>
+</pre>
+
+<p>Set your organization and project ids and send us an event.</p>
+
+<pre>
+  <code class="javascript">
+regard.setOrganization('{{organization.id}}');
+regard.setProject('{{project.id}}');
+
+regard.trackEvent('page.visited', {
+  'page.path': location.pathname,
+  'page.referrer': document.referrer
+});
+  </code>
+</pre>
+
+<p>You can download the client library <a href="https://github.com/with-regard/regard-js-client/releases/download/v0.6-alpha/regard.js" target="_blank">here</a></p>
+
+<div class="clearfix">
+  <button class="right" {{action 'goToProject'}}>Setup complete - go to project</button>
+</div>
+
+<div class="alert-box secondary">
+  Having trouble getting started? <a href="mailto:kevin@withregard.io">Send us an email</a> and we'll get you up and running.
+</div>

@@ -70,7 +70,7 @@ export default Ember.Component.extend({
       });
   },
 
-  didInsertElement: function () {
+  update: function () {
     this.draw();
-  }
+  }.observes('data')
 });

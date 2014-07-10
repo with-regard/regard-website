@@ -12,9 +12,7 @@ export default AuthenticationController.extend({
       var adapter = new ApplicationAdapter();
       $.getJSON(adapter.buildURL('chartdata', self.get('id')), resolve).fail(reject);
     }).then(function(data) {
-      var model = self.get('model');
-      model.set('chartdata', data);
-      console.log('set chartdata');
+      self.set('chartdata', data);
     });
   },
 

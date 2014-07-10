@@ -1,18 +1,3 @@
-<ul class="left-side-nav">
-  <li class="heading">Investigations {{#if canEdit}}<span class="secondary label" {{action "createInvestigation"}}>New</span>{{/if}}</li>
-  {{#each investigation in investigations}}
-    <li>
-      {{#link-to 'investigation' investigation}}
-        {{investigation.name}}
-      {{/link-to}}
-    </li>
-  {{else}}
-    <li class="muted">
-      You haven't created any investigations yet.
-    </li>
-  {{/each}}
-</ul>
-
-<div class="main-container">
-  {{outlet}}
-</div>
+{{#each investigation in investigations}}
+  {{render 'investigation' investigation}}
+{{/each}}

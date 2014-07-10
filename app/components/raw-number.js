@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   tagName: 'div',
   classNames: ['raw-value'],
 
-  didInsertElement: function() {
+  update: function() {
     this.set('value', this.get('data.firstObject.value'));
-  }
+  }.observes('data')
 });

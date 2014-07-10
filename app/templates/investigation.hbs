@@ -3,4 +3,8 @@
 <a {{action 'deleteInvestigation' this}}>delete investigation</a>
 {{/if}}
 
-{{bar-chart width=800 data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
+{{#if visualizationType}}
+  {{raw-number data=chartdata}}
+{{else}}
+  {{bar-chart width=800 data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
+{{/if}}

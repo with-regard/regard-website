@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   init: function() {
     var login = this.get('controllers.application.content.login');
     this.set('organization', login);
+    this.set('project', 'first Regard project');
   },
 
   nextButtonDisabled: function() {

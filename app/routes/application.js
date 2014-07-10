@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       return this.transitionTo('user-welcome');
     }
 
-    if(!user._data.organizations) {
+    if(user._data.organizations.length === 0) {
       return this.transitionTo('setup');
     }
 

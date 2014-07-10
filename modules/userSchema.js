@@ -7,12 +7,13 @@ var userSchema = new Schema({
   githubId: Number,
   name: String,
   avatar_url: String,
-  projects: Array,
   userId: String,
   email: String,
   login: String,
   isUser: Boolean,
-  isDeveloper: Boolean
+  isDeveloper: Boolean,
+
+  organizations: Array
 });
 
 module.exports = mongoose.model('User', userSchema);

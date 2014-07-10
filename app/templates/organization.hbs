@@ -1,4 +1,4 @@
-<div class="off-canvas-wrap move-right" data-offcanvas>
+<div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
     <nav class="tab-bar">
       {{#unless isAnonymous}}
@@ -30,7 +30,6 @@
             {{/if}}
           </label>
         </li>
-        {{log this}}
         {{#each project in projects}}
           <li>
             {{#link-to 'project' project}}

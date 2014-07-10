@@ -33,18 +33,18 @@ app.import({
   }
 });
 
-app.import({
-  development: 'vendor/d3/d3.js',
-  production:  'vendor/d3/d3.min.js'
-}, {
-  exports: {
-    'd3': ['default']
-  }
-});
-
 app.import('vendor/ic-ajax/dist/named-amd/main.js', {
   exports: {
     'ic-ajax': ['default', 'defineFixture', 'lookupFixture', 'raw', 'request']
+  }
+});
+
+app.import({
+  development: 'vendor/chartjs/Chart.js',
+  production:  'vendor/chartjs/Chart.min.js'
+}, {
+  exports: {
+    'chartjs': ['default']
   }
 });
 

@@ -1,40 +1,9 @@
-.axis path,
-.axis line {
-  fill: none;
-  stroke: $black;
-  shape-rendering: crispEdges;
-}
+.chart {
+  margin: 20px;
 
-.bar {
-  fill: $regard-green;
-}
-
-.bar:hover {
-  fill: darken( $regard-green, 10% );
-}
-
-.axis {
-  font-size: 0.8em;
-}
-
-.axis.value line, .axis.value path, .axis.y line, .axis.y path {
-  display: none;
-}
-
-.axis.value text, .axis.x {
-  fill: lighten($black, 10%);
-}
-
-.axis-label {
-  font-size: 1.2em;
-}
-
-.y.axis .axis-label {
-  text-anchor: end;
-}
-
-.x.axis .axis-label {
-  text-anchor: start;
+  h3 {
+    margin-bottom: 20px;
+  }
 }
 
 .raw-value {

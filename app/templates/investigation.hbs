@@ -1,10 +1,8 @@
-<h3>{{name}}</h3>
-{{#if canEdit}}
-<a {{action 'deleteInvestigation' this}}>delete investigation</a>
-{{/if}}
-
 {{#if visualizationType}}
-  {{raw-number data=chartdata}}
+  {{raw-number name=name data=chartdata}}
 {{else}}
-  {{bar-chart width=800 data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
+  <div class="chart">
+    <h3>{{name}}</h3>
+    {{bar-chart data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
+  </div>
 {{/if}}

@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
 
       var project = this.store.createRecord('project',  {
         name: projectName
-      })
+      });
 
       project.save().then(function() {
         organization.get('projects').then(function(projects){

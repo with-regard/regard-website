@@ -1,3 +1,7 @@
-{{#each investigation in investigations}}
-  {{render 'investigation' investigation}}
-{{/each}}
+<ul class="large-block-grid-3">
+  {{#each investigation in investigations}}
+    <li>
+      {{render 'investigation' investigation}}
+    </li>
+  {{/each}}
+</ul>

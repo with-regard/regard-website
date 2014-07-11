@@ -2,7 +2,10 @@
   {{raw-number name=name data=chartdata}}
 {{else}}
   <div class="chart">
-    <h3>{{name}}</h3>
+    <h4>{{name}}</h4>
+    {{#if isLoading}}
+      {{partial 'loading'}}
+    {{/if}}
     {{bar-chart data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
   </div>
 {{/if}}

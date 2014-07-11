@@ -7,11 +7,6 @@ export default Ember.Component.extend({
     Chart.defaults.global.responsive = true;
 
     var context = this.$().get(0).getContext("2d");
-
-    // set chart aspect ratio 1:3
-    context.canvas.height = 1;
-    context.canvas.width = 3;
-
     var options = {};
 
     var rawData = this.get('data');

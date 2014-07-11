@@ -16,7 +16,7 @@
     "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2",
     "d3": "~3.4.8",
     "foundation": "~5.3.0",
-    "chartjs": "~1.0.1-beta.2"
+    "highcharts": "~4.0.3"
   },
   "resolutions": {
     "jquery": ">= 1.7.0 <= 2.1.0"

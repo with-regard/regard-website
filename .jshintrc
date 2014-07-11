@@ -7,7 +7,7 @@
     "browser"       : true,   // Standard browser globals e.g. `window`, `document`.
     "node"          : true,
     "jquery"        : true,
-    "predef"        : ["DashboardENV", "Chart"], // Custom globals.
+    "predef"        : ["DashboardENV"], // Custom globals.
 
     // Development.
     "debug"         : false,  // Allow debugger statements e.g. browser breakpoints.

@@ -1,33 +1,54 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'canvas',
-
-  draw: function () {
-    Chart.defaults.global.responsive = true;
-
-    var context = this.$().get(0).getContext("2d");
-    var options = {};
-
-    var rawData = this.get('data');
-    var data = {
-      labels: rawData.map(function(elem) { return elem.name; }),
-      datasets: [
-        {
-          data: rawData.map(function(elem) { return elem.value; }),
-
-          fillColor: "rgba(115,176,45,0.5)",
-          strokeColor: "rgba(115,176,45,0.8)",
-          highlightFill: "rgba(115,176,45,0.75)",
-          highlightStroke: "rgba(115,176,45,1)",
-        }
-      ]
-    };
-
-    var myBarChart = new Chart(context).Bar(data, options);
+  draw: function (data, xAxisLabel, yAxisLabel) {
+    this.$().highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                title: {
+                  text: xAxisLabel
+                },
+                categories: data.map(function(x) {
+                  return x.name;
+                }),
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: yAxisLabel
+                }
+            },
+            legend: {
+              enabled: false
+            },
+            credits: {
+              enabled: false
+            },
+            colors: ['#73B02D'],
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                data: data.map(function(x) {
+                  return +x.value;
+                })
+            }]
+        });
   },
 
   update: function () {
-    this.draw();
+    var data = this.get('data');
+    var xAxisLabel = this.get('xAxisLabel');
+    var yAxisLabel = this.get('yAxisLabel');
+
+    this.draw(data, xAxisLabel, yAxisLabel);
   }.observes('data')
 });

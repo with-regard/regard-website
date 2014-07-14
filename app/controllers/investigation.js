@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ApplicationAdapter from '../adapters/application';
+import ChartDataAdapter from '../adapters/chart-data';
 import AuthenticationController from './authentication';
 
 export default AuthenticationController.extend({
@@ -9,10 +9,8 @@ export default AuthenticationController.extend({
     var self = this;
     self.set('isLoading', true);
 
-    var promise = new Ember.RSVP.Promise(function(resolve, reject) {
-      var adapter = new ApplicationAdapter();
-      $.getJSON(adapter.buildURL('chartdata', self.get('id')), resolve).fail(reject);
-    }).then(function(data) {
+    var adapter = ChartDataAdapter.create();
+    adapter.find(self.get('id')).then(function(data) {
       self.set('isLoading', false);
       self.set('chartdata', data);
     });

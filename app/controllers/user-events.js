@@ -1,5 +1,5 @@
 import AuthenticationController from './authentication';
-import ApplicationAdapter from '../adapters/application';
+import UserDataAdapter from '../adapters/user-data';
 
 export default AuthenticationController.extend({
   actions: {
@@ -9,10 +9,8 @@ export default AuthenticationController.extend({
       var project = this.get('project');
       var id = this.get('id');
 
-      var adapter = new ApplicationAdapter();
-      var url = adapter.buildURL('userevents', [organization, project, id, 'delete-data'].join('/')); // this should be in the adapter
-
-      $.post(url).complete(function () {
+      var adapter = UserDataAdapter.create();
+      adapter.deleteData(organization, project, id).done(function () {
         // hack
         model.set('events', []);
       });

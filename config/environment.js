@@ -30,10 +30,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV.WEBSITE_API_URL = "http://int-dev.withregard.io:3001";
+    ENV.WEBSITE_DATASTORE_URL = "http://int-dev.withregard.io:3002";
   }
 
   if (environment === 'production') {
     ENV.WEBSITE_API_URL = "https://website-api.withregard.io";
+    ENV.WEBSITE_DATASTORE_URL = "https://regard-website-datastore.azurewebsite.net";
   }
 
   return ENV;

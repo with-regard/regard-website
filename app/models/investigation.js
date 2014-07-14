@@ -9,7 +9,5 @@ export default DS.Model.extend({
   yAxisLabel: DS.attr('string'),
   visualizationType: DS.attr('string'),
 
-  organization: DS.attr('string'),
-  product: DS.attr('string'),
   project: DS.belongsTo('project')
 });

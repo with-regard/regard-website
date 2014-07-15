@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import UserDataAdapter from '../adapters/user-data';
+import async from '../modules/async';
 
 export default Ember.Route.extend({
-  model: function(params) {
+  model: async(function* (params) {
     var adapter = UserDataAdapter.create();
-    return adapter.find(params.organization, params.project, params.userevent_id).then(function(data) {
-      return Ember.Object.create(data)
-    });
-  }
+    var data = yield adapter.find(params.organization, params.project, params.userevent_id);
+    return Ember.Object.create(data);
+  })
 });

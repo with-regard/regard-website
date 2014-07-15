@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import async from '../modules/async';
 
 export default Ember.Controller.extend({
   needs: ['application'],
@@ -14,9 +15,7 @@ export default Ember.Controller.extend({
   }.property('organization', 'project'),
 
   actions: {
-    createOrganization: function() {
-      var self = this;
-
+    createOrganization: async(function* () {
       var organizationName = this.get('organization');
       var projectName = this.get('project');
       var userId = this.get('controllers.application.content.id');
@@ -30,18 +29,15 @@ export default Ember.Controller.extend({
         name: projectName
       });
 
-      project.save().then(function() {
-        organization.get('projects').then(function(projects){
-          projects.pushObject(project);
+      var project = yield project.save()
+      var projects = yield organization.get('projects')
+      projects.pushObject(project);
 
-          organization.save().then(function() {
-            self.set('organization', organization);
-            self.set('project', project);
-            self.transitionToRoute('setup.install-client');
-          });
-        });
-      });
-    },
+      var organization = yield organization.save()
+      this.set('organization', organization);
+      this.set('project', project);
+      this.transitionToRoute('setup.install-client');
+    }),
 
     goToProject: function() {
       var organizationId = this.get('organization.id');

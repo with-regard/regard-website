@@ -42,6 +42,11 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 app.import('vendor/highcharts/highcharts.js');
 
 app.import('vendor/foundation/js/foundation.js');
+app.import('vendor/regard-highcharts/index.js', {
+  exports: {
+    'regard-highcharts': ['default']
+  }
+});
 
 if (process.env.EMBER_ENV === 'development') {
 	require('lodash').extend(process.env, require('./config/development-config.json'));

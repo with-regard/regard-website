@@ -35,7 +35,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.WEBSITE_API_URL = "https://website-api.withregard.io";
-    ENV.WEBSITE_DATASTORE_URL = "https://regard-website-datastore.azurewebsite.net";
+    ENV.WEBSITE_DATASTORE_URL = "https://website-datastore.withregard.io";
   }
 
   return ENV;

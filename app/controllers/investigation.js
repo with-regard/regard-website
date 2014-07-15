@@ -1,18 +1,18 @@
 import Ember from 'ember';
-import ApplicationAdapter from '../adapters/application';
-import AuthenticationController from './authentication';
+import ChartDataAdapter from '../adapters/chart-data';
 
-export default AuthenticationController.extend({
+export default Ember.ObjectController.extend({
   needs: ['project'],
 
   init: function() {
     var self = this;
     self.set('isLoading', true);
 
-    var promise = new Ember.RSVP.Promise(function(resolve, reject) {
-      var adapter = new ApplicationAdapter();
-      $.getJSON(adapter.buildURL('chartdata', self.get('id')), resolve).fail(reject);
-    }).then(function(data) {
+    var organization = self.get('data.organization');
+    var project = self.get('data.product');
+
+    var adapter = ChartDataAdapter.create();
+    adapter.find(organization, project, self.get('id')).then(function(data) {
       self.set('isLoading', false);
       self.set('chartdata', data);
     });

@@ -114,7 +114,7 @@ $menu-slide: "transform 500ms ease" !default;
   @include kill-flicker;
   @include wrap-base;
   @include clearfix;
-  
+
   -webkit-transition: -webkit-#{$menu-slide};
   -moz-transition: -moz-#{$menu-slide};
   -ms-transition: -ms-#{$menu-slide};
@@ -176,9 +176,6 @@ $menu-slide: "transform 500ms ease" !default;
   text-align: center;
   height: $tabbar-height;
   top:0;
-  @media #{$medium-up} {
-    text-align: left;
-  }
 
   // still need to make these non-presentational
   &.left {

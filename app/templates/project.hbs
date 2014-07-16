@@ -6,12 +6,14 @@
 {{/each}}
 </section>
 
-<ul class="large-block-grid-2">
- {{#each investigation in investigations}}
-  {{#unless investigation.visualizationType}}
-    <li>
-      {{render 'chart' investigation}}
-    </li>
-  {{/unless}}
- {{/each}}
-</ul>
+<section class="charts">
+  <ul class="large-block-grid-2">
+    {{#each investigation in investigations}}
+    {{#unless investigation.visualizationType}}
+      <li>
+        {{render 'chart' investigation}}
+      </li>
+    {{/unless}}
+  {{/each}}
+  </ul>
+</section>

@@ -3,6 +3,7 @@ $side-nav-width: 250px;
 .main-section {
   min-height: 1000px;
   position: relative;
+  background: $light-grey;
 }
 
 nav.tab-bar {
@@ -12,7 +13,7 @@ nav.tab-bar {
 
 .left-side-nav {
   @include side-nav();
-  
+
   background-color: $sidebar-bg;
   width: $side-nav-width;
   border-right: 1px solid $sidebar-selected-bg;
@@ -70,7 +71,7 @@ nav.tab-bar {
 
 .row.full-width {
   width: 100%;
-  max-width: 100%; 
+  max-width: 100%;
 }
 
 .row.pad {

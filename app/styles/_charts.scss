@@ -1,20 +1,31 @@
-.numbers {
-  margin-left: -20px;
-  border-bottom: 1px solid $grey;
+.boxed {
+  background-color: $white;
+  border: 1px solid $grey;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
 
-  .number {
-    margin: 20px;
+.numbers {
+  border-bottom: 1px solid $grey;
+  padding: 20px;
+
+  .number-container {
+    @extend .boxed;
+    display: inline-block;
 
     .raw-value {
       font-size: 5rem;
     }
   }
 }
-
 .charts {
   margin: 20px;
 
-  h3 {
+  .chart-container {
+    @extend .boxed;
+  }
+
+  h4 {
     margin-bottom: 20px;
   }
 }

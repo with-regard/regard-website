@@ -1,7 +1,17 @@
+<section class="numbers">
+{{#each investigation in investigations}}
+  {{#if investigation.visualizationType}}
+    {{render 'number' investigation}}
+  {{/if}}
+{{/each}}
+</section>
+
 <ul class="large-block-grid-2">
-  {{#each investigation in investigations}}
+ {{#each investigation in investigations}}
+  {{#unless investigation.visualizationType}}
     <li>
-      {{render 'investigation' investigation}}
+      {{render 'chart' investigation}}
     </li>
-  {{/each}}
+  {{/unless}}
+ {{/each}}
 </ul>

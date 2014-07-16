@@ -1,0 +1,9 @@
+<div class="charts">
+  <h4>{{name}}</h4>
+  {{#if isLoading}}
+    {{partial 'loading'}}
+  {{/if}}
+  <div class="chart">
+    {{bar-chart data=chartdata xAxisLabel=xAxisLabel yAxisLabel=yAxisLabel}}
+  </div>
+</div>

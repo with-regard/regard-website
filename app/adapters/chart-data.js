@@ -9,6 +9,7 @@ export default Ember.Object.extend({
         if(!x.hasOwnProperty('value')) {
           x.value = x.EventCount;
         }
+        x.value = (+x.value).toFixed(0);
         return x;
       });
     });

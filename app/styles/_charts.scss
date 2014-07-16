@@ -11,6 +11,7 @@
 
   .number-container {
     @extend .boxed;
+    margin-right: 20px;
     display: inline-block;
 
     .raw-value {

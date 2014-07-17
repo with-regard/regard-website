@@ -1,19 +1,17 @@
 import AuthenticationController from '../authentication';
+import async from '../../modules/async';
 
 export default AuthenticationController.extend({
   actions: {
-    createBarChart: function () {
-      var self = this;
-
+    createBarChart: async(function* () {
       var investigation = this.get('model');
       investigation.set('queryDefinition', this.get('queryDefinition'));
       investigation.set('xAxisLabel', this.get('xAxisLabel'));
       investigation.set('yAxisLabel', this.get('yAxisLabel'));
 
-      investigation.save().then(function () {
-        self.transitionToRoute('investigation', investigation);
-      });
-    }
+      var investigation = yield investigation.save()
+      this.transitionToRoute('investigation', investigation);
+    })
   },
 
   queryDefinition: function() {

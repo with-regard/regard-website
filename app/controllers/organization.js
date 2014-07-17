@@ -1,29 +1,27 @@
 import AuthenticationController from './authentication';
+import async from '../modules/async';
 
 export default AuthenticationController.extend({
   actions: {
-    createProject: function () {
+    createProject: async(function* () {
       var project = this.store.createRecord('project');
       var organization = this.get('model');
 
-      project.save().then(function () {
-        organization.get('projects').then(function (projects) {
-          projects.pushObject(project);
-          organization.save();
-        });
-      });
-    },
+      var project = yield project.save()
+      var projects = yield organization.get('projects');
+      projects.pushObject(project);
+      organization.save();
+    }),
 
-    deleteProject: function (project) {
+    deleteProject: async(function* (project) {
       var organization = this.get('model');
 
-      organization.get('projects').then(function (projects) {
-        projects.removeObject(project);
-        organization.save();
-      });
+      var projects = yield organization.get('projects');
+      projects.removeObject(project);
+      organization.save();
 
       project.destroyRecord();
       this.transitionToRoute('projects');
-    },
+    }),
   }
 });

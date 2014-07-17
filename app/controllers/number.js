@@ -1,20 +1,12 @@
 import Ember from 'ember';
-import ChartDataAdapter from '../adapters/chart-data';
+import ChartDataController from '../controllers/chart-data';
+import Poller from '../mixins/poller';
 
-export default Ember.ObjectController.extend({
-  needs: ['project'],
-
+export default ChartDataController.extend(Poller, {
   init: function() {
-    var self = this;
-    self.set('isLoading', true);
-
-    var organization = self.get('data.organization');
-    var project = self.get('data.product');
-
-    var adapter = ChartDataAdapter.create();
-    adapter.find(organization, project, self.get('id')).then(function(data) {
-      self.set('isLoading', false);
-      self.set('chartdata', data);
-    });
+    this.set('isLoading', true);
+    this.load();
+    this.set('isLoading', false);
+    this.poll(this.load.bind(this));
   }
 });

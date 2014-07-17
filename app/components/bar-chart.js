@@ -2,8 +2,7 @@ import Ember from 'ember';
 import charts from 'regard-highcharts';
 
 export default Ember.Component.extend({
-  draw: function (data, xAxisLabel, yAxisLabel) {
-    var data = this.get('data');
+  draw: function (data) {
     var xAxisLabel = this.get('xAxisLabel');
     var yAxisLabel = this.get('yAxisLabel');
 
@@ -14,8 +13,9 @@ export default Ember.Component.extend({
     this.set('chart', chart);
   },
 
-  redraw: function(data) {
+  redraw: function() {
     var chart = this.get('chart');
+    var data = this.get('data');
 
     if(chart && chart.series[0].data.length === data.length) {
       var newPoints = data.map(x => x.value);
@@ -26,7 +26,7 @@ export default Ember.Component.extend({
 
       chart.redraw();
     } else {
-      this.draw();
+      this.draw(data);
     }
   },
 

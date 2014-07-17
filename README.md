@@ -27,10 +27,8 @@ Copy sample-config.json to development-config.json. You can find the values for 
 
 ## Organization
 
-Everything is in one repository for the moment (to make authentication simpler).
-
 The marketing page at [withregard.io](http://withregard.io) lives in the `website` folder.
-The ember app lives in the app folder.
+The ember app lives in the `app` folder.
 Assets live in the public folder.
 
 ## Deployment

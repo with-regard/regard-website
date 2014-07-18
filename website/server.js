@@ -16,5 +16,6 @@ app.post('/signup', signup.sendToMailchimp);
 app.get('/signup', function (req, res) {
   res.redirect('/');
 });
+app.get('/not-supported', pages.safari);
 
 module.exports = app;

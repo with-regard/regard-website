@@ -5,6 +5,7 @@ var compress = require('compression')();
 var requireSSLinProduction = require('./modules/requireSSLinProduction.js');
 var bodyParser = require('body-parser')();
 var errorHandler = require('errorhandler');
+var useragent = require('useragent');
 
 var regardUserStore = require('./modules/regard-user-store.js');
 var auth = require('regard-authentication');
@@ -21,7 +22,11 @@ app.use(auth(regardUserStore));
 app.use(userData);
 
 app.get('/dashboard*', function (req, res, next) {
-  res.sendfile('index.html', { root: __dirname + '/dist' });
+  if(useragent.is(req.headers['user-agent']).safari) {
+    res.redirect(302, '/not-supported');
+  } else {
+    res.sendfile('index.html', { root: __dirname + '/dist' });
+  }
 });
 
 app.use(website);

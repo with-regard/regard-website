@@ -26,7 +26,8 @@
     "originate": "0.1.5",
     "express": "^4.1.1",
     "body-parser": "^1.2.0",
-    "glob": "^3.2.9"
+    "glob": "^3.2.9",
+    "useragent": "~2.0.9"
   },
   "devDependencies": {
     "bower": "~1.3.5",

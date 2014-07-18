@@ -24,3 +24,7 @@ exports.notFound = function(req, res) {
   res.status(404);
   res.render('404');
 };
+
+exports.safari = function(req, res) {
+  res.render('safari');
+}

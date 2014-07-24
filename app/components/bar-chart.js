@@ -5,8 +5,15 @@ export default Ember.Component.extend({
   draw: function (data) {
     var xAxisLabel = this.get('xAxisLabel');
     var yAxisLabel = this.get('yAxisLabel');
+    var sort = this.get('sort');
 
-    var chartData = charts.bar(data, xAxisLabel, yAxisLabel);
+    if(sort) {
+      data.sort((a, b) => b.value - a.value);
+    }
+
+    var topData = data.slice(0, 10);
+
+    var chartData = charts.bar(topData, xAxisLabel, yAxisLabel);
     chartData.chart.renderTo = this.$()[0];
     var chart = new Highcharts.Chart(chartData);
 

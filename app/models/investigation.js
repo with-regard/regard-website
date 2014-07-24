@@ -7,6 +7,7 @@ export default DS.Model.extend({
   queryDefinition: DS.attr('string'),
   xAxisLabel: DS.attr('string'),
   yAxisLabel: DS.attr('string'),
+  sort: DS.attr('boolean'),
   visualizationType: DS.attr('string'),
 
   project: DS.belongsTo('project')
